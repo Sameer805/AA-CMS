@@ -4,3 +4,7 @@
 
 /.vs
 /CMS/obj/Debug
+/CMS/bin/CMS.dll
+/CMS/bin/CMS.pdb
+/CMS/obj/Debug/CMS.csproj.AssemblyReference.cache
+/CMS/obj/Debug/CMS.csproj.FileListAbsolute.txt
