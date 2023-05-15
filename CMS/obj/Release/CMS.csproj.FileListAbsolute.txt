@@ -1,0 +1,518 @@
+C:\Users\Ahmed Ali\source\repos\CMS\CMS\bin\CMS.dll.config
+C:\Users\Ahmed Ali\source\repos\CMS\CMS\bin\CMS.dll
+C:\Users\Ahmed Ali\source\repos\CMS\CMS\bin\CMS.pdb
+C:\Users\Ahmed Ali\source\repos\CMS\CMS\bin\roslyn\csc.exe
+C:\Users\Ahmed Ali\source\repos\CMS\CMS\bin\roslyn\csc.exe.config
+C:\Users\Ahmed Ali\source\repos\CMS\CMS\bin\roslyn\csc.rsp
+C:\Users\Ahmed Ali\source\repos\CMS\CMS\bin\roslyn\csi.exe
+C:\Users\Ahmed Ali\source\repos\CMS\CMS\bin\roslyn\csi.exe.config
+C:\Users\Ahmed Ali\source\repos\CMS\CMS\bin\roslyn\csi.rsp
+C:\Users\Ahmed Ali\source\repos\CMS\CMS\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Ahmed Ali\source\repos\CMS\CMS\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Ahmed Ali\source\repos\CMS\CMS\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\Ahmed Ali\source\repos\CMS\CMS\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Ahmed Ali\source\repos\CMS\CMS\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\Ahmed Ali\source\repos\CMS\CMS\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Ahmed Ali\source\repos\CMS\CMS\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Ahmed Ali\source\repos\CMS\CMS\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\Ahmed Ali\source\repos\CMS\CMS\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\Ahmed Ali\source\repos\CMS\CMS\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\Ahmed Ali\source\repos\CMS\CMS\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Ahmed Ali\source\repos\CMS\CMS\bin\roslyn\System.AppContext.dll
+C:\Users\Ahmed Ali\source\repos\CMS\CMS\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Ahmed Ali\source\repos\CMS\CMS\bin\roslyn\System.Console.dll
+C:\Users\Ahmed Ali\source\repos\CMS\CMS\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\Ahmed Ali\source\repos\CMS\CMS\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\Ahmed Ali\source\repos\CMS\CMS\bin\roslyn\System.IO.Compression.dll
+C:\Users\Ahmed Ali\source\repos\CMS\CMS\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\Ahmed Ali\source\repos\CMS\CMS\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\Ahmed Ali\source\repos\CMS\CMS\bin\roslyn\System.IO.Pipes.AccessControl.dll
+C:\Users\Ahmed Ali\source\repos\CMS\CMS\bin\roslyn\System.IO.Pipes.dll
+C:\Users\Ahmed Ali\source\repos\CMS\CMS\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Ahmed Ali\source\repos\CMS\CMS\bin\roslyn\System.Security.AccessControl.dll
+C:\Users\Ahmed Ali\source\repos\CMS\CMS\bin\roslyn\System.Security.Claims.dll
+C:\Users\Ahmed Ali\source\repos\CMS\CMS\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\Ahmed Ali\source\repos\CMS\CMS\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\Ahmed Ali\source\repos\CMS\CMS\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\Ahmed Ali\source\repos\CMS\CMS\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\Ahmed Ali\source\repos\CMS\CMS\bin\roslyn\System.Security.Principal.Windows.dll
+C:\Users\Ahmed Ali\source\repos\CMS\CMS\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\Ahmed Ali\source\repos\CMS\CMS\bin\roslyn\System.ValueTuple.dll
+C:\Users\Ahmed Ali\source\repos\CMS\CMS\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\Ahmed Ali\source\repos\CMS\CMS\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\Ahmed Ali\source\repos\CMS\CMS\bin\roslyn\System.Xml.XPath.dll
+C:\Users\Ahmed Ali\source\repos\CMS\CMS\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\Ahmed Ali\source\repos\CMS\CMS\bin\roslyn\vbc.exe
+C:\Users\Ahmed Ali\source\repos\CMS\CMS\bin\roslyn\vbc.exe.config
+C:\Users\Ahmed Ali\source\repos\CMS\CMS\bin\roslyn\vbc.rsp
+C:\Users\Ahmed Ali\source\repos\CMS\CMS\bin\roslyn\VBCSCompiler.exe
+C:\Users\Ahmed Ali\source\repos\CMS\CMS\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Ahmed Ali\source\repos\CMS\CMS\bin\Antlr3.Runtime.dll
+C:\Users\Ahmed Ali\source\repos\CMS\CMS\bin\BouncyCastle.Crypto.dll
+C:\Users\Ahmed Ali\source\repos\CMS\CMS\bin\EntityFramework.dll
+C:\Users\Ahmed Ali\source\repos\CMS\CMS\bin\EntityFramework.SqlServer.dll
+C:\Users\Ahmed Ali\source\repos\CMS\CMS\bin\itextsharp.dll
+C:\Users\Ahmed Ali\source\repos\CMS\CMS\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Ahmed Ali\source\repos\CMS\CMS\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Ahmed Ali\source\repos\CMS\CMS\bin\Newtonsoft.Json.dll
+C:\Users\Ahmed Ali\source\repos\CMS\CMS\bin\System.Net.Http.Formatting.dll
+C:\Users\Ahmed Ali\source\repos\CMS\CMS\bin\System.Web.Helpers.dll
+C:\Users\Ahmed Ali\source\repos\CMS\CMS\bin\System.Web.Http.dll
+C:\Users\Ahmed Ali\source\repos\CMS\CMS\bin\System.Web.Mvc.dll
+C:\Users\Ahmed Ali\source\repos\CMS\CMS\bin\System.Web.Optimization.dll
+C:\Users\Ahmed Ali\source\repos\CMS\CMS\bin\System.Web.Razor.dll
+C:\Users\Ahmed Ali\source\repos\CMS\CMS\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Ahmed Ali\source\repos\CMS\CMS\bin\System.Web.WebPages.dll
+C:\Users\Ahmed Ali\source\repos\CMS\CMS\bin\System.Web.WebPages.Razor.dll
+C:\Users\Ahmed Ali\source\repos\CMS\CMS\bin\WebGrease.dll
+C:\Users\Ahmed Ali\source\repos\CMS\CMS\bin\EntityFramework.xml
+C:\Users\Ahmed Ali\source\repos\CMS\CMS\bin\EntityFramework.SqlServer.xml
+C:\Users\Ahmed Ali\source\repos\CMS\CMS\bin\itextsharp.xml
+C:\Users\Ahmed Ali\source\repos\CMS\CMS\bin\System.Net.Http.Formatting.xml
+C:\Users\Ahmed Ali\source\repos\CMS\CMS\bin\System.Web.Http.xml
+C:\Users\Ahmed Ali\source\repos\CMS\CMS\bin\System.Web.Helpers.xml
+C:\Users\Ahmed Ali\source\repos\CMS\CMS\bin\System.Web.Mvc.xml
+C:\Users\Ahmed Ali\source\repos\CMS\CMS\bin\System.Web.Optimization.xml
+C:\Users\Ahmed Ali\source\repos\CMS\CMS\bin\System.Web.Razor.xml
+C:\Users\Ahmed Ali\source\repos\CMS\CMS\bin\System.Web.WebPages.xml
+C:\Users\Ahmed Ali\source\repos\CMS\CMS\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Ahmed Ali\source\repos\CMS\CMS\bin\System.Web.WebPages.Razor.xml
+C:\Users\Ahmed Ali\source\repos\CMS\CMS\bin\Newtonsoft.Json.xml
+C:\Users\Ahmed Ali\source\repos\CMS\CMS\bin\Antlr3.Runtime.pdb
+C:\Users\Ahmed Ali\source\repos\CMS\CMS\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Ahmed Ali\source\repos\CMS\CMS\obj\Release\CMS.csproj.CopyComplete
+C:\Users\Ahmed Ali\source\repos\CMS\CMS\obj\Release\CMS.dll
+C:\Users\Ahmed Ali\source\repos\CMS\CMS\obj\Release\CMS.pdb
+C:\Users\Ahmed Ali\source\repos\CMS\CMS\obj\Release\CMS.csprojAssemblyReference.cache
+D:\AHMED ALI\Main Projects\AACMS - Original\CMS\bin\CMS.dll.config
+D:\AHMED ALI\Main Projects\AACMS - Original\CMS\bin\CMS.dll
+D:\AHMED ALI\Main Projects\AACMS - Original\CMS\bin\CMS.pdb
+D:\AHMED ALI\Main Projects\AACMS - Original\CMS\bin\roslyn\csc.exe
+D:\AHMED ALI\Main Projects\AACMS - Original\CMS\bin\roslyn\csc.exe.config
+D:\AHMED ALI\Main Projects\AACMS - Original\CMS\bin\roslyn\csc.rsp
+D:\AHMED ALI\Main Projects\AACMS - Original\CMS\bin\roslyn\csi.exe
+D:\AHMED ALI\Main Projects\AACMS - Original\CMS\bin\roslyn\csi.exe.config
+D:\AHMED ALI\Main Projects\AACMS - Original\CMS\bin\roslyn\csi.rsp
+D:\AHMED ALI\Main Projects\AACMS - Original\CMS\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\AHMED ALI\Main Projects\AACMS - Original\CMS\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\AHMED ALI\Main Projects\AACMS - Original\CMS\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+D:\AHMED ALI\Main Projects\AACMS - Original\CMS\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\AHMED ALI\Main Projects\AACMS - Original\CMS\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+D:\AHMED ALI\Main Projects\AACMS - Original\CMS\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\AHMED ALI\Main Projects\AACMS - Original\CMS\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\AHMED ALI\Main Projects\AACMS - Original\CMS\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+D:\AHMED ALI\Main Projects\AACMS - Original\CMS\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+D:\AHMED ALI\Main Projects\AACMS - Original\CMS\bin\roslyn\Microsoft.Managed.Core.targets
+D:\AHMED ALI\Main Projects\AACMS - Original\CMS\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\AHMED ALI\Main Projects\AACMS - Original\CMS\bin\roslyn\System.AppContext.dll
+D:\AHMED ALI\Main Projects\AACMS - Original\CMS\bin\roslyn\System.Collections.Immutable.dll
+D:\AHMED ALI\Main Projects\AACMS - Original\CMS\bin\roslyn\System.Console.dll
+D:\AHMED ALI\Main Projects\AACMS - Original\CMS\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+D:\AHMED ALI\Main Projects\AACMS - Original\CMS\bin\roslyn\System.Diagnostics.StackTrace.dll
+D:\AHMED ALI\Main Projects\AACMS - Original\CMS\bin\roslyn\System.IO.Compression.dll
+D:\AHMED ALI\Main Projects\AACMS - Original\CMS\bin\roslyn\System.IO.FileSystem.dll
+D:\AHMED ALI\Main Projects\AACMS - Original\CMS\bin\roslyn\System.IO.FileSystem.Primitives.dll
+D:\AHMED ALI\Main Projects\AACMS - Original\CMS\bin\roslyn\System.IO.Pipes.AccessControl.dll
+D:\AHMED ALI\Main Projects\AACMS - Original\CMS\bin\roslyn\System.IO.Pipes.dll
+D:\AHMED ALI\Main Projects\AACMS - Original\CMS\bin\roslyn\System.Reflection.Metadata.dll
+D:\AHMED ALI\Main Projects\AACMS - Original\CMS\bin\roslyn\System.Security.AccessControl.dll
+D:\AHMED ALI\Main Projects\AACMS - Original\CMS\bin\roslyn\System.Security.Claims.dll
+D:\AHMED ALI\Main Projects\AACMS - Original\CMS\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+D:\AHMED ALI\Main Projects\AACMS - Original\CMS\bin\roslyn\System.Security.Cryptography.Encoding.dll
+D:\AHMED ALI\Main Projects\AACMS - Original\CMS\bin\roslyn\System.Security.Cryptography.Primitives.dll
+D:\AHMED ALI\Main Projects\AACMS - Original\CMS\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+D:\AHMED ALI\Main Projects\AACMS - Original\CMS\bin\roslyn\System.Security.Principal.Windows.dll
+D:\AHMED ALI\Main Projects\AACMS - Original\CMS\bin\roslyn\System.Text.Encoding.CodePages.dll
+D:\AHMED ALI\Main Projects\AACMS - Original\CMS\bin\roslyn\System.ValueTuple.dll
+D:\AHMED ALI\Main Projects\AACMS - Original\CMS\bin\roslyn\System.Xml.ReaderWriter.dll
+D:\AHMED ALI\Main Projects\AACMS - Original\CMS\bin\roslyn\System.Xml.XmlDocument.dll
+D:\AHMED ALI\Main Projects\AACMS - Original\CMS\bin\roslyn\System.Xml.XPath.dll
+D:\AHMED ALI\Main Projects\AACMS - Original\CMS\bin\roslyn\System.Xml.XPath.XDocument.dll
+D:\AHMED ALI\Main Projects\AACMS - Original\CMS\bin\roslyn\vbc.exe
+D:\AHMED ALI\Main Projects\AACMS - Original\CMS\bin\roslyn\vbc.exe.config
+D:\AHMED ALI\Main Projects\AACMS - Original\CMS\bin\roslyn\vbc.rsp
+D:\AHMED ALI\Main Projects\AACMS - Original\CMS\bin\roslyn\VBCSCompiler.exe
+D:\AHMED ALI\Main Projects\AACMS - Original\CMS\bin\roslyn\VBCSCompiler.exe.config
+D:\AHMED ALI\Main Projects\AACMS - Original\CMS\bin\Antlr3.Runtime.dll
+D:\AHMED ALI\Main Projects\AACMS - Original\CMS\bin\BouncyCastle.Crypto.dll
+D:\AHMED ALI\Main Projects\AACMS - Original\CMS\bin\EntityFramework.dll
+D:\AHMED ALI\Main Projects\AACMS - Original\CMS\bin\EntityFramework.SqlServer.dll
+D:\AHMED ALI\Main Projects\AACMS - Original\CMS\bin\itextsharp.dll
+D:\AHMED ALI\Main Projects\AACMS - Original\CMS\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\AHMED ALI\Main Projects\AACMS - Original\CMS\bin\Microsoft.Web.Infrastructure.dll
+D:\AHMED ALI\Main Projects\AACMS - Original\CMS\bin\Newtonsoft.Json.dll
+D:\AHMED ALI\Main Projects\AACMS - Original\CMS\bin\System.Net.Http.Formatting.dll
+D:\AHMED ALI\Main Projects\AACMS - Original\CMS\bin\System.Web.Helpers.dll
+D:\AHMED ALI\Main Projects\AACMS - Original\CMS\bin\System.Web.Http.dll
+D:\AHMED ALI\Main Projects\AACMS - Original\CMS\bin\System.Web.Mvc.dll
+D:\AHMED ALI\Main Projects\AACMS - Original\CMS\bin\System.Web.Optimization.dll
+D:\AHMED ALI\Main Projects\AACMS - Original\CMS\bin\System.Web.Razor.dll
+D:\AHMED ALI\Main Projects\AACMS - Original\CMS\bin\System.Web.WebPages.Deployment.dll
+D:\AHMED ALI\Main Projects\AACMS - Original\CMS\bin\System.Web.WebPages.dll
+D:\AHMED ALI\Main Projects\AACMS - Original\CMS\bin\System.Web.WebPages.Razor.dll
+D:\AHMED ALI\Main Projects\AACMS - Original\CMS\bin\WebGrease.dll
+D:\AHMED ALI\Main Projects\AACMS - Original\CMS\bin\EntityFramework.xml
+D:\AHMED ALI\Main Projects\AACMS - Original\CMS\bin\EntityFramework.SqlServer.xml
+D:\AHMED ALI\Main Projects\AACMS - Original\CMS\bin\itextsharp.xml
+D:\AHMED ALI\Main Projects\AACMS - Original\CMS\bin\System.Net.Http.Formatting.xml
+D:\AHMED ALI\Main Projects\AACMS - Original\CMS\bin\System.Web.Http.xml
+D:\AHMED ALI\Main Projects\AACMS - Original\CMS\bin\System.Web.Helpers.xml
+D:\AHMED ALI\Main Projects\AACMS - Original\CMS\bin\System.Web.Mvc.xml
+D:\AHMED ALI\Main Projects\AACMS - Original\CMS\bin\System.Web.Optimization.xml
+D:\AHMED ALI\Main Projects\AACMS - Original\CMS\bin\System.Web.Razor.xml
+D:\AHMED ALI\Main Projects\AACMS - Original\CMS\bin\System.Web.WebPages.xml
+D:\AHMED ALI\Main Projects\AACMS - Original\CMS\bin\System.Web.WebPages.Deployment.xml
+D:\AHMED ALI\Main Projects\AACMS - Original\CMS\bin\System.Web.WebPages.Razor.xml
+D:\AHMED ALI\Main Projects\AACMS - Original\CMS\bin\Newtonsoft.Json.xml
+D:\AHMED ALI\Main Projects\AACMS - Original\CMS\bin\Antlr3.Runtime.pdb
+D:\AHMED ALI\Main Projects\AACMS - Original\CMS\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\AHMED ALI\Main Projects\AACMS - Original\CMS\obj\Release\CMS.dll
+D:\AHMED ALI\Main Projects\AACMS - Original\CMS\obj\Release\CMS.pdb
+F:\NEWALLBACKUPS\Calendar\AACMS - Original Copy\AACMS - Original\CMS\bin\CMS.dll.config
+F:\NEWALLBACKUPS\Calendar\AACMS - Original Copy\AACMS - Original\CMS\bin\CMS.dll
+F:\NEWALLBACKUPS\Calendar\AACMS - Original Copy\AACMS - Original\CMS\bin\CMS.pdb
+F:\NEWALLBACKUPS\Calendar\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\csc.exe
+F:\NEWALLBACKUPS\Calendar\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\csc.exe.config
+F:\NEWALLBACKUPS\Calendar\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\csc.rsp
+F:\NEWALLBACKUPS\Calendar\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\csi.exe
+F:\NEWALLBACKUPS\Calendar\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\csi.exe.config
+F:\NEWALLBACKUPS\Calendar\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\csi.rsp
+F:\NEWALLBACKUPS\Calendar\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+F:\NEWALLBACKUPS\Calendar\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+F:\NEWALLBACKUPS\Calendar\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+F:\NEWALLBACKUPS\Calendar\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\Microsoft.CodeAnalysis.dll
+F:\NEWALLBACKUPS\Calendar\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+F:\NEWALLBACKUPS\Calendar\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+F:\NEWALLBACKUPS\Calendar\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\Microsoft.CSharp.Core.targets
+F:\NEWALLBACKUPS\Calendar\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+F:\NEWALLBACKUPS\Calendar\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+F:\NEWALLBACKUPS\Calendar\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\Microsoft.Managed.Core.targets
+F:\NEWALLBACKUPS\Calendar\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\Microsoft.VisualBasic.Core.targets
+F:\NEWALLBACKUPS\Calendar\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\System.AppContext.dll
+F:\NEWALLBACKUPS\Calendar\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\System.Collections.Immutable.dll
+F:\NEWALLBACKUPS\Calendar\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\System.Console.dll
+F:\NEWALLBACKUPS\Calendar\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+F:\NEWALLBACKUPS\Calendar\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\System.Diagnostics.StackTrace.dll
+F:\NEWALLBACKUPS\Calendar\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\System.IO.Compression.dll
+F:\NEWALLBACKUPS\Calendar\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\System.IO.FileSystem.dll
+F:\NEWALLBACKUPS\Calendar\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\System.IO.FileSystem.Primitives.dll
+F:\NEWALLBACKUPS\Calendar\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\System.IO.Pipes.AccessControl.dll
+F:\NEWALLBACKUPS\Calendar\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\System.IO.Pipes.dll
+F:\NEWALLBACKUPS\Calendar\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\System.Reflection.Metadata.dll
+F:\NEWALLBACKUPS\Calendar\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\System.Security.AccessControl.dll
+F:\NEWALLBACKUPS\Calendar\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\System.Security.Claims.dll
+F:\NEWALLBACKUPS\Calendar\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+F:\NEWALLBACKUPS\Calendar\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\System.Security.Cryptography.Encoding.dll
+F:\NEWALLBACKUPS\Calendar\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\System.Security.Cryptography.Primitives.dll
+F:\NEWALLBACKUPS\Calendar\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+F:\NEWALLBACKUPS\Calendar\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\System.Security.Principal.Windows.dll
+F:\NEWALLBACKUPS\Calendar\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\System.Text.Encoding.CodePages.dll
+F:\NEWALLBACKUPS\Calendar\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\System.ValueTuple.dll
+F:\NEWALLBACKUPS\Calendar\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\System.Xml.ReaderWriter.dll
+F:\NEWALLBACKUPS\Calendar\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\System.Xml.XmlDocument.dll
+F:\NEWALLBACKUPS\Calendar\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\System.Xml.XPath.dll
+F:\NEWALLBACKUPS\Calendar\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\System.Xml.XPath.XDocument.dll
+F:\NEWALLBACKUPS\Calendar\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\vbc.exe
+F:\NEWALLBACKUPS\Calendar\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\vbc.exe.config
+F:\NEWALLBACKUPS\Calendar\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\vbc.rsp
+F:\NEWALLBACKUPS\Calendar\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\VBCSCompiler.exe
+F:\NEWALLBACKUPS\Calendar\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\VBCSCompiler.exe.config
+F:\NEWALLBACKUPS\Calendar\AACMS - Original Copy\AACMS - Original\CMS\bin\Antlr3.Runtime.dll
+F:\NEWALLBACKUPS\Calendar\AACMS - Original Copy\AACMS - Original\CMS\bin\BouncyCastle.Crypto.dll
+F:\NEWALLBACKUPS\Calendar\AACMS - Original Copy\AACMS - Original\CMS\bin\EntityFramework.dll
+F:\NEWALLBACKUPS\Calendar\AACMS - Original Copy\AACMS - Original\CMS\bin\EntityFramework.SqlServer.dll
+F:\NEWALLBACKUPS\Calendar\AACMS - Original Copy\AACMS - Original\CMS\bin\itextsharp.dll
+F:\NEWALLBACKUPS\Calendar\AACMS - Original Copy\AACMS - Original\CMS\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+F:\NEWALLBACKUPS\Calendar\AACMS - Original Copy\AACMS - Original\CMS\bin\Microsoft.Web.Infrastructure.dll
+F:\NEWALLBACKUPS\Calendar\AACMS - Original Copy\AACMS - Original\CMS\bin\Newtonsoft.Json.dll
+F:\NEWALLBACKUPS\Calendar\AACMS - Original Copy\AACMS - Original\CMS\bin\System.Net.Http.Formatting.dll
+F:\NEWALLBACKUPS\Calendar\AACMS - Original Copy\AACMS - Original\CMS\bin\System.Web.Helpers.dll
+F:\NEWALLBACKUPS\Calendar\AACMS - Original Copy\AACMS - Original\CMS\bin\System.Web.Http.dll
+F:\NEWALLBACKUPS\Calendar\AACMS - Original Copy\AACMS - Original\CMS\bin\System.Web.Mvc.dll
+F:\NEWALLBACKUPS\Calendar\AACMS - Original Copy\AACMS - Original\CMS\bin\System.Web.Optimization.dll
+F:\NEWALLBACKUPS\Calendar\AACMS - Original Copy\AACMS - Original\CMS\bin\System.Web.Razor.dll
+F:\NEWALLBACKUPS\Calendar\AACMS - Original Copy\AACMS - Original\CMS\bin\System.Web.WebPages.Deployment.dll
+F:\NEWALLBACKUPS\Calendar\AACMS - Original Copy\AACMS - Original\CMS\bin\System.Web.WebPages.dll
+F:\NEWALLBACKUPS\Calendar\AACMS - Original Copy\AACMS - Original\CMS\bin\System.Web.WebPages.Razor.dll
+F:\NEWALLBACKUPS\Calendar\AACMS - Original Copy\AACMS - Original\CMS\bin\WebGrease.dll
+F:\NEWALLBACKUPS\Calendar\AACMS - Original Copy\AACMS - Original\CMS\bin\EntityFramework.xml
+F:\NEWALLBACKUPS\Calendar\AACMS - Original Copy\AACMS - Original\CMS\bin\EntityFramework.SqlServer.xml
+F:\NEWALLBACKUPS\Calendar\AACMS - Original Copy\AACMS - Original\CMS\bin\itextsharp.xml
+F:\NEWALLBACKUPS\Calendar\AACMS - Original Copy\AACMS - Original\CMS\bin\System.Net.Http.Formatting.xml
+F:\NEWALLBACKUPS\Calendar\AACMS - Original Copy\AACMS - Original\CMS\bin\System.Web.Http.xml
+F:\NEWALLBACKUPS\Calendar\AACMS - Original Copy\AACMS - Original\CMS\bin\System.Web.Helpers.xml
+F:\NEWALLBACKUPS\Calendar\AACMS - Original Copy\AACMS - Original\CMS\bin\System.Web.Mvc.xml
+F:\NEWALLBACKUPS\Calendar\AACMS - Original Copy\AACMS - Original\CMS\bin\System.Web.Optimization.xml
+F:\NEWALLBACKUPS\Calendar\AACMS - Original Copy\AACMS - Original\CMS\bin\System.Web.Razor.xml
+F:\NEWALLBACKUPS\Calendar\AACMS - Original Copy\AACMS - Original\CMS\bin\System.Web.WebPages.xml
+F:\NEWALLBACKUPS\Calendar\AACMS - Original Copy\AACMS - Original\CMS\bin\System.Web.WebPages.Deployment.xml
+F:\NEWALLBACKUPS\Calendar\AACMS - Original Copy\AACMS - Original\CMS\bin\System.Web.WebPages.Razor.xml
+F:\NEWALLBACKUPS\Calendar\AACMS - Original Copy\AACMS - Original\CMS\bin\Newtonsoft.Json.xml
+F:\NEWALLBACKUPS\Calendar\AACMS - Original Copy\AACMS - Original\CMS\bin\Antlr3.Runtime.pdb
+F:\NEWALLBACKUPS\Calendar\AACMS - Original Copy\AACMS - Original\CMS\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+F:\NEWALLBACKUPS\Calendar\AACMS - Original Copy\AACMS - Original\CMS\obj\Release\CMS.csproj.AssemblyReference.cache
+F:\NEWALLBACKUPS\Calendar\AACMS - Original Copy\AACMS - Original\CMS\obj\Release\CMS.csproj.CoreCompileInputs.cache
+F:\NEWALLBACKUPS\Calendar\AACMS - Original Copy\AACMS - Original\CMS\obj\Release\CMS.csproj.CopyComplete
+F:\NEWALLBACKUPS\Calendar\AACMS - Original Copy\AACMS - Original\CMS\obj\Release\CMS.dll
+F:\NEWALLBACKUPS\Calendar\AACMS - Original Copy\AACMS - Original\CMS\obj\Release\CMS.pdb
+C:\Users\samee\OneDrive\Desktop\AACMS - Original Copy\AACMS - Original\CMS\bin\CMS.dll.config
+C:\Users\samee\OneDrive\Desktop\AACMS - Original Copy\AACMS - Original\CMS\bin\CMS.dll
+C:\Users\samee\OneDrive\Desktop\AACMS - Original Copy\AACMS - Original\CMS\bin\CMS.pdb
+C:\Users\samee\OneDrive\Desktop\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\csc.exe
+C:\Users\samee\OneDrive\Desktop\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\csc.exe.config
+C:\Users\samee\OneDrive\Desktop\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\csc.rsp
+C:\Users\samee\OneDrive\Desktop\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\csi.exe
+C:\Users\samee\OneDrive\Desktop\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\csi.exe.config
+C:\Users\samee\OneDrive\Desktop\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\csi.rsp
+C:\Users\samee\OneDrive\Desktop\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\samee\OneDrive\Desktop\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\samee\OneDrive\Desktop\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\samee\OneDrive\Desktop\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\samee\OneDrive\Desktop\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\samee\OneDrive\Desktop\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\samee\OneDrive\Desktop\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\samee\OneDrive\Desktop\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\samee\OneDrive\Desktop\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\samee\OneDrive\Desktop\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\samee\OneDrive\Desktop\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\samee\OneDrive\Desktop\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\System.AppContext.dll
+C:\Users\samee\OneDrive\Desktop\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\samee\OneDrive\Desktop\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\System.Console.dll
+C:\Users\samee\OneDrive\Desktop\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\samee\OneDrive\Desktop\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\samee\OneDrive\Desktop\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\System.IO.Compression.dll
+C:\Users\samee\OneDrive\Desktop\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\samee\OneDrive\Desktop\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\samee\OneDrive\Desktop\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\System.IO.Pipes.AccessControl.dll
+C:\Users\samee\OneDrive\Desktop\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\System.IO.Pipes.dll
+C:\Users\samee\OneDrive\Desktop\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\samee\OneDrive\Desktop\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\System.Security.AccessControl.dll
+C:\Users\samee\OneDrive\Desktop\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\System.Security.Claims.dll
+C:\Users\samee\OneDrive\Desktop\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\samee\OneDrive\Desktop\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\samee\OneDrive\Desktop\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\samee\OneDrive\Desktop\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\samee\OneDrive\Desktop\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\System.Security.Principal.Windows.dll
+C:\Users\samee\OneDrive\Desktop\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\samee\OneDrive\Desktop\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\System.ValueTuple.dll
+C:\Users\samee\OneDrive\Desktop\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\samee\OneDrive\Desktop\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\samee\OneDrive\Desktop\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\System.Xml.XPath.dll
+C:\Users\samee\OneDrive\Desktop\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\samee\OneDrive\Desktop\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\vbc.exe
+C:\Users\samee\OneDrive\Desktop\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\vbc.exe.config
+C:\Users\samee\OneDrive\Desktop\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\vbc.rsp
+C:\Users\samee\OneDrive\Desktop\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\VBCSCompiler.exe
+C:\Users\samee\OneDrive\Desktop\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\samee\OneDrive\Desktop\AACMS - Original Copy\AACMS - Original\CMS\bin\Antlr3.Runtime.dll
+C:\Users\samee\OneDrive\Desktop\AACMS - Original Copy\AACMS - Original\CMS\bin\BouncyCastle.Crypto.dll
+C:\Users\samee\OneDrive\Desktop\AACMS - Original Copy\AACMS - Original\CMS\bin\EntityFramework.dll
+C:\Users\samee\OneDrive\Desktop\AACMS - Original Copy\AACMS - Original\CMS\bin\EntityFramework.SqlServer.dll
+C:\Users\samee\OneDrive\Desktop\AACMS - Original Copy\AACMS - Original\CMS\bin\itextsharp.dll
+C:\Users\samee\OneDrive\Desktop\AACMS - Original Copy\AACMS - Original\CMS\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\samee\OneDrive\Desktop\AACMS - Original Copy\AACMS - Original\CMS\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\samee\OneDrive\Desktop\AACMS - Original Copy\AACMS - Original\CMS\bin\Newtonsoft.Json.dll
+C:\Users\samee\OneDrive\Desktop\AACMS - Original Copy\AACMS - Original\CMS\bin\System.Net.Http.Formatting.dll
+C:\Users\samee\OneDrive\Desktop\AACMS - Original Copy\AACMS - Original\CMS\bin\System.Web.Helpers.dll
+C:\Users\samee\OneDrive\Desktop\AACMS - Original Copy\AACMS - Original\CMS\bin\System.Web.Http.dll
+C:\Users\samee\OneDrive\Desktop\AACMS - Original Copy\AACMS - Original\CMS\bin\System.Web.Mvc.dll
+C:\Users\samee\OneDrive\Desktop\AACMS - Original Copy\AACMS - Original\CMS\bin\System.Web.Optimization.dll
+C:\Users\samee\OneDrive\Desktop\AACMS - Original Copy\AACMS - Original\CMS\bin\System.Web.Razor.dll
+C:\Users\samee\OneDrive\Desktop\AACMS - Original Copy\AACMS - Original\CMS\bin\System.Web.WebPages.Deployment.dll
+C:\Users\samee\OneDrive\Desktop\AACMS - Original Copy\AACMS - Original\CMS\bin\System.Web.WebPages.dll
+C:\Users\samee\OneDrive\Desktop\AACMS - Original Copy\AACMS - Original\CMS\bin\System.Web.WebPages.Razor.dll
+C:\Users\samee\OneDrive\Desktop\AACMS - Original Copy\AACMS - Original\CMS\bin\WebGrease.dll
+C:\Users\samee\OneDrive\Desktop\AACMS - Original Copy\AACMS - Original\CMS\bin\EntityFramework.xml
+C:\Users\samee\OneDrive\Desktop\AACMS - Original Copy\AACMS - Original\CMS\bin\EntityFramework.SqlServer.xml
+C:\Users\samee\OneDrive\Desktop\AACMS - Original Copy\AACMS - Original\CMS\bin\itextsharp.xml
+C:\Users\samee\OneDrive\Desktop\AACMS - Original Copy\AACMS - Original\CMS\bin\System.Net.Http.Formatting.xml
+C:\Users\samee\OneDrive\Desktop\AACMS - Original Copy\AACMS - Original\CMS\bin\System.Web.Http.xml
+C:\Users\samee\OneDrive\Desktop\AACMS - Original Copy\AACMS - Original\CMS\bin\System.Web.Helpers.xml
+C:\Users\samee\OneDrive\Desktop\AACMS - Original Copy\AACMS - Original\CMS\bin\System.Web.Mvc.xml
+C:\Users\samee\OneDrive\Desktop\AACMS - Original Copy\AACMS - Original\CMS\bin\System.Web.Optimization.xml
+C:\Users\samee\OneDrive\Desktop\AACMS - Original Copy\AACMS - Original\CMS\bin\System.Web.Razor.xml
+C:\Users\samee\OneDrive\Desktop\AACMS - Original Copy\AACMS - Original\CMS\bin\System.Web.WebPages.xml
+C:\Users\samee\OneDrive\Desktop\AACMS - Original Copy\AACMS - Original\CMS\bin\System.Web.WebPages.Deployment.xml
+C:\Users\samee\OneDrive\Desktop\AACMS - Original Copy\AACMS - Original\CMS\bin\System.Web.WebPages.Razor.xml
+C:\Users\samee\OneDrive\Desktop\AACMS - Original Copy\AACMS - Original\CMS\bin\Newtonsoft.Json.xml
+C:\Users\samee\OneDrive\Desktop\AACMS - Original Copy\AACMS - Original\CMS\bin\Antlr3.Runtime.pdb
+C:\Users\samee\OneDrive\Desktop\AACMS - Original Copy\AACMS - Original\CMS\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\samee\OneDrive\Desktop\AACMS - Original Copy\AACMS - Original\CMS\obj\Release\CMS.csproj.AssemblyReference.cache
+C:\Users\samee\OneDrive\Desktop\AACMS - Original Copy\AACMS - Original\CMS\obj\Release\CMS.csproj.CoreCompileInputs.cache
+C:\Users\samee\OneDrive\Desktop\AACMS - Original Copy\AACMS - Original\CMS\obj\Release\CMS.csproj.CopyComplete
+C:\Users\samee\OneDrive\Desktop\AACMS - Original Copy\AACMS - Original\CMS\obj\Release\CMS.dll
+C:\Users\samee\OneDrive\Desktop\AACMS - Original Copy\AACMS - Original\CMS\obj\Release\CMS.pdb
+D:\AACMS - Original Copy\AACMS - Original\CMS\bin\CMS.dll.config
+D:\AACMS - Original Copy\AACMS - Original\CMS\bin\CMS.dll
+D:\AACMS - Original Copy\AACMS - Original\CMS\bin\CMS.pdb
+D:\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\csc.exe
+D:\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\csc.exe.config
+D:\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\csc.rsp
+D:\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\csi.exe
+D:\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\csi.exe.config
+D:\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\csi.rsp
+D:\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+D:\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+D:\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+D:\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+D:\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\Microsoft.Managed.Core.targets
+D:\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\System.AppContext.dll
+D:\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\System.Collections.Immutable.dll
+D:\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\System.Console.dll
+D:\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+D:\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\System.Diagnostics.StackTrace.dll
+D:\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\System.IO.Compression.dll
+D:\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\System.IO.FileSystem.dll
+D:\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\System.IO.FileSystem.Primitives.dll
+D:\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\System.IO.Pipes.AccessControl.dll
+D:\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\System.IO.Pipes.dll
+D:\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\System.Reflection.Metadata.dll
+D:\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\System.Security.AccessControl.dll
+D:\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\System.Security.Claims.dll
+D:\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+D:\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\System.Security.Cryptography.Encoding.dll
+D:\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\System.Security.Cryptography.Primitives.dll
+D:\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+D:\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\System.Security.Principal.Windows.dll
+D:\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\System.Text.Encoding.CodePages.dll
+D:\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\System.ValueTuple.dll
+D:\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\System.Xml.ReaderWriter.dll
+D:\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\System.Xml.XmlDocument.dll
+D:\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\System.Xml.XPath.dll
+D:\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\System.Xml.XPath.XDocument.dll
+D:\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\vbc.exe
+D:\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\vbc.exe.config
+D:\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\vbc.rsp
+D:\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\VBCSCompiler.exe
+D:\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\VBCSCompiler.exe.config
+D:\AACMS - Original Copy\AACMS - Original\CMS\bin\Antlr3.Runtime.dll
+D:\AACMS - Original Copy\AACMS - Original\CMS\bin\BouncyCastle.Crypto.dll
+D:\AACMS - Original Copy\AACMS - Original\CMS\bin\EntityFramework.dll
+D:\AACMS - Original Copy\AACMS - Original\CMS\bin\EntityFramework.SqlServer.dll
+D:\AACMS - Original Copy\AACMS - Original\CMS\bin\itextsharp.dll
+D:\AACMS - Original Copy\AACMS - Original\CMS\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\AACMS - Original Copy\AACMS - Original\CMS\bin\Microsoft.Web.Infrastructure.dll
+D:\AACMS - Original Copy\AACMS - Original\CMS\bin\Newtonsoft.Json.dll
+D:\AACMS - Original Copy\AACMS - Original\CMS\bin\System.Net.Http.Formatting.dll
+D:\AACMS - Original Copy\AACMS - Original\CMS\bin\System.Web.Helpers.dll
+D:\AACMS - Original Copy\AACMS - Original\CMS\bin\System.Web.Http.dll
+D:\AACMS - Original Copy\AACMS - Original\CMS\bin\System.Web.Mvc.dll
+D:\AACMS - Original Copy\AACMS - Original\CMS\bin\System.Web.Optimization.dll
+D:\AACMS - Original Copy\AACMS - Original\CMS\bin\System.Web.Razor.dll
+D:\AACMS - Original Copy\AACMS - Original\CMS\bin\System.Web.WebPages.Deployment.dll
+D:\AACMS - Original Copy\AACMS - Original\CMS\bin\System.Web.WebPages.dll
+D:\AACMS - Original Copy\AACMS - Original\CMS\bin\System.Web.WebPages.Razor.dll
+D:\AACMS - Original Copy\AACMS - Original\CMS\bin\WebGrease.dll
+D:\AACMS - Original Copy\AACMS - Original\CMS\bin\EntityFramework.xml
+D:\AACMS - Original Copy\AACMS - Original\CMS\bin\EntityFramework.SqlServer.xml
+D:\AACMS - Original Copy\AACMS - Original\CMS\bin\itextsharp.xml
+D:\AACMS - Original Copy\AACMS - Original\CMS\bin\System.Net.Http.Formatting.xml
+D:\AACMS - Original Copy\AACMS - Original\CMS\bin\System.Web.Http.xml
+D:\AACMS - Original Copy\AACMS - Original\CMS\bin\System.Web.Helpers.xml
+D:\AACMS - Original Copy\AACMS - Original\CMS\bin\System.Web.Mvc.xml
+D:\AACMS - Original Copy\AACMS - Original\CMS\bin\System.Web.Optimization.xml
+D:\AACMS - Original Copy\AACMS - Original\CMS\bin\System.Web.Razor.xml
+D:\AACMS - Original Copy\AACMS - Original\CMS\bin\System.Web.WebPages.xml
+D:\AACMS - Original Copy\AACMS - Original\CMS\bin\System.Web.WebPages.Deployment.xml
+D:\AACMS - Original Copy\AACMS - Original\CMS\bin\System.Web.WebPages.Razor.xml
+D:\AACMS - Original Copy\AACMS - Original\CMS\bin\Newtonsoft.Json.xml
+D:\AACMS - Original Copy\AACMS - Original\CMS\bin\Antlr3.Runtime.pdb
+D:\AACMS - Original Copy\AACMS - Original\CMS\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\AACMS - Original Copy\AACMS - Original\CMS\obj\Release\CMS.csproj.AssemblyReference.cache
+D:\AACMS - Original Copy\AACMS - Original\CMS\obj\Release\CMS.csproj.CoreCompileInputs.cache
+D:\AACMS - Original Copy\AACMS - Original\CMS\obj\Release\CMS.csproj.CopyComplete
+D:\AACMS - Original Copy\AACMS - Original\CMS\obj\Release\CMS.dll
+D:\AACMS - Original Copy\AACMS - Original\CMS\obj\Release\CMS.pdb
+D:\backup AACMS\12-05-23\AACMS - Original Copy\AACMS - Original\CMS\bin\CMS.dll.config
+D:\backup AACMS\12-05-23\AACMS - Original Copy\AACMS - Original\CMS\bin\CMS.dll
+D:\backup AACMS\12-05-23\AACMS - Original Copy\AACMS - Original\CMS\bin\CMS.pdb
+D:\backup AACMS\12-05-23\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\csc.exe
+D:\backup AACMS\12-05-23\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\csc.exe.config
+D:\backup AACMS\12-05-23\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\csc.rsp
+D:\backup AACMS\12-05-23\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\csi.exe
+D:\backup AACMS\12-05-23\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\csi.exe.config
+D:\backup AACMS\12-05-23\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\csi.rsp
+D:\backup AACMS\12-05-23\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\backup AACMS\12-05-23\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\backup AACMS\12-05-23\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+D:\backup AACMS\12-05-23\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\backup AACMS\12-05-23\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+D:\backup AACMS\12-05-23\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\backup AACMS\12-05-23\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\backup AACMS\12-05-23\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+D:\backup AACMS\12-05-23\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+D:\backup AACMS\12-05-23\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\Microsoft.Managed.Core.targets
+D:\backup AACMS\12-05-23\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\backup AACMS\12-05-23\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\System.AppContext.dll
+D:\backup AACMS\12-05-23\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\System.Collections.Immutable.dll
+D:\backup AACMS\12-05-23\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\System.Console.dll
+D:\backup AACMS\12-05-23\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+D:\backup AACMS\12-05-23\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\System.Diagnostics.StackTrace.dll
+D:\backup AACMS\12-05-23\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\System.IO.Compression.dll
+D:\backup AACMS\12-05-23\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\System.IO.FileSystem.dll
+D:\backup AACMS\12-05-23\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\System.IO.FileSystem.Primitives.dll
+D:\backup AACMS\12-05-23\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\System.IO.Pipes.AccessControl.dll
+D:\backup AACMS\12-05-23\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\System.IO.Pipes.dll
+D:\backup AACMS\12-05-23\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\System.Reflection.Metadata.dll
+D:\backup AACMS\12-05-23\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\System.Security.AccessControl.dll
+D:\backup AACMS\12-05-23\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\System.Security.Claims.dll
+D:\backup AACMS\12-05-23\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+D:\backup AACMS\12-05-23\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\System.Security.Cryptography.Encoding.dll
+D:\backup AACMS\12-05-23\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\System.Security.Cryptography.Primitives.dll
+D:\backup AACMS\12-05-23\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+D:\backup AACMS\12-05-23\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\System.Security.Principal.Windows.dll
+D:\backup AACMS\12-05-23\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\System.Text.Encoding.CodePages.dll
+D:\backup AACMS\12-05-23\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\System.ValueTuple.dll
+D:\backup AACMS\12-05-23\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\System.Xml.ReaderWriter.dll
+D:\backup AACMS\12-05-23\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\System.Xml.XmlDocument.dll
+D:\backup AACMS\12-05-23\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\System.Xml.XPath.dll
+D:\backup AACMS\12-05-23\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\System.Xml.XPath.XDocument.dll
+D:\backup AACMS\12-05-23\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\vbc.exe
+D:\backup AACMS\12-05-23\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\vbc.exe.config
+D:\backup AACMS\12-05-23\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\vbc.rsp
+D:\backup AACMS\12-05-23\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\VBCSCompiler.exe
+D:\backup AACMS\12-05-23\AACMS - Original Copy\AACMS - Original\CMS\bin\roslyn\VBCSCompiler.exe.config
+D:\backup AACMS\12-05-23\AACMS - Original Copy\AACMS - Original\CMS\bin\Antlr3.Runtime.dll
+D:\backup AACMS\12-05-23\AACMS - Original Copy\AACMS - Original\CMS\bin\BouncyCastle.Crypto.dll
+D:\backup AACMS\12-05-23\AACMS - Original Copy\AACMS - Original\CMS\bin\EntityFramework.dll
+D:\backup AACMS\12-05-23\AACMS - Original Copy\AACMS - Original\CMS\bin\EntityFramework.SqlServer.dll
+D:\backup AACMS\12-05-23\AACMS - Original Copy\AACMS - Original\CMS\bin\itextsharp.dll
+D:\backup AACMS\12-05-23\AACMS - Original Copy\AACMS - Original\CMS\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\backup AACMS\12-05-23\AACMS - Original Copy\AACMS - Original\CMS\bin\Microsoft.Web.Infrastructure.dll
+D:\backup AACMS\12-05-23\AACMS - Original Copy\AACMS - Original\CMS\bin\Newtonsoft.Json.dll
+D:\backup AACMS\12-05-23\AACMS - Original Copy\AACMS - Original\CMS\bin\System.Net.Http.Formatting.dll
+D:\backup AACMS\12-05-23\AACMS - Original Copy\AACMS - Original\CMS\bin\System.Web.Helpers.dll
+D:\backup AACMS\12-05-23\AACMS - Original Copy\AACMS - Original\CMS\bin\System.Web.Http.dll
+D:\backup AACMS\12-05-23\AACMS - Original Copy\AACMS - Original\CMS\bin\System.Web.Mvc.dll
+D:\backup AACMS\12-05-23\AACMS - Original Copy\AACMS - Original\CMS\bin\System.Web.Optimization.dll
+D:\backup AACMS\12-05-23\AACMS - Original Copy\AACMS - Original\CMS\bin\System.Web.Razor.dll
+D:\backup AACMS\12-05-23\AACMS - Original Copy\AACMS - Original\CMS\bin\System.Web.WebPages.Deployment.dll
+D:\backup AACMS\12-05-23\AACMS - Original Copy\AACMS - Original\CMS\bin\System.Web.WebPages.dll
+D:\backup AACMS\12-05-23\AACMS - Original Copy\AACMS - Original\CMS\bin\System.Web.WebPages.Razor.dll
+D:\backup AACMS\12-05-23\AACMS - Original Copy\AACMS - Original\CMS\bin\WebGrease.dll
+D:\backup AACMS\12-05-23\AACMS - Original Copy\AACMS - Original\CMS\bin\EntityFramework.xml
+D:\backup AACMS\12-05-23\AACMS - Original Copy\AACMS - Original\CMS\bin\EntityFramework.SqlServer.xml
+D:\backup AACMS\12-05-23\AACMS - Original Copy\AACMS - Original\CMS\bin\itextsharp.xml
+D:\backup AACMS\12-05-23\AACMS - Original Copy\AACMS - Original\CMS\bin\System.Net.Http.Formatting.xml
+D:\backup AACMS\12-05-23\AACMS - Original Copy\AACMS - Original\CMS\bin\System.Web.Http.xml
+D:\backup AACMS\12-05-23\AACMS - Original Copy\AACMS - Original\CMS\bin\System.Web.Helpers.xml
+D:\backup AACMS\12-05-23\AACMS - Original Copy\AACMS - Original\CMS\bin\System.Web.Mvc.xml
+D:\backup AACMS\12-05-23\AACMS - Original Copy\AACMS - Original\CMS\bin\System.Web.Optimization.xml
+D:\backup AACMS\12-05-23\AACMS - Original Copy\AACMS - Original\CMS\bin\System.Web.Razor.xml
+D:\backup AACMS\12-05-23\AACMS - Original Copy\AACMS - Original\CMS\bin\System.Web.WebPages.xml
+D:\backup AACMS\12-05-23\AACMS - Original Copy\AACMS - Original\CMS\bin\System.Web.WebPages.Deployment.xml
+D:\backup AACMS\12-05-23\AACMS - Original Copy\AACMS - Original\CMS\bin\System.Web.WebPages.Razor.xml
+D:\backup AACMS\12-05-23\AACMS - Original Copy\AACMS - Original\CMS\bin\Newtonsoft.Json.xml
+D:\backup AACMS\12-05-23\AACMS - Original Copy\AACMS - Original\CMS\bin\Antlr3.Runtime.pdb
+D:\backup AACMS\12-05-23\AACMS - Original Copy\AACMS - Original\CMS\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\backup AACMS\12-05-23\AACMS - Original Copy\AACMS - Original\CMS\obj\Release\CMS.csproj.AssemblyReference.cache
+D:\backup AACMS\12-05-23\AACMS - Original Copy\AACMS - Original\CMS\obj\Release\CMS.csproj.CoreCompileInputs.cache
+D:\backup AACMS\12-05-23\AACMS - Original Copy\AACMS - Original\CMS\obj\Release\CMS.csproj.CopyComplete
+D:\backup AACMS\12-05-23\AACMS - Original Copy\AACMS - Original\CMS\obj\Release\CMS.dll
+D:\backup AACMS\12-05-23\AACMS - Original Copy\AACMS - Original\CMS\obj\Release\CMS.pdb

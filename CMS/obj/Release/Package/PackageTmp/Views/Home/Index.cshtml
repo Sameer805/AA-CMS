@@ -1,0 +1,1565 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>DE CREATIVE CALENDAR</title>
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <script src="~/Content/calendar/sweetalert.min.js"></script>
+    <script src="~/Content/calendar/jquery-3.5.1.min.js"></script>
+
+    <script src="~/Content/calendar/bootstrap.min.js"></script>
+    <script src="~/Content/calendar/main.min.js"></script>
+    <link href="~/Content/calendar/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="~/Content/calendar/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/calendar/css2.css" rel="stylesheet" />
+    <link href="~/Content/calendar/main.min.css" rel="stylesheet" />
+    <script src="~/Content/calendar/spin.min.js"></script>
+</head>
+<body>
+    <div id="loader"></div>
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <br /><br /><br />
+        <a id="active" href="/Home/Index">Calendar</a>
+        @Html.ActionLink("Events", "Events", "Home", null, new { id = "" })
+        @Html.ActionLink("Events Setup", "EventSetup", "Home", null, new { id = "" })
+        <a id="dash" href="@Url.Action("Index", "Dashboard")">Dashboard</a>
+        <div id="et">
+
+        </div>
+
+        <script>
+            if (window.location.href.indexOf("Home") == -1) {
+                window.location.href = "Home/login";
+            }
+
+            if (!(localStorage.getItem("admin") == "true")) {
+
+                $("#dash").css("display", "none");
+            }
+        </script>
+        @Html.ActionLink("Logout", "Logout", "Home", null, new { id = "" })
+     
+    </div>
+
+    <div id='calendar'></div>
+
+    <!--New Event-->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">New Event</h4>
+                </div>
+                <div class="modal-body">
+                    <center><span class="text-muted date" style="font-size:20px;"></span></center>
+                    <input id="d" style="display:none" />
+                    <label>Select Event Type:</label>
+                    <select class="form-control" id="eventtype-e">
+                        <option selected disabled value="0">Select Event Type</option>
+
+                    </select>
+                    <label>Enter Number Of Persons:</label>
+                    <input class="form-control" id="persons-e" type="number" min=0 oninput="validity.valid||(value='');" />
+                    <label>Enter Customer Name:</label>
+                    <input class="form-control" id="customername-e" type="text" />
+
+                    <label>Enter Phone Number:</label>
+                    <input class="form-control" type="number" id="phonenumber-e" pattern="[0-9]{11}" />
+                    <label>Enter Email Address:</label>
+                    <input class="form-control" type="text" id="email-e" />
+                    <label>Select Venue</label>
+                    <select class="form-control" id="venue-e">
+                        <option selected disabled value="0">Select Venue</option>
+
+                    </select>
+
+                    <label>Enter Address:</label>
+                    <input class="form-control" type="text" id="address-e" />
+                    <label>Event Time:</label>
+                    <select class="form-control" id="slot-e">
+                        <option selected disabled value="0">Select Time</option>
+
+                    </select>
+                    <input class="form-control" type="number" id="totalplanamount-e" style="display:none;" value="0" />
+                    <input class="form-control" type="number" id="advanceamount-e" min="0" value="0" oninput="validity.valid||(value='');" style="display:none;" />
+                    <label>Enter Extra Arangement:</label>
+                    <input class="form-control" type="text" id="extraarngement-e" />
+                    <label>Enter Recipt#:</label>
+                    <input class="form-control" type="number" id="reciptnumber-e" min=0 oninput="validity.valid||(value='');" />
+                    <hr />
+                    <label>Payment Type:</label>
+                    <select id="paymentoption" class="form-control">
+                        <option selected disabled>Select Payment Type</option>
+                        <option value="1">Cash</option>
+                        <option value="2">Cheque</option>
+                        <option value="3">Credit Card</option>
+                    </select>
+                    <label>Credit Card Number:</label>
+                    <input type="text" class="form-control" id="creditcard" />
+                    <label>Bank Name:</label>
+                    <input type="text" class="form-control" id="bankname" />
+                    <label>Cheque Number:</label>
+                    <input type="text" class="form-control" id="chequenumber" />
+                    <label>Amount:</label>
+                    <input type="number" class="form-control" min=0 oninput="validity.valid||(value='');" id="amount" />
+                    <input type="radio" id="tentative" name="status" value="0" checked="checked" />
+                    <label for="tentative">Tentative</label>
+                    <input type="radio" id="booked" name="status" value="1" />
+                    <label for="booked">Booked</label>
+                    <p id="error" style="color:red;"></p>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" onclick="addevent()">Add</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+
+
+
+
+        </div>
+    </div>
+    <div class="modal fade" id="eventModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title" id="event_name"></h4>
+                </div>
+                <div class="modal-body">
+                    <input id="id" style="display:none" />
+                    <span class="text-muted date" style="font-size:20px;float:right;display:block"></span>
+                    <br /><br />
+                    <div id="events">
+
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" id="editevent" data-dismiss="modal" onclick="editOpen()" style="float:left">Edit</button>
+
+                    <button type="button" class="btn btn-danger" id="deleteevent" data-dismiss="modal" onclick="deleteEvent()" style="float:left">Delete</button>
+
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="modal fade" id="eventModalEdit" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Edit Event</h4>
+                </div>
+                <div class="modal-body">
+                    <input id="id2" style="display:none" />
+                    <span class="text-muted date" style="font-size:20px;float:right;display:block"></span>
+
+                    <label>Select Event Type:</label>
+                    <select class="form-control" id="edit-eventtype-e">
+                        <option selected disabled>Select Event Type</option>
+
+                    </select>
+
+                    <label>Enter Customer Name:</label>
+                    <input class="form-control" id="edit-customername-e" type="text" />
+                    <label>Enter Phone Number:</label>
+                    <input class="form-control" type="text" id="edit-phonenumber-e" />
+                    <label>Enter Email Address:</label>
+                    <input class="form-control" type="text" id="edit-email-e" />
+                    <label>Select Venue</label>
+                    <select class="form-control" id="edit-venue-e">
+                        <option selected disabled>Select Venue</option>
+
+                    </select>
+                    <label>Enter Address:</label>
+                    <input class="form-control" type="text" id="edit-address-e" />
+                    <label>Event Time:</label>
+                    <select class="form-control" id="edit-slot-e">
+                        <option selected disabled>Select Time</option>
+
+                    </select>
+                    <label>Enter Number of Guests:</label>
+                    <input class="form-control" type="number" min="0" oninput="validity.valid||(value='');" id="edit-numberofguests-e" />
+
+                    <label>Enter Extra Arangement:</label>
+                    <input class="form-control" type="text" id="edit-extraarngement-e" />
+                    <label>Enter Recipt#:</label>
+                    <input class="form-control" type="text" id="edit-reciptnumber-e" />
+                    <input class="form-control" type="text" id="edit-oldreciptnumber-e" style="display:none" />
+                    <label>Payment Type:</label>
+                    <select id="edit-paymentoption" class="form-control">
+                        <option selected disabled>Select Payment Type</option>
+                        <option value="1">Cash</option>
+                        <option value="2">Cheque</option>
+                        <option value="3">Credit Card</option>
+                    </select>
+                    <label>Credit Card Number:</label>
+                    <input type="text" class="form-control" id="edit-creditcard" />
+                    <label>Bank Name:</label>
+                    <input type="text" class="form-control" id="edit-bankname" />
+                    <label>Cheque Number:</label>
+                    <input type="text" class="form-control" id="edit-chequenumber" />
+                    <label>Amount:</label>
+                    <input type="number" class="form-control" min=0 oninput="validity.valid||(value='');" id="edit-amount" />
+
+                    <input type="radio" id="edit-tentative" name="edit-status" value="0">
+                    <label for="female">Tentative</label>
+                    <input type="radio" id="edit-booked" name="edit-status" value="1" />
+                    <label for="other">Booked</label>
+
+                    <p id="error2" style="color:red"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" onclick="edit()" style="float:left">Done</button>
+                    <button type="button" id="editAdvance" class="btn btn-warning" onclick="updateAdvance()" style="float:left">Edit Advance</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <style>
+        .tentative {
+            background-color: #4fa84f !important;
+        }
+
+        .Booked {
+            background-color: #cc3e3a !important;
+        }
+    </style>
+    <script>
+        function updateAdvance() {
+            swal("Enter Password:", {
+                  content: {
+                    element: "input",
+                    attributes: {
+                        placeholder: "Type your password",
+                        type: "password",
+                    },
+                    },
+                  }).then((value) => {
+                     if (value != "pk474") {
+                        swal("Incorrect Password", "", "error").then(function () { });
+                        return;
+                     }
+                     else {        
+                         $("#edit-paymentoption").trigger("change");
+                         $("#edit-paymentoption").removeAttr("disabled");
+                         $("#editAdvance").attr("disabled", "disabled");
+                     }
+                  });
+        }
+        var opts = {
+            lines: 19, // The number of lines to draw
+            length: 20, // The length of each line
+            width: 2, // The line thickness
+            radius: 38, // The radius of the inner circle
+            scale: 1.05, // Scales overall size of the spinner
+            corners: 0.3, // Corner roundness (0..1)
+            speed: 1.3, // Rounds per second
+            rotate: 45, // The rotation offset
+            animation: 'spinner-line-fade-more', // The CSS animation name for the lines
+            direction: -1, // 1: clockwise, -1: counterclockwise
+            color: '#8f8f8f', // CSS color or array of colors
+            fadeColor: 'transparent', // CSS color or array of colors
+            top: '49%', // Top position relative to parent
+            left: '50%', // Left position relative to parent
+            shadow: '0 0 0px transparent', // Box-shadow for the lines
+            zIndex: 2000000000, // The z-index (defaults to 2e9)
+            className: 'spinner', // The CSS class to assign to the spinner
+            position: 'absolute', // Element positioning
+        };
+        $("#loader").hide();
+        var spinner = new Spinner(opts);
+        $(document).ajaxStart(function () {
+            spinner.spin();
+            $("#loader").show();
+            var target = document.getElementById('loader');
+            target.appendChild(spinner.el);
+
+
+        });
+        $(document).ajaxStop(function () {
+            spinner.stop();
+            $("#loader").hide();
+        });
+        $(document).ready(function () {
+            $("#tentative").trigger("change");
+        });
+        $("#tentative").on("change", function () {
+            $("#paymentoption").val('');
+              $("#bankname").val("");
+                 $("#chequenumber").val("");
+            $("#creditcard").val("");
+
+            $("#amount").val("");
+            $("#paymentoption").attr("disabled", "disabled");
+            $("#bankname").attr("disabled", "disabled");
+            $("#chequenumber").attr("disabled", "disabled");
+            $("#creditcard").attr("disabled", "disabled");
+            $("#amount").attr("disabled", "disabled");
+        });
+        $("#booked").on("change", function () {
+            $("#paymentoption").removeAttr("disabled");
+            $("#paymentoption").val('');
+        });
+
+        $("#paymentoption").change(function () {
+
+            $("#amount").removeAttr("disabled");
+            $("#bankname").removeAttr("disabled");
+            $("#chequenumber").removeAttr("disabled");
+            $("#creditcard").removeAttr("disabled");
+
+            var id = $(this).val();
+            if (id == "1") {
+                $("#bankname").attr("disabled", "disabled");
+                $("#bankname").val("");
+                 $("#chequenumber").val("");
+                  $("#creditcard").val("");
+                $("#chequenumber").attr("disabled", "disabled");
+               
+                $("#creditcard").attr("disabled", "disabled");
+              
+            } else if (id == "2") {
+                $("#creditcard").attr("disabled", "disabled");
+                 $("#creditcard").val("");
+            } else {
+                $("#chequenumber").attr("disabled", "disabled");
+                $("#chequenumber").val("");
+            }
+        })
+        $("#edit-tentative").on("change", function () {
+
+            $("#edit-paymentoption").val('');
+            $("#edit-bankname").val('');
+            $("#edit-chequenumber").val('');
+            $("#edit-creditcard").val('');
+            $("#edit-amount").val('');
+
+            $("#edit-paymentoption").attr("disabled", "disabled");
+            $("#edit-bankname").attr("disabled", "disabled");
+            $("#edit-chequenumber").attr("disabled", "disabled");
+            $("#edit-creditcard").attr("disabled", "disabled");
+            $("#edit-amount").attr("disabled", "disabled");
+        });
+        $("#edit-booked").on("change", function () {
+            $("#edit-paymentoption").removeAttr("disabled");
+            $("#edit-paymentoption").val('');
+        });
+
+        $("#edit-paymentoption").change(function () {
+
+            $("#edit-amount").removeAttr("disabled");
+            $("#edit-bankname").removeAttr("disabled");
+            $("#edit-chequenumber").removeAttr("disabled");
+            $("#edit-creditcard").removeAttr("disabled");
+
+            var id = $(this).val();
+            if (id == "1") {
+                $("#edit-bankname").attr("disabled", "disabled");
+                $("#edit-chequenumber").attr("disabled", "disabled");
+                $("#edit-creditcard").attr("disabled", "disabled");
+                $("#edit-bankname").val("");
+                 $("#edit-chequenumber").val("");
+                  $("#edit-creditcard").val("");
+            } else if (id == "2") {
+                $("#edit-creditcard").attr("disabled", "disabled");
+                $("#edit-creditcard").val("");
+            } else {
+                $("#edit-chequenumber").attr("disabled", "disabled");
+                $("#edit-chequenumber").val("");
+            }
+        })
+        $("#slot-e").change(function () {
+            var id = $(this).val();
+            var date = new Date($("#d").val()).toDateString();
+            var venue = $("#venue-e").val();
+            $.ajax({
+                type: "GET",
+                url: "CheckSlot",
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                data: { id: id, date: date, venueid: venue },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+
+                },
+                success: function (result) {
+                    if (result == "false") {
+                        swal("This time is reserved", "", "warning").then(function () { $("#slot-e").val(0)});
+                    }
+
+                    // calendar.setDataSource(myData);
+
+                }
+
+
+            });
+            
+        });
+         $("#edit-slot-e").change(function () {
+            var id = $(this).val();
+             var date = new Date($("#e-d").html()).toDateString();
+             var venue = $("#edit-venue-e").val();
+            $.ajax({
+                type: "GET",
+                url: "CheckSlot",
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                data: {id:id,date:date,venueid: venue },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+
+                },
+                success: function (result) {
+                    if (result == "false") {
+                        swal("This time is reserved", "", "warning").then(function () { $("#slot-e").val(0)});
+                    }
+
+                    // calendar.setDataSource(myData);
+
+                }
+
+
+            });
+            
+        });
+        //venue-e
+        //Fallback
+        var form = [$("#customername-e"),
+        $("#phonenumber-e"), $("#email-e"), $("#venue-e"),$("#slot-e"),
+        $("#address-e"), $("#totalplanamount-e"), $("#persons-e"), $("#eventtype-e"), $("#extraarngement-e"), $("#reciptnumber-e")];
+        var formEdit = [$("#edit-customername-e"),
+        $("#edit-phonenumber-e"), $("#edit-email-e"), $("#edit-venue-e"),
+        $("#edit-address-e"), $("#edit-time-e"), $("#edit-eventtype-e"), $("#edit-extraarngement-e"), $("#edit-reciptnumber-e")];
+        $(document).ready(function () {
+          
+            if (localStorage.getItem("id") === undefined || localStorage.getItem("id") == null) {
+                window.location.replace("Home/Login");
+            }
+            $.ajax({
+                type: "GET",
+                url: "FetchVenues",
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+
+                },
+                success: function (result) {
+                    result.forEach(function (element, index) {
+                        var option = "<option value='" + element.u.id + "'>" + element.u.name + "</option>";
+                        $("#venue-e").append(option);
+                        $("#edit-venue-e").append(option);
+
+                    });
+
+                    // calendar.setDataSource(myData);
+
+                }
+
+
+            });
+              $.ajax({
+                type: "GET",
+                url: "FetchSlots",
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+
+                },
+                success: function (result) {
+                    result.forEach(function (element, index) {
+                   
+                        var option = "<option value='" + element.u.id + "'>" + element.u.slottime + "</option>";
+                        $("#slot-e").append(option);
+                        $("#edit-slot-e").append(option);
+
+                    });
+
+                    // calendar.setDataSource(myData);
+
+                }
+
+
+            });
+            $.ajax({
+                type: "GET",
+                url: "FetchEventTypes",
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+
+                },
+                success: function (result) {
+                    result.forEach(function (element, index) {
+                        var option = "<option value='" + element.u.name + "'>" + element.u.name + "</option>";
+                        $("#eventtype-e").append(option);
+                        $("#edit-eventtype-e").append(option);
+
+                    });
+
+                    // calendar.setDataSource(myData);
+
+                }
+
+
+            });
+        });
+        //Callendar Load
+        var calendar;
+        document.addEventListener('DOMContentLoaded', function () {
+            var calendarEl = document.getElementById('calendar');
+            calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                height: $(window).height(),
+                displayEventTime: false,
+
+                dateClick: function (info) {
+
+                    if (localStorage.getItem("eventAdd") == "false") {
+                        return;
+                    }
+                    var date = new Date(info.date);
+                    var date1 = date.setHours(0, 0, 0, 0);
+                    var date2 = new Date();
+                    date2 = date2.setHours(0, 0, 0, 0);
+
+                    if (date1 < date2) {
+                        return;
+                    }
+
+                    var error = false;
+                    
+                            
+
+                                $("#myModal").modal();
+
+                                const ye = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(date);
+                                const mo = new Intl.DateTimeFormat('en', { month: 'short' }).format(date);
+                                const da = new Intl.DateTimeFormat('en', { day: '2-digit' }).format(date);
+
+                                $(".date").html(da + "-" + mo + "-" + ye);
+                                $("#d").val(info.date);
+
+                                calendar.render();
+                            
+
+                      
+                    //calendar.addEventSource([{id: 1, title: name, start: info.date }]);
+
+
+
+                },
+                eventClick: function (info) {
+                    var date = new Date(info.event.start);
+                    
+                    const ye = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(date);
+                    const mo = new Intl.DateTimeFormat('en', { month: 'short' }).format(date);
+                    const da = new Intl.DateTimeFormat('en', { day: '2-digit' }).format(date);
+                    $(".date").html(da + "-" + mo + "-" + ye);
+                    $("#event_name").html("Event: " + info.event.title);
+                    $("#id").val(info.event.id);
+                    var prop = info.event.extendedProps;
+                    $("#events").html("<p id='disc'><em id='e-d' style='display:none'></em><b>Booking ID:</b> " + prop.bookingID + "<br> <b>Recipt Number:</b> " + prop.reciptNumber + "<br> <b> Customer Name:</b> " + prop.customername + "<br><b>Customer Email:</b> " + prop.email + "<br><b>Customer Phone Number:</b> " + prop.phonenumber + "<br><b>Number Of Guests:</b> "+prop.guests+"<br><b>Address:</b> " + prop.address + "<br><b>Venue:</b> " + prop.venue + "<br><b>Extra Arangement:</b> " + prop.extraArangement + "<br><b>Time:</b> " + $("#slot-e option[value=" + prop.slot + "]").text() + "<br><b>Total Plan Amount:</b> " + prop.totalPlanAmount + "<br><b>Advance Amount:</b> " + prop.advanceAmount + "<br><b>Booked By:</b> " + prop.username + "<br></p >");
+                    $("#e-d").html(date);
+                    if (prop.userid != localStorage.getItem("id")) {
+                        $("#deleteevent").css("display", "none");
+                        $("#editevent").css("display", "none");
+                    }
+                    else {
+                        $("#deleteevent").css("display", "inline");
+                        $("#editevent").css("display", "inline");
+                    }
+                    if (info.el.className.indexOf("Booked") != -1 ) {
+                        $("#deleteevent").css("display","none");
+                    }
+                    else {
+                         $("#deleteevent").css("display","inline");
+                    }
+                    $("#eventModal").modal();
+
+                }
+
+            });
+
+
+            UpdateCalendar();
+            calendar.render();
+
+        })
+        //Event Addition
+        function addevent() {
+
+            var error = false;
+
+            form.forEach(function (element, index) {
+
+                if (element.val() == null || element.val() == "" || element.val() == undefined) {
+                    error = true;
+                    element.css("border", "1px solid red");
+                    $("#error").html("Please enter all details");
+
+                } else {
+                    element.css("border", "1px solid #ccc");
+
+                }
+            });
+            if ($("input[name='status']:checked").val() != 0) {
+                 $("#amount").css("border", "1px solid #ccc");
+                $("#bankname").css("border", "1px solid #ccc");
+                $("#creditcard").css("border", "1px solid #ccc");
+                $("#chequenumber").css("border", "1px solid #ccc");
+                var type = $("#paymentoption").val();
+                var amount = $("#amount").val();
+                var creditcardnumber;
+                var bankname;
+                var chequenumber;
+                if (type == null) {
+                    $("#paymentoption").css("border", "1px solid red");
+                    return;
+                    error = true;
+                }
+
+                if (type == "1") {
+
+                } else if (type == "2") {
+                    bankname = $("#bankname").val();
+                    chequenumber = $("#chequenumber").val();
+                    if (bankname == "") {
+                        $("#bankname").css("border", "1px solid red");
+                    }
+                    if (chequenumber == "") {
+                        $("#chequenumber").css("border", "1px solid red");
+                        error = true;
+                    }
+                }
+                else if (type == "3") {
+                    bankname = $("#bankname").val();
+                    creditcardnumber = $("#creditcard").val();
+                    if (bankname == "") {
+                        $("#bankname").css("border", "1px solid red");
+                    }
+                    if (creditcardnumber == "") {
+                        $("#creditcard").css("border", "1px solid red");
+                        error = true;
+                    }
+                }
+                if (amount == 0) {
+                    $("#amount").css("border", "1px solid red");
+                    error = true;
+                }
+            }
+               
+                if (error) {
+                    return;
+                }
+
+            if ($("#phonenumber-e").val().length != 11) {
+                $("#phonenumber-e").css("border", "1px solid red");
+                $("#error").html("Please Enter 11 Digital Phone Number");
+                error = true;
+            }
+            if ($("input[name='status']:checked").val() == 1 && $("#amount").val() == "") {
+                error = true;
+                $("#amount-e").css("border", "1px solid red");
+                $("#error").html("Please Enter Advance Amount");
+            }
+            $.ajax({
+                type: "GET",
+                url: "checkReciptNumber",
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                async: false,
+                data: { reciptnumber: $("#reciptnumber-e").val() },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    console.log(XMLHttpRequest.responseText);
+                },
+                success: function (_result) {
+                    if (_result == false || _result == "false") {
+                        error = true;
+                        swal("Recipt Number Already Exists", "", "error");
+                    }
+
+                }
+            });
+            
+
+            if (error) { return }
+            $.ajax({
+                //<label>Payment Type:</label>
+                //                <select id="paymentoption" class="form-control">
+                //                    <option selected disabled>Select Payment Type</option>
+                //                    <option value="1">Cash</option>
+                //                    <option value="2">Cheque</option>
+                //                    <option value="3">Credit Card</option>
+                //                </select>
+                //                <label>Credit Card Number:</label>
+                //                <input type="text" class="form-control" id="creditcard" />
+                //                <label>Bank Name:</label>
+                //                <input type="text" class="form-control" id="bankname" />
+                //                <label>Cheque Number:</label>
+                //                <input type="text" class="form-control" id="chequenumber" />
+                //                <label>Amount:</label>
+                //                <input type="number" class="form-control" min=0 oninput="validity.valid||(value='');" id="amount" />
+                type: "GET",
+                url: "AddEvent",
+                data: {
+                    "eventname": $("#eventtype-e").val(),
+                    "customername": $("#customername-e").val(),
+                    "bookingdate": new Date($("#d").val()).toDateString(),
+                    "phonenumber": $("#phonenumber-e").val(),
+                    "email": $("#email-e").val(),
+                    "venue": $("#venue-e").val(),
+                    "address": $("#address-e").val(),
+                    "extraarngement": $("#extraarngement-e").val(),
+                    "reciptnumber": $("#reciptnumber-e").val(),
+                    "status": $("input[name='status']:checked").val(),
+                    "number": $("#persons-e").val(),
+                    "eventtype": 0,
+                    "paymenttype": $("#paymentoption").val(),
+                    "creditcardnumber": ($("#creditcard").val() == "" ? "0" : $("#creditcard").val()),
+                    "bankname": ($("#bankname").val() == "" ? "0" : $("#bankname").val()),
+                    "chequenumber": ($("#chequenumber").val() == "" ? "0" : $("#chequenumber").val()),
+
+                    "amount": ($("#amount").val() == "" ? 0 : $("#amount").val()),
+                    "slot": $("#slot-e").val(),
+                    "user":localStorage.getItem("id")
+
+                },
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    console.log(XMLHttpRequest);
+                },
+                success: function (result2) {
+
+                    $.ajax({
+                        url: "FetchVenueByID",    //the page containing php script
+                        type: "post",    //request type,
+                        data: { id: $("#venue-e").val() },
+                        dataType: "json",
+                        success: function (result) {
+                            $("#myModal").modal('toggle');
+                            var body = "DE CREATIVE  <br><table style='border: 1px solid black;'><thead>    <tr style='border: 1px solid black;'>      <th style='border: 1px solid black;padding:5px;'>&nbsp;</th>      <th style='border: 1px solid black;padding:5px;'>Details</th>    </tr>  </thead>  <tbody><tr style='border: 1px solid black;'>      <th style='border: 1px solid black;'><center>Booking ID</center></th>      <td style='border: 1px solid black;'><center>" + result2 + "</center></td>    </tr>   <tr style='border: 1px solid black;'>      <th style='border: 1px solid black;'><center>Event Name</center></th>      <td style='border: 1px solid black;'><center>" + $("#eventtype-e").val() + "</center></td>    </tr>     <tr style='border: 1px solid black;'>      <th style='border: 1px solid black;'><center>Customer Name</center></th>      <td style='border: 1px solid black;'><center>" + $("#customername-e").val() + "</center></td>      </tr>       <tr style='border: 1px solid black;'>      <th style='border: 1px solid black;'><center>Event Date</center></th>      <td style='border: 1px solid black;'><center>" + new Date($("#d").val()).toDateString() + "</center></td>      </tr>       <tr style='border: 1px solid black;'>      <th style='border: 1px solid black;'><center>Venue</center></th>      <td style='border: 1px solid black;'><center>" + result + "</center></td>      </tr>       <tr style='border: 1px solid black;'>      <th style='border: 1px solid black;'><center>Event Time</center></th>      <td style='border: 1px solid black;'><center>" + $("#slot-e option:selected").text()+ "</center></td>      </tr>       <tr style='border: 1px solid black;'>      <th style='border: 1px solid black;'><center>Customer Name</center></th>      <td style='border: 1px solid black;'><center>" + $("#customername-e").val() + "</center></td>      </tr>       <tr style='border: 1px solid black;'>      <th style='border: 1px solid black;'><center>No of Guests</center></th>      <td style='border: 1px solid black;'><center>" + $("#persons-e").val() + "</center></td>      </tr>       <tr style='border: 1px solid black;'>      <th style='border: 1px solid black;'><center>Advance Received</center></th>      <td style='border: 1px solid black;'><center>Rs:" + ($("#amount").val() == '' ? '0' : $("#amount").val()) + "/=</center></td>      </tr>       <tr style='border: 1px solid black;'>      <th style='border: 1px solid black;'><center>Status</center></th>      <td style='border: 1px solid black;'><center>" + ($("input[name='status']:checked").val() == 0 ? "Tentative" : "Booked") + "</center></td>      </tr> <tr style='border: 1px solid black;'>      <th style='border: 1px solid black;'><center>Booked By</center></th>      <td style='border: 1px solid black;'><center>" +localStorage.getItem("name") + "</center></td>      </tr>    </tbody></table>  ";
+                            //Booked
+                            if ($("input[name='status']:checked").val() == 1) {
+                             
+                                body += " Transaction Amount Detail <br> <table style='border: 1px solid black;'><thead>    <tr style='border: 1px solid black;'>      <th style='border: 1px solid black;padding:5px;'>&nbsp;</th>      <th style='border: 1px solid black;padding:5px;'>Details</th>    </tr>  </thead>  <tbody><tr style='border: 1px solid black;'>      <th style='border: 1px solid black;'><center> Advance Amount</center ></th > <td style='border: 1px solid black;'><center>Rs:" + ($('#amount').val() == '' ? 0 : $('#amount').val()) + "/=</center></td >    </tr > <tr style='border: 1px solid black;'>      <th style='border: 1px solid black;'><center>Payment Type:</center></th>      <td style='border: 1px solid black;'><center>" + $('#paymentoption option:selected').text() + "</center></td> </tr > <tr style='border: 1px solid black;'>      <th style='border: 1px solid black;'><center>Transaction Date</center></th>      <td style='border: 1px solid black;'><center>" + new Date().toDateString() + "</center></td></tr > <tr style='border: 1px solid black;'>      <th style='border: 1px solid black;'><center>Bank Name</center></th>      <td style='border: 1px solid black;'><center>" + ($('#bankname').val() == '' ? '-' : $('#bankname').val()) + "</center></td>      </tr><tr style = 'border: 1px solid black;' > <th style='border: 1px solid black;'><center>Cheque Number</center></th> <td style='border: 1px solid black;'><center>" + ($('#chequenumber').val() == '' ? '-' : $('#chequenumber').val()) + "</center></td>     </tr > <tr style='border: 1px solid black;'>      <th style='border: 1px solid black;'><center>Credit Card Number</center></th>      <td style='border: 1px solid black;'><center>" + ($('#creditcard').val() == '' ? '-' : $('#creditcard').val()) + "</center></td>      </tr></tbody></table>";
+                            }
+                            else {
+                                 body += "</tbody></table>";
+                            }
+                            var subject = "New Event: " + $("#eventtype-e").val() + "    Venue: " + result + "    Event Date: " + new Date($("#d").val()).toDateString();
+                            var from = "DE CREATIVE aajasmat@gmail.com";
+
+                            $.ajax({
+                                url: "SendEmailNewEvent",    //the page containing php script
+                                type: "post",    //request type,
+                                data: { from: from, to: $("#email-e").val(), body: body, subject: subject, BCC: ["aajasmat@gmail.com"] },
+                                success: function (result) {
+
+
+                                    form.forEach(function (element, index) {
+                                        element.val("");
+                                        element.css("border", "1px solid black");
+                                    });
+                                    swal("Event Added!", "", "success").then(function () {
+
+                                        window.location.reload();
+                                       
+
+                                    });
+                                    $("#name-e").val("");
+                                    $("#description-e").val("");
+
+                                }
+                            });
+
+                        }
+                    });
+
+
+
+
+                }
+            });
+
+
+        }
+        $("#eventModalEdit").on("hidden.bs.modal", function () {
+             $("#editAdvance").removeAttr("disabled");
+            $("#edit-tentative").removeAttr("disabled");
+            $("#edit-paymentoption").val('');
+            $("#edit-bankname").val('');
+            $("#edit-chequenumber").val('');
+            $("#edit-creditcard").val('');
+            $("#edit-amount").val('');
+        });
+        $('#myModal').on('hidden.bs.modal', function () {
+
+
+            form.forEach(function (element, index) {
+
+                if ($(element).prop("id") == "advanceamount-e" || $(element).prop("id") == "totalplanamount-e") {
+                    element.val("0");
+                    element.css("border", "1px solid #ccc");
+                }
+                else if ($(element).prop("id") == "eventtype-e" || $(element).prop("id") == "venue-e" || $(element).prop("id") == "slot-e") {
+                    element.val(0);
+
+                }
+                else {
+                    element.val("");
+                    element.css("border", "1px solid #ccc");
+                }
+
+            });
+            $("#error").html(" ");
+        })
+        function getAdvance(_id) {
+            var result = "";
+            $.ajax({
+                type: "GET",
+                url: "FetchAdvanceAmountByBookingID",
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                async: false,
+                data: { id: _id },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    console.log(XMLHttpRequest.responseText);
+                },
+                success: function (_result) {
+                    result = (_result == "" ? "0" : _result);
+
+                }
+            });
+            return (result == "" ? "0" : result);
+        }
+
+        function getTotalPlan(_id) {
+            var result = "";
+            $.ajax({
+                type: "GET",
+                url: "FetchTotalPlanAmountByBookingID",
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                async: false,
+                data: { id: _id },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    console.log(XMLHttpRequest.responseText);
+                },
+                success: function (_result) {
+                    result =(_result == "" ? "0" : _result);
+
+                }
+            });
+            return (result == "" ? "0" : result);
+        }
+
+        //Fetching events
+        function UpdateCalendar() {
+
+
+
+            $.ajax({
+                type: "GET",
+                url: "getEvents",
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+
+                },
+                success: function (result) {
+                    calendar.removeAllEvents();
+                    var myData = []
+                    for (var i = 0; i < result.length; i++) {
+                        var totalplan;
+                        var advance;
+
+
+                        var finaldate = new Date(result[i].b.bookingDate);
+                        calendar.addEventSource([{
+                            id: result[i].b.id, title: result[i].b.eventName +" - "+result[i].name, extendedProps: {
+                                customername: result[i].b.customerName,
+                                bookingID: result[i].b.id,
+                                email: result[i].b.email,
+                                address: result[i].b.address,
+                                time: result[i].b.time,
+                                advanceAmount: "Rs:" + getAdvance(result[i].b.id) + "/=",
+                                totalPlanAmount: "Rs:" + getTotalPlan(result[i].b.id) + "/=",
+                                extraArangement: result[i].b.extraArrangement,
+                                reciptNumber: result[i].b.reciptNumber,
+                                venue: result[i].name,
+                                phonenumber: result[i].b.phonenumber,
+                                guests: result[i].b.numberOfPersons,
+                                slot: result[i].b.slot_id,
+                                username: result[i].username,
+                                userid: result[i].userid
+
+                            }, className: [(result[i].b.isBooked == true ? "Booked" : "tentative")],
+
+                            start: finaldate, end: finaldate
+                        }]);
+                    }
+
+                    calendar.render();
+
+
+                    // calendar.setDataSource(myData);
+
+                }
+
+            });
+        }
+
+        //Deleting event ajax
+        async function deleteEvent() {
+            $.ajax({
+                type: "GET",
+                url: "getEventFromId",
+                contentType: 'application/json; charset=utf-8',
+
+
+                dataType: 'json',
+                data: { id: $("#id").val() },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    console.log(XMLHttpRequest);
+                },
+                success: function (result) {
+
+                    //$("#edit-customername-e").val(result.result[0].b.customerName);
+                    //$("#edit-phonenumber-e").val(result.result[0].b.phonenumber);
+                    //$("#edit-email-e").val(result.result[0].b.email);
+                    //$("#edit-venue-e").val(result.result[0].b.venue_id).change();
+                    //$("#edit-address-e").val(result.result[0].b.address);
+                    //$("#edit-reciptnumber-e").val(result.result[0].b.reciptNumber);
+                    //$("#edit-extraarngement-e").val(result.result[0].b.extraArrangement);
+                    //$("#edit-time-e").val(result.result[0].b.time);
+                    //$("#edit-numberofguests-e").val(result.result[0].b.numberOfPersons);
+    
+
+
+
+                    swal({
+                        title: "Are you sure?",
+                        text: "Once deleted, you will not be able to recover this event!",
+                        icon: "warning",
+                        buttons: true,
+                        dangerMode: true,
+                        }).then((willDelete) => {
+
+                        if (willDelete) {
+                                             $.ajax({
+                url: "FetchVenueByID",    //the page containing php script
+                        type: "post",    //request type,
+                        data: { id: $("#edit-venue-e").val() },
+                        dataType: "json",
+                async: false,
+                data: { id: result.result[0].b.venue_id },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    console.log(XMLHttpRequest.responseText);
+                },
+                success: function (_result) {
+                    var subject = "Deleted Event: " + result.result[0].b.eventName + "    Venue: " + _result + "    Event Date: " + new Date(result.result[0].b.bookingDate).toDateString();
+                    var from = "DE CREATIVE aajasmat@gmail.com";
+                    var body = "DE CREATIVE  <br> Your Event Has Been Deleted!. <br><table style='border: 1px solid black;width:600px'><thead>    <tr style='border: 1px solid black;'>      <th style='border: 1px solid black;padding:5px;'>&nbsp;</th>      <th style='border: 1px solid black;padding:5px;'>Details</th>    </tr>  </thead>  <tbody><tr style='border: 1px solid black;'>      <th style='border: 1px solid black;'><center>Booking ID</center></th>      <td style='border: 1px solid black;'><center>" + result.result[0].b.id  + "</center></td>    </tr><tr style='border: 1px solid black;'>      <th style='border: 1px solid black;'><center>Event</center></th>      <td style='border: 1px solid black;'><center>" + result.result[0].b.eventName + "</center></td>    </tr>     <tr style='border: 1px solid black;'>      <th style='border: 1px solid black;'><center>Customer Name</center></th>      <td style='border: 1px solid black;'><center>" + result.result[0].b.customerName + "</center></td>      </tr>       <tr style='border: 1px solid black;'>      <th style='border: 1px solid black;'><center>Event Date</center></th>      <td style='border: 1px solid black;'><center>" + new Date(result.result[0].b.bookingDate).toDateString() + "</center></td>      </tr>       <tr style='border: 1px solid black;'>      <th style='border: 1px solid black;'><center>Venue</center></th>      <td style='border: 1px solid black;'><center>" + _result + "</center></td>      </tr>       <tr style='border: 1px solid black;'>      <th style='border: 1px solid black;'><center>Event Time</center></th>      <td style='border: 1px solid black;'><center>" + $("#slot-e option[value=" + result.result[0].b.slot_id + "]").text() + "</center></td>      </tr>             <tr style='border: 1px solid black;'>      <th style='border: 1px solid black;'><center>No of Guests</center></th>      <td style='border: 1px solid black;'><center>" + result.result[0].b.numberOfPersons + "</center></td>      </tr>       <tr style='border: 1px solid black;'>      <th style='border: 1px solid black;'><center>Advance Received</center></th>      <td style='border: 1px solid black;'><center>Rs:0/=</center></td>      </tr>       <tr style='border: 1px solid black;'>      <th style='border: 1px solid black;'><center>Status</center></th>      <td style='border: 1px solid black;'><center> Tentative </center></td>      </tr>    <tr style='border: 1px solid black;'>      <th style='border: 1px solid black;'><center>Booked By</center></th>      <td style='border: 1px solid black;'><center>" +localStorage.getItem("name") + "</center></td>      </tr>  </tbody></table>  ";
+                    $.ajax({
+                        url: "SendEmailNewEvent",    //the page containing php script
+                        type: "post",    //request type,
+                        data: { from: from, to: result.result[0].b.email, body: body, subject: subject, BCC: ["aajasmat@gmail.com"] },
+                        success: function (result) {
+
+                             $.ajax({
+                                type: "GET",
+                                url: "deleteEvent",
+                                contentType: 'application/json; charset=utf-8',
+                                dataType: 'json',
+                                data: { id: $("#id").val() },
+                                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                                    console.log(XMLHttpRequest);
+                                },
+                                success: function (result) {
+                                    swal("Event Deleted!","","success");
+
+                                    UpdateCalendar();
+
+
+
+
+                                }
+
+                            });
+
+                        }
+                    });
+
+
+                         
+
+                        }
+                    });
+
+                }
+            });
+                 
+
+                }
+            });
+        }
+        //Edit modal
+        function editOpen() {
+
+            $("#eventModalEdit").modal();
+
+            $.ajax({
+                type: "GET",
+                url: "getEventFromId",
+                contentType: 'application/json; charset=utf-8',
+
+
+                dataType: 'json',
+                data: { id: $("#id").val() },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    console.log(XMLHttpRequest);
+                },
+                success: function (result) {
+
+                    $('#edit-eventtype-e option:contains(' + result.result[0].b.eventName + ')').attr('selected', 'selected');
+
+
+                    $("#edit-customername-e").val(result.result[0].b.customerName);
+                    $("#edit-phonenumber-e").val(result.result[0].b.phonenumber);
+                    $("#edit-email-e").val(result.result[0].b.email);
+                    $("#edit-venue-e").val(result.result[0].b.venue_id).change();
+                    $("#edit-address-e").val(result.result[0].b.address);
+                    $("#edit-reciptnumber-e").val(result.result[0].b.reciptNumber);
+                    $("#edit-oldreciptnumber-e").val(result.result[0].b.reciptNumber);
+                    $("#edit-extraarngement-e").val(result.result[0].b.extraArrangement);
+                    $("#edit-time-e").val(result.result[0].b.time);
+                    $("#edit-numberofguests-e").val(result.result[0].b.numberOfPersons);
+                    $("#edit-slot-e").val(result.result[0].b.slot_id);
+
+
+
+
+
+
+                       $("#edit-tentative").prop("checked", "checked");
+                        $("#edit-paymentoption").attr("disabled", "disabled");
+                        $("#edit-bankname").attr("disabled", "disabled");
+                        $("#edit-chequenumber").attr("disabled", "disabled");
+                        $("#edit-creditcard").attr("disabled", "disabled");
+                        $("#edit-amount").attr("disabled", "disabled");
+                   
+                    if (result.result[0].b.isBooked == true) {
+                        $("#edit-tentative").attr("disabled", "disabled");
+                        $("#edit-booked").prop("checked", "checked");
+                    } else {
+                        $("#editAdvance").attr("disabled", "disabled");
+                    }
+                    if (result.result2 == null || result.result2 == undefined) {
+                        return;
+                    }
+                     
+
+
+
+                    $("#edit-paymentoption").val(result.result2.paymentType);
+
+                    $("#edit-creditcard").val((result.result2.creditCardNumber == "0" ? "" : result.result2.creditCardNumber));
+                    $("#edit-chequenumber").val((result.result2.chequeNumber == "0" ? "" : result.result2.chequeNumber));
+                    $("#edit-bankname").val((result.result2.bankName == "0" ? "" : result.result2.bankName));
+                    $("#edit-amount").val(result.result2.amount);
+
+
+                }
+
+            });
+        }
+        //Edit Ajax Call
+        function edit() {
+
+            var error = false;
+            var venue = "";
+            formEdit.forEach(function (element, index) {
+                if (element.val() == null || element.val() == "") {
+                    error = true;
+                    element.css("border", "1px solid red");
+                    $("#error2").html("Please enter all details");
+
+                } else {
+                    error = false;
+                    element.css("border", "1px solid #ccc");
+
+                }
+            });
+            if ($("input[name='edit-status']:checked").val() == 1) {
+                $("#edit-amount").css("border", "1px solid #ccc");
+                $("#edit-bankname").css("border", "1px solid #ccc");
+                $("#edit-creditcard").css("border", "1px solid #ccc");
+                $("#edit-chequenumber").css("border", "1px solid #ccc");
+                var type = $("#edit-paymentoption").val();
+                var amount = $("#edit-amount").val();
+                var creditcardnumber;
+                var bankname;
+                var chequenumber;
+                if (type == null) {
+                    $("#edit-paymentoption").css("border", "1px solid red");
+                    return;
+                    error = true;
+                }
+
+                if (type == "1") {
+
+                } else if (type == "2") {
+                    bankname = $("#edit-bankname").val();
+                    chequenumber = $("#edit-chequenumber").val();
+                    if (bankname == "") {
+                        $("#edit-bankname").css("border", "1px solid red");
+                    }
+                    if (chequenumber == "") {
+                        $("#edit-chequenumber").css("border", "1px solid red");
+                        error = true;
+                    }
+                }
+                else if (type == "3") {
+                    bankname = $("#edit-bankname").val();
+                    creditcardnumber = $("#edit-creditcard").val();
+                    if (bankname == "") {
+                        $("#edit-bankname").css("border", "1px solid red");
+                    }
+                    if (creditcardnumber == "") {
+                        $("#edit-creditcard").css("border", "1px solid red");
+                        error = true;
+                    }
+                }
+                if (amount == 0) {
+                    $("#edit-amount").css("border", "1px solid red");
+                    error = true;
+                }
+                if (error) {
+                    return;
+                }
+            }
+                
+            if (error) { return }
+
+            if ($("#edit-phonenumber-e").val().length != 11) {
+                $("#edit-phonenumber-e").css("border", "1px solid red");
+                $("#error2").html("Please Enter 11 Digital Phone Number");
+                error = true;
+            }
+            if ($("input[name='edit-status']:checked").val() == 1 && $("#edit-amount").val() == "") {
+                error = true;
+                $("#edit-amount-e").css("border", "1px solid red");
+                $("#error2").html("Please Enter Advance Amount");
+            }
+            if ($("#edit-oldreciptnumber-e").val() != $("#edit-reciptnumber-e").val()) {
+                        $.ajax({
+                            type: "GET",
+                            url: "checkReciptNumber",
+                            contentType: 'application/json; charset=utf-8',
+                            dataType: 'json',
+                            async: false,
+                            data: { reciptnumber: $("#edit-reciptnumber-e").val() },
+                            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                                console.log(XMLHttpRequest.responseText);
+                            },
+                            success: function (_result) {
+                                if (_result == false || _result == "false") {
+                                    error = true;
+                                    swal("Recipt Number Already Exists", "", "error");
+                                }
+
+                            }
+                        });
+                    }
+                  
+            if (error) { return }
+            
+            $.ajax({
+                type: "GET",
+                url: "getEventFromId",
+                contentType: 'application/json; charset=utf-8',
+
+
+                dataType: 'json',
+                data: { id: $("#id").val() },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    console.log(XMLHttpRequest);
+                },
+                success: function (result) {
+              
+                    
+                    $('#eventModalEdit').modal('hide');
+                    $.ajax({
+                        url: "FetchVenueByID",    //the page containing php script
+                        type: "post",    //request type,
+                        data: { id: $("#edit-venue-e").val() },
+                        dataType: "json",
+                        success: function (result2) {
+                           
+                            var body = "DE CREATIVE  <br><table style='border: 1px solid black;width:450px'><thead>   <tr style='border: 1px solid black;'>      <th style='border: 1px solid black;padding:5px;'>&nbsp;</th>      <th style='border: 1px solid black;padding:5px;'>Details</th>    </tr>  </thead>  <tbody><tr style='border: 1px solid black;'>      <th style='border: 1px solid black;'><center>Booking ID</center></th>      <td style='border: 1px solid black;'><center>" + result.result[0].b.id  + "</center></td>    </tr> <tr style='border: 1px solid black;'>      <th style='border: 1px solid black;'><center>Event</center></th>      <td style='border: 1px solid black;'><center>" + $("#edit-eventtype-e").val() + "</center></td>    </tr>     <tr style='border: 1px solid black;'>      <th style='border: 1px solid black;'><center>Customer Name</center></th>      <td style='border: 1px solid black;'><center>" + $("#edit-customername-e").val() + "</center></td>      </tr>            <tr style='border: 1px solid black;'>      <th style='border: 1px solid black;'><center>Venue</center></th>      <td style='border: 1px solid black;'><center>" + result2 + "</center></td>      </tr>       <tr style='border: 1px solid black;'>      <th style='border: 1px solid black;'><center>Event Time</center></th>      <td style='border: 1px solid black;'><center>" + $("#edit-slot-e option:selected").text() + "</center></td>      </tr>          <tr style='border: 1px solid black;'>      <th style='border: 1px solid black;'><center>No of Guests</center></th>      <td style='border: 1px solid black;'><center>" + $("#edit-numberofguests-e").val() + "</center></td>      </tr>       <tr style='border: 1px solid black;'>      <th style='border: 1px solid black;'><center>Advance Received</center></th>      <td style='border: 1px solid black;'><center>Rs:" + ($("#edit-amount").val() == '' ? '0' : $("#edit-amount").val()) + "/=</center></td>      </tr>       <tr style='border: 1px solid black;'>      <th style='border: 1px solid black;'><center>Status</center></th>      <td style='border: 1px solid black;'><center>" + ($("input[name='edit-status']:checked").val() == 0 ? "Tentative" : "Booked") + "</center></td>      </tr>    <tr style='border: 1px solid black;'>      <th style='border: 1px solid black;'><center>Booked By</center></th>      <td style='border: 1px solid black;'><center>" +localStorage.getItem("name") + "</center></td>      </tr>  </tbody></table>  ";
+                            body += "<br>Changes</br><table style='border: 1px solid black;width:450px'><thead>    <tr style='border: 1px solid black;'>      <th style='border: 1px solid black;padding:5px;'>&nbsp;</th>      <th style='border: 1px solid black;padding:5px;'>Old</th>  <th style='border: 1px solid black;padding:5px;'>New</th>    </tr>  </thead>  <tbody> ";
+                            if (result.result[0].b.eventName != $("#edit-eventtype-e").val()) {
+                                body += "<tr style='border: 1px solid black;'>      <th style='border: 1px solid black;'><center>Customer Name</center></th>      <td style='border: 1px solid black;'><center>" + result.result[0].b.eventName + "</center></td><td style='border: 1px solid black;'><center>" + $("#edit-eventtype-e").val() + "</center></td>    </tr> ";
+                            }
+                            if (result.result[0].b.customerName != $("#edit-customername-e").val()) {
+                                body += "<tr style='border: 1px solid black;'>      <th style='border: 1px solid black;'><center>Customer Name</center></th>      <td style='border: 1px solid black;'><center>" + result.result[0].b.customerName + "</center></td><td style='border: 1px solid black;'><center>" + $("#edit-customername-e").val() + "</center></td>    </tr> ";
+                            }
+                            if (result.result[0].b.phonenumber != $("#edit-phonenumber-e").val()) {
+
+                                body += "<tr style='border: 1px solid black;'>      <th style='border: 1px solid black;'><center>Phonenumber</center></th>      <td style='border: 1px solid black;'><center>" + result.result[0].b.phonenumber + "</center></td><td style='border: 1px solid black;'><center>" + $("#edit-phonenumber-e").val() + "</center></td>    </tr> ";
+                            }
+
+                            if (result.result[0].b.email != $("#edit-email-e").val()) {
+                                body += "<tr style='border: 1px solid black;'>      <th style='border: 1px solid black;'><center>Email</center></th>      <td style='border: 1px solid black;'><center>" + result.result[0].b.email + "</center></td><td style='border: 1px solid black;'><center>" + $("#edit-email-e").val() + "</center></td>    </tr> ";
+                            }
+
+                            if ($("#edit-venue-e").val() != result.result[0].b.venue_id) {
+                                var id = result.result[0].b.venue_id;
+                                $.ajax({
+                                    url: "FetchVenueByID",    //the page containing php script
+                                    type: "post",    //request type,
+                                    async: false,
+                                    dataType: "json",
+                                    data: { id:  result.result[0].b.venue_id },
+                                    success: function (result) {
+                                              body += "<tr style='border: 1px solid black;'>      <th style='border: 1px solid black;'><center>Venue</center></th>      <td style='border: 1px solid black;'><center>" + result + "</center></td><td style='border: 1px solid black;'><center>" + $("#edit-venue-e option:selected").text() + "</center></td>    </tr> ";
+                                    }
+                                });
+
+                            }
+                            if (result.result[0].b.address != $("#edit-address-e").val()) {
+                                body += "<tr style='border: 1px solid black;'>      <th style='border: 1px solid black;'><center>Address</center></th>      <td style='border: 1px solid black;'><center>" + result.result[0].b.address + "</center></td><td style='border: 1px solid black;'><center>" + $("#edit-address-e").val() + "</center></td>    </tr> ";
+                            }
+                            if (result.result[0].b.slot_id != $("#edit-slot-e").val()) {
+                                body += "<tr style='border: 1px solid black;'>      <th style='border: 1px solid black;'><center>Time</center></th>      <td style='border: 1px solid black;'><center>" +  $("#slot-e option[value=" + result.result[0].b.slot_id + "]").text()+"</center></td><td style='border: 1px solid black;'><center>" + $("#edit-slot-e option:selected").text() + "</center></td>    </tr> ";
+                            }
+                         
+                            if (result.result[0].b.extraArrangement != $("#edit-extraarngement-e").val()) {
+                                body += "<tr style='border: 1px solid black;'>      <th style='border: 1px solid black;'><center>Extra Arrangement</center></th>      <td style='border: 1px solid black;'><center>" + result.result[0].b.extraArrangement + "</center></td><td style='border: 1px solid black;'><center>" + $("#edit-extraarngement-e").val() + "</center></td>    </tr> ";
+                            }
+
+                            if (result.result[0].b.numberOfPersons != $("#edit-numberofguests-e").val()) {
+                                body += "<tr style='border: 1px solid black;'>      <th style='border: 1px solid black;'><center>No Of Guests</center></th>      <td style='border: 1px solid black;'><center>" + result.result[0].b.numberOfPersons + "</center></td><td style='border: 1px solid black;'><center>" + $("#edit-numberofguests-e").val() + "</center></td>    </tr> ";
+                            }
+                            if (result.result[0].b.reciptNumber != $("#edit-reciptnumber-e").val()) {
+                                body += "<tr style='border: 1px solid black;'>      <th style='border: 1px solid black;'><center>Recipt Number</center></th>      <td style='border: 1px solid black;'><center>" + result.result[0].b.reciptNumber + "</center></td><td style='border: 1px solid black;'><center>" + $("#edit-reciptnumber-e").val() + "</center></td>    </tr> ";
+                            }
+                            if (result.result[0].b.isBooked != $("input[name='edit-status']:checked").val()) {
+                            
+                                body += "<tr style='border: 1px solid black;'>      <th style='border: 1px solid black;'><center>Status</center></th>      <td style='border: 1px solid black;'><center>" + (result.result[0].b.isBooked == false ? 'Tentative' : 'Booked') + "</center></td><td style='border: 1px solid black;'><center>" + ($("input[name='edit-status']:checked").val() == 0 ? 'Tentative' : 'Booked') + "</center></td>    </tr> ";
+                            }
+                            //console.log((result.result2.paymentType == 1 ? 'Cash' : (result.result2.paymentType == 2 ? 'Cheque' : 'Credit Card')));
+                            
+                    //$("#edit-amount").val(result.result2.amount);
+                            //IF BOOKED NOW
+                            if (result.result2 == null && $("input[name='edit-status']:checked").val() == 1) {
+                                if ($("#edit-paymentoption").val() != "") {
+                                    body += "<tr style='border: 1px solid black;'>      <th style='border: 1px solid black;'><center>Payment Type</center></th>      <td style='border: 1px solid black;'><center> - </center></td><td style='border: 1px solid black;'><center>" + ($('#edit-paymentoption').val() == 1 ? 'Cash' : ($('#edit-paymentoption').val() == 2 ? 'Cheque' : 'Credit Card')) + "</center></td>    </tr>";
+                                }
+                                if ($("#edit-creditcard").val() != "") {
+                                    body += "<tr style='border: 1px solid black;'>      <th style='border: 1px solid black;'><center>Credit Card Number</center></th>      <td style='border: 1px solid black;'><center> - </center></td><td style='border: 1px solid black;'><center>" + ($('#edit-creditcard').val() == '' ? '-' : $('#edit-creditcard').val()) + "</center></td>    </tr> ";
+                                }
+                                if ($("#edit-creditcard").val() != "") {
+                                    body += "<tr style='border: 1px solid black;'>      <th style='border: 1px solid black;'><center>Bank Name</center></th>      <td style='border: 1px solid black;'><center> - </center></td><td style='border: 1px solid black;'><center>" + ($("#edit-bankname").val() == '0' ? '-' : $("#edit-bankname").val()) + "</center></td>    </tr> ";
+                                }
+                                if ($("#edit-amount").val() != "") {
+                                    body += "<tr style='border: 1px solid black;'>      <th style='border: 1px solid black;'><center>Advance Amount</center></th>      <td style='border: 1px solid black;'><center> - </center></td><td style='border: 1px solid black;'><center>" + ($("#edit-amount").val() == '0' ? '-' : $("#edit-amount").val()) + "</center></td>    </tr> ";
+                                }
+                                if ($("#edit-chequenumber").val() != "") {
+                                    body += "<tr style='border: 1px solid black;'>      <th style='border: 1px solid black;'><center>Cheque Number</center></th>      <td style='border: 1px solid black;'><center> - </center></td><td style='border: 1px solid black;'><center>" + ($("#edit-chequenumber").val() == '0' ? '-' : $("#edit-chequenumber").val()) + "</center></td>    </tr> ";
+                                }
+                            } else if($("input[name='edit-status']:checked").val() == 1){
+                                 if (result.result2.paymentType != $("#edit-paymentoption").val()) {
+                                body += "<tr style='border: 1px solid black;'>      <th style='border: 1px solid black;'><center>Payment Type</center></th>      <td style='border: 1px solid black;'><center>" + (result.result2.paymentType == 1 ? 'Cash' : (result.result2.paymentType == 2 ? 'Cheque' : 'Credit Card')) + "</center></td><td style='border: 1px solid black;'><center>" + ($('#edit-paymentoption').val() == 1 ? 'Cash' : ($('#edit-paymentoption').val() == 2 ? 'Cheque' : 'Credit Card')) + "</center></td>    </tr>";
+                            }
+                             if (result.result2.creditCardNumber != $("#edit-creditcard").val() && $("#edit-creditcard").val() != "") {
+                                 body += "<tr style='border: 1px solid black;'>      <th style='border: 1px solid black;'><center>Credit Card Number</center></th>      <td style='border: 1px solid black;'><center>" + (result.result2.creditCardNumber == '' ? '-' : result.result2.creditCardNumber) + "</center></td><td style='border: 1px solid black;'><center>" + ($('#edit-creditcard').val() == '' ? '-' : $('#edit-creditcard').val()) + "</center></td>    </tr> ";
+                            }
+                           if (result.result2.bankName != $("#edit-bankname").val() && $("#edit-creditcard").val() != "") {
+                                 body += "<tr style='border: 1px solid black;'>      <th style='border: 1px solid black;'><center>Bank Name</center></th>      <td style='border: 1px solid black;'><center>" + (result.result2.bankName == '0' ? '-' : result.result2.bankName) + "</center></td><td style='border: 1px solid black;'><center>" + ($("#edit-bankname").val() == '0' ? '-' : $("#edit-bankname").val()) + "</center></td>    </tr> ";
+                            }
+                             if (result.result2.amount != $("#edit-amount").val() && $("#edit-amount").val() != "") {
+                                 body += "<tr style='border: 1px solid black;'>      <th style='border: 1px solid black;'><center>Advance Amount</center></th>      <td style='border: 1px solid black;'><center>" + (result.result2.amount == '0' ? '-' : result.result2.amount) + "</center></td><td style='border: 1px solid black;'><center>" + ($("#edit-amount").val() == '0' ? '-' : $("#edit-amount").val()) + "</center></td>    </tr> ";
+                            }
+                            if (result.result2.chequeNumber != $("#edit-chequenumber").val() && $("#edit-chequenumber").val() != "") {
+                                 body += "<tr style='border: 1px solid black;'>      <th style='border: 1px solid black;'><center>Cheque Number</center></th>      <td style='border: 1px solid black;'><center>" + (result.result2.chequeNumber == '0' ? '-' : result.result2.chequeNumber) + "</center></td><td style='border: 1px solid black;'><center>" + ($("#edit-chequenumber").val() == '0' ? '-' : $("#edit-chequenumber").val()) + "</center></td>    </tr> ";
+                            }
+                            
+                            }
+                           
+                            body += "</tbody></table>";
+
+
+                            
+                            //var body = "           Your event details have been edited, changes includes:<br>        Event Name: <b>" + result.result[0].b.eventName + "</b> <br><u>Updated to</u>: <b>" + $("#edit-eventtype-e").val() + "</b><br>        Customer Name: <b>" + result.result[0].b.customerName + "</b> <br><u>Updated to</u>: <b>" + $("#edit-customername-e").val() + "</b><br>        Phone Number: <b>" + result.result[0].b.phonenumber + "</b> <br><u>Updated to</u>: <b>" + $("#edit-phonenumber-e").val() + "</b><br>        Email: <b>" + result.result[0].b.email + "</b> <br><u>Updated to</u>: <b>11:00pm - 2:00am</b><br>Venue: <b>" + result2 + "</b> <br><u>Updated to</u>: <b>11:00pm - 2:00am</b><br>Address: <b>" + result.result[0].b.address + "</b> <br><u>Updated to</u>: <b>11:00pm - 2:00am</b><br>Recipt Number: <b>" + result.result[0].b.reciptNumber + "</b> <br><u>Updated to</u>: <b>11:00pm - 2:00am</b><br>Extra Arrangements: <b>" + result.result[0].b.extraArrangement + "</b> <br><u>Updated to</u>: <b>11:00pm - 2:00am</b><br>Time: <b>" + result.result[0].b.time + "</b> <br><u>Updated to</u>: <b>11:00pm - 2:00am</b><br>Staus: <b>" + (result.result[0].b.isBooked == false ? 'tentative' : 'Booked') + "</b> <br><u>Updated to</u>: <b>11:00pm - 2:00am</b><br>";
+                            var subject = "Event Edited: " + $("#edit-eventtype-e").val() + "    Venue: " + $("#edit-venue-e option:selected").text() + "    Event Date: " + new Date(result.result[0].b.bookingDate).toDateString();
+                            var from = "DE CREATIVE aajasmat@gmail.com";
+                            $.ajax({
+                                url: "SendEmailNewEvent",    //the page containing php script
+                                type: "post",    //request type,
+                                data: { from: from, to: $("#edit-email-e").val(), body: body, subject: subject, BCC: ["aajasmat@gmail.com"] },
+
+                                success: function (result) {
+                                    
+                                    swal("Event Updated!", "", "success").then(function () {
+                                    
+                                        UpdateCalendar();
+                                        window.location.reload();
+
+                                    });
+                    
+                                    
+
+                                }
+                            });
+
+
+
+                            //if (result.result2 == null || result.result2 == undefined) {
+                            //    console.log("nop");
+                            //    return;
+                            //}
+
+
+                            //$("#edit-paymentoption").val(result.result2.paymentType).change();
+                            //$("#edit-paymentoption").trigger("change");
+                            //$("#edit-creditcard").val((result.result2.creditCardNumber == "0" ? "" : result.result2.creditCardNumber));
+                            //$("#edit-chequenumber").val((result.result2.chequeNumber == "0" ? "" : result.result2.chequeNumber));
+                            //$("#edit-bankname").val((result.result2.bankName == "0" ? "" : result.result2.bankName));
+                            //$("#edit-amount").val(result.result2.amount);
+
+                        }
+
+                    });
+
+
+
+                }
+
+            });
+            $.ajax({
+                type: "GET",
+                url: "editEvent",
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                data: {
+                    "id": $("#id").val(),
+                    "eventname": $("#edit-eventtype-e").val(),
+                    "customername": $("#edit-customername-e").val(),
+                    "phonenumber": $("#edit-phonenumber-e").val(),
+                    "email": $("#edit-email-e").val(),
+                    "venue": $("#edit-venue-e").val(),
+                    "address": $("#edit-address-e").val(),
+                    "time": $("#edit-slot-e").val(),
+                    "extraarngement": $("#edit-extraarngement-e").val(),
+                    "guests": $("#edit-numberofguests-e").val(),
+                    "reciptnumber": $("#edit-reciptnumber-e").val(),
+                    "status": $("input[name='edit-status']:checked").val(),
+                    "paymenttype": $("#edit-paymentoption").val(),
+                    "creditcardnumber": ($("#edit-creditcard").val() == "" ? "0" : $("#edit-creditcard").val()),
+                    "bankname": ($("#edit-bankname").val() == "" ? "0" : $("#edit-bankname").val()),
+                    "chequenumber": ($("#edit-chequenumber").val() == "" ? "0" : $("#edit-chequenumber").val()),
+
+                    "amount": ($("#edit-amount").val() == "" ? 0 : $("#edit-amount").val()),
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    console.log(textStatus);
+                },
+                success: function (result) {
+
+
+
+
+
+
+                }
+
+            });
+
+
+        }
+        //Nav Opening
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+        }
+        //Nav Closing
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+        }
+        //Roles
+        $(document).ready(function () {
+
+            $(".fc-toolbar-title").prepend("<span style='font-size:20px;cursor:pointer;margin-left:10px;margin-right:10px;margin-top:10px;' class='btn btn-default ml-2' onclick='openNav()'>&#9776;</span>");
+
+
+
+
+            $.ajax({
+                type: "GET",
+                url: "getRoles",
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                data: { id: localStorage.getItem("id") },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    console.log(XMLHttpRequest);
+                },
+                success: function (result) {
+                    result.forEach(function (entry) {
+
+                        var role = entry.childScreen;
+
+                        localStorage.setItem("eventAdd", role[0].sc.add);
+
+                        if (role[0].sc.edit == false) {
+
+                            $("#editevent").prop("disabled", true);
+                        }
+                        if (role[0].sc.delete == false) {
+                            $("#deleteevent").prop("disabled", true);
+                        }
+                        //role[0].sc.edit);
+
+                        //                if (localStorage.getItem("eventAdd") == "false") {
+                        //    return;
+                        //}
+                        //alert(localStorage.getItem("eventAdd"));
+
+                        //if (role[3].sc.add == true) {
+                        //    var a = $("<a />", {
+                        //        id: "id5",
+                        //        name: "link",
+                        //        href: "reports",
+                        //        text: "Reports"
+                        //    }).appendTo("#et");
+                        //}
+
+
+                    });
+
+
+                }
+
+            });
+        });
+    </script>
+    <style>
+
+        #disc {
+            font-family: 'Roboto', sans-serif;
+            font-size: 20px;
+            color: #0c5460;
+            background-color: #d1ecf1;
+            /* border-color: #bee5eb; */
+            padding: 6px;
+            border: 2px solid;
+            border-color: #bee5eb;
+        }
+
+        #event_name {
+            font-family: 'Roboto', sans-serif;
+            font-size: 25px;
+        }
+
+        .date {
+            font-family: 'Roboto', sans-serif;
+            font-size: 18px;
+        }
+
+        * {
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .fc-event-title {
+            font-family: 'Nunito', sans-serif !important;
+        }
+
+        .fc-event:hover {
+            background-color: #79b3ec;
+        }
+
+        .sidenav {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 100;
+            top: 0;
+            left: 0;
+            background-color: white;
+            box-shadow: -11px -9px 20px 4px black;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+
+            .sidenav a {
+                padding: 10px;
+                text-decoration: none;
+                font-size: 25px;
+                color: dimgrey;
+                display: block;
+                transition: 0.3s;
+            }
+
+                .sidenav a:hover {
+                    color: black;
+                }
+
+            .sidenav .closebtn {
+                position: absolute;
+                v top: 0;
+                right: 25px;
+                font-size: 36px;
+                margin-left: 50px;
+            }
+
+        .form-control {
+            border-radius: 0px;
+            padding: 5px;
+        }
+
+        #active {
+            background-color: #1e2b37;
+            color: white;
+            box-shadow: -4px 4px 10px 0px #737373;
+        }
+
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        #loader {
+            width: 100vw;
+            height: 100vh;
+            background-color: white;
+            position: absolute;
+            z-index: 100;
+        }
+        .modal {overflow-y: scroll}
+    </style>
+</body>
+</html>

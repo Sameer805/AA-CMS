@@ -1,0 +1,430 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>DE CREATIVE CALENDAR</title>
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <script src="~/Content/calendar/sweetalert.min.js"></script>
+    <script src="~/Content/calendar/jquery-3.5.1.min.js"></script>
+
+    <script src="~/Content/calendar/bootstrap.min.js"></script>
+    <script src="~/Content/calendar/main.min.js"></script>
+    <link href="~/Content/calendar/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="~/Content/calendar/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/calendar/css2.css" rel="stylesheet" />
+    <link href="~/Content/calendar/main.min.css" rel="stylesheet" />
+    <script src="~/Content/calendar/spin.min.js"></script>
+</head>
+<body>
+    <span style='font-size:20px;cursor:pointer;margin-left:10px;margin-right:10px;margin-top:10px;' class='btn btn-default ml-2' onclick='openNav()'>&#9776;</span>
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <br /><br /><br />
+        <a href="/Home/Index">Calendar</a>
+        @Html.ActionLink("Events", "Events", "Home", null, new { id = "" })
+        @Html.ActionLink("Events Setup", "EventSetup", "Home", null, new { id = "active" })
+        <a id="dash" href="@Url.Action("Index", "Dashboard")">Dashboard</a>
+        <div id="et">
+
+        </div>
+        <script>
+            if (!(localStorage.getItem("admin") == "true")) {
+
+                $("#dash").css("display", "none");
+            }
+        </script>
+        @Html.ActionLink("Logout", "Logout", "Home", null, new { id = "" })
+
+    </div>
+
+    <div class="container">
+        <h4>Event Setups:</h4>
+        <hr />
+        <div class="col-lg-12" >
+            <label>Add New Event Setup: </label><br />
+            <div class="col-lg-10">
+                <input type="text" id="name_setup" class="form-control" placeholder="Enter Event Setup" />
+            </div>
+            <div class="col-lg-2">
+                <button class="btn btn-md btn-success" id="addition" onclick="addSetup()">Add</button>
+            </div>
+
+
+        </div>
+        <div class="container-fluid">
+            <div class="col-lg-12   col-md-12">
+                <div class="card">
+                    <div class="card-header text-white">
+
+                        <hr />
+                    </div>
+                    <div class="card-body table-responsive">
+                        <table class="table table-hover">
+                            <thead class="text-muted">
+                            <th>
+                                <center>Setups</center>
+                            </th>
+                            <th>
+                                <center>Action</center>
+                            </th>
+
+                            </thead>
+                            <tbody id="tbody_venue">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="modal fade" id="setupEdit" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Edit User</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                </div>
+                <div class="modal-body">
+
+                    Name:
+                    <input type="text" id="setupname" class="form-control" />
+                    <input type="text" id="IDEdit" style="display:none;" />
+                    <div class="modal-footer">
+                        <input type="submit" class="btn btn-success" style="float:left" value="Done" onclick="editName()"></input>
+
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+
+                    </form>
+                </div>
+
+            </div>
+        </div>
+        <style>
+            .tentative {
+                background-color: #4fa84f !important;
+            }
+
+            .Booked {
+                background-color: #cc3e3a !important;
+            }
+        </style>
+        <script>
+           
+            $(document).ready(function () {
+                $.ajax({
+                    type: "GET",
+                    url: "getRoles",
+                    contentType: 'application/json; charset=utf-8',
+                    dataType: 'json',
+                    data: { id: localStorage.getItem("id") },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        console.log(XMLHttpRequest);
+                    },
+                    success: function (result) {
+                        console.log(result);
+                        result.forEach(function (entry) {
+                            var role = entry.childScreen;
+                            console.log(role);
+                            localStorage.setItem("setupEdit", role[1].sc.edit);
+                            localStorage.setItem("setupDelete", role[1].sc.delete);
+                            localStorage.setItem("setupAdd", role[1].sc.add);
+
+                           
+                            //role[0].sc.edit);
+
+                            //                if (localStorage.getItem("eventAdd") == "false") {
+                            //    return;
+                            //}
+                            //alert(localStorage.getItem("eventAdd"));
+
+                            if (role[3].sc.add == true) {
+                                var a = $("<a />", {
+                                    id: "id5",
+                                    name: "link",
+                                    href: "reports",
+                                    text: "Reports"
+                                }).appendTo("#et");
+                            }
+                            //If false
+                            if (localStorage.getItem("setupAdd") == false) {
+                                $("#addition").prop("disabled", "disabled");
+                            }
+                            getUsers();
+
+
+                        });
+
+
+                    }
+
+                });
+              
+              
+                $("#name_setup").bind('keydown', function (e) {
+                    console.log("done");
+            if (e.which == 13) {
+                $("#addition").trigger("click");
+            }
+                });
+            });
+            
+            function editName() {
+                var name = $("#setupname").val();
+                if (name == "") {
+                    $("#setupname").css("border", "1px solid red");
+                    return;
+                }
+                $("#setupname").css("border", "1px solid #ccc");
+                var id = $("#IDEdit").val();
+                $.ajax({
+                    type: "GET",
+                    url: "UpdateSetup",
+                    data: { id: id ,name :name},
+                    contentType: 'application/json; charset=utf-8',
+                    
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        console.log("Request: " + XMLHttpRequest.toString() + "\n\nStatus: " + textStatus + "\n\nError: " + errorThrown);
+                    },
+                    success: function (result) {
+                        swal("Event Setup Updated!", "", "success").then(function () {
+                                       $("#setupEdit").modal('hide');
+                        getUsers();
+                                    });
+                        
+                    }
+                });
+            }
+            $(document).on("click", ".edit", function () {
+                var id = $(this).prop("id");
+                
+                $.ajax({
+                    type: "GET",
+                    url: "FetchSetup",
+                    data: { id: id },
+                    contentType: 'application/json; charset=utf-8',
+                    dataType: 'json',
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        console.log("Request: " + XMLHttpRequest.toString() + "\n\nStatus: " + textStatus + "\n\nError: " + errorThrown);
+                    },
+                    success: function (result) {
+                        $("#setupname").val(result[0].u.name);
+                        $("#IDEdit").val(result[0].u.id);
+                        $("#setupEdit").modal();
+                    }
+                });
+            });
+            $(document).on("click", ".btn-danger", function () {
+                var id = $(this).prop("id");
+                swal({
+                    title: "Are you sure?",
+                    text: "Do you want to delete this setup?",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                    .then((willDelete) => {
+                        if (willDelete) {
+                            $.ajax({
+                                type: "GET",
+                                url: "DeleteEventSetup",
+                                contentType: 'application/json; charset=utf-8',
+                                data: { id: id },
+                                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                                    console.log("Request: " + XMLHttpRequest.toString() + "\n\nStatus: " + textStatus + "\n\nError: " + errorThrown);
+                                },
+                                success: function (result) {
+                                    swal("Event Setup Deleted!", "", "success").then(function () {
+                                        getUsers();
+                                    });
+                                }
+                            });
+
+
+                        }
+                    });
+            });
+            $(document).ready(function () {
+               
+            })
+            function addSetup() {
+                var name = $("#name_setup").val();
+                var error = false;
+            $("#tbody_venue tr").each(function (index, element) {
+                if ($(element).find("td:first").text() == name) {
+                    swal("Event Setup Already Exists!","", "warning");
+                    error = true;
+                } 
+
+
+            });
+                if (error == true) {
+                    return;
+                }
+                if (name == "") {
+                    $("#name_setup").css("border", "1px solid red");
+                    return;
+                }
+                $.ajax({
+                    type: "GET",
+                    url: "AddSetup",
+                    data: { name: name },
+                    contentType: 'application/json; charset=utf-8',
+                    dataType: '',
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        console.log("Request: " + XMLHttpRequest.toString() + "\n\nStatus: " + textStatus + "\n\nError: " + errorThrown);
+                    },
+                    success: function (result) {
+                        $("#name_setup").val("");
+                        swal("New Setup Has Been Added", "", "success");
+                        getUsers();
+                    }
+                });
+            }
+            function getUsers() {
+                 $("#name_setup").css("border", "1px solid #ccc");
+
+                $("#tbody_venue").empty();
+                $.ajax({
+                    type: "GET",
+                    url: "FetchSetups",
+                    contentType: 'application/json; charset=utf-8',
+                    dataType: 'json',
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        console.log("Request: " + XMLHttpRequest.toString() + "\n\nStatus: " + textStatus + "\n\nError: " + errorThrown);
+                    },
+                    success: function (result) {
+                        result.forEach(function (element, index) {
+                            var row = "<tr><td><center>" + element.u.name + "</center></td><td><center>";
+                            if (localStorage.getItem("setupEdit") == "true") {
+                                row += "<button class='btn btn-sm btn-warning edit'  id='" + element.u.id + "'><i class='fa fa-pencil'/> Edit</button>";
+                            }
+                            else {
+                                row += "<button class='btn btn-sm btn-warning' disabled><i class='fa fa-pencil'/> Edit</button>";
+                            }
+                            if (localStorage.getItem("setupDelete") == "true") {
+                                row += "&nbsp;<button class='btn btn-sm btn-danger' id='" + element.u.id + "'><i class='fa fa-trash'/> Delete</button>";
+                            } else {
+                                 row += "&nbsp;<button class='btn btn-sm btn-danger' disabled><i class='fa fa-trash'/> Delete</button>";
+                            }
+
+                            row += "</center></td></tr>";
+
+                            $("#tbody_venue").append(row);
+                        })
+                    }
+                });
+
+            }
+            //Fetching event setups
+             
+            //Nav Opening
+            function openNav() {
+                document.getElementById("mySidenav").style.width = "250px";
+            }
+            //Nav Closing
+            function closeNav() {
+                document.getElementById("mySidenav").style.width = "0";
+            }
+            //Roles
+
+               
+
+
+
+            
+        </script>
+        <style>
+
+            #disc {
+                font-family: 'Roboto', sans-serif;
+                font-size: 20px;
+                color: #0c5460;
+                background-color: #d1ecf1;
+                /* border-color: #bee5eb; */
+                padding: 6px;
+                border: 2px solid;
+                border-color: #bee5eb;
+            }
+
+            #event_name {
+                font-family: 'Roboto', sans-serif;
+                font-size: 25px;
+            }
+
+            .date {
+                font-family: 'Roboto', sans-serif;
+                font-size: 18px;
+            }
+
+            * {
+                font-family: 'Roboto', sans-serif;
+            }
+
+            .fc-event-title {
+                font-family: 'Nunito', sans-serif !important;
+            }
+
+            .fc-event:hover {
+                background-color: #79b3ec;
+            }
+
+            .sidenav {
+                height: 100%;
+                width: 0;
+                position: fixed;
+                z-index: 100;
+                top: 0;
+                left: 0;
+                background-color: white;
+                box-shadow: -11px -9px 20px 4px black;
+                overflow-x: hidden;
+                transition: 0.5s;
+                padding-top: 60px;
+            }
+
+                .sidenav a {
+                    padding: 10px;
+                    text-decoration: none;
+                    font-size: 25px;
+                    color: dimgrey;
+                    display: block;
+                    transition: 0.3s;
+                }
+
+                    .sidenav a:hover {
+                        color: black;
+                    }
+
+                .sidenav .closebtn {
+                    position: absolute;
+                    v top: 0;
+                    right: 25px;
+                    font-size: 36px;
+                    margin-left: 50px;
+                }
+
+            .form-control {
+                border-radius: 0px;
+                padding: 5px;
+            }
+
+            #active {
+                background-color: #1e2b37;
+                color: white;
+                box-shadow: -4px 4px 10px 0px #737373;
+            }
+        </style>
+</body>
+</html>

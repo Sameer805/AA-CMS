@@ -1,0 +1,526 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="cmsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="booking">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="customerName" Type="nvarchar" MaxLength="255" />
+          <Property Name="bookingDate" Type="date" />
+          <Property Name="phonenumber" Type="varchar" MaxLength="50" />
+          <Property Name="email" Type="nvarchar" MaxLength="255" />
+          <Property Name="address" Type="nvarchar" MaxLength="255" />
+          <Property Name="time" Type="varchar" MaxLength="50" />
+          <Property Name="venue_id" Type="int" />
+          <Property Name="slot_id" Type="int" />
+          <Property Name="eventName" Type="varchar" MaxLength="50" />
+          <Property Name="numberOfPersons" Type="int" />
+          <Property Name="extraArrangement" Type="nvarchar" MaxLength="255" />
+          <Property Name="reciptNumber" Type="int" />
+          <Property Name="isActive" Type="bit" />
+          <Property Name="inserteddatetime" Type="datetime" />
+          <Property Name="isBooked" Type="bit" />
+          <Property Name="booked_by" Type="int" />
+          <Property Name="numberOfKids" Type="int" />
+          <Property Name="birthdayGirlBoy" Type="nvarchar" MaxLength="50" />
+          <Property Name="meal" Type="nvarchar" MaxLength="10" />
+          <Property Name="theme" Type="nvarchar" MaxLength="50" />
+          <Property Name="addOnShows" Type="nvarchar" MaxLength="50" />
+          <Property Name="tip" Type="nvarchar" MaxLength="50" />
+          <Property Name="startTime" Type="datetime" />
+          <Property Name="endTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="delete_log">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="event_id" Type="int" Nullable="false" />
+          <Property Name="deleted_timedate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'eventscalender.dbo.event' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="event">
+          <Property Name="id" Type="int" />
+          <Property Name="bookingID" Type="int" />
+          <Property Name="eventType" Type="int" />
+          <Property Name="customerName" Type="varchar" MaxLength="50" />
+          <Property Name="customerPhoneNumber" Type="varchar" MaxLength="50" />
+          <Property Name="customerEmail" Type="varchar" MaxLength="50" />
+          <Property Name="customerAddress" Type="varchar(max)" />
+          <Property Name="numberOfGuests" Type="varchar" MaxLength="50" />
+          <Property Name="eventTime" Type="varchar" MaxLength="50" />
+          <Property Name="advanceAmount" Type="int" />
+          <Property Name="paymentType" Type="int" />
+          <Property Name="eventStatus" Type="varchar" MaxLength="50" />
+          <Property Name="eventDate" Type="date" />
+          <Property Name="insertedDateTime" Type="datetime" />
+          <Property Name="isActive" Type="bit" />
+        </EntityType>-->
+        <EntityType Name="eventSetup">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+          <Property Name="isActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="eventSetupsMap">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="booking_id" Type="int" />
+          <Property Name="setup_id" Type="int" />
+          <Property Name="price" Type="int" />
+          <Property Name="quantity" Type="int" />
+          <Property Name="remarks" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="eventTransaction">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="booking_id" Type="int" />
+          <Property Name="paymentType" Type="int" />
+          <Property Name="amount" Type="int" />
+          <Property Name="bankName" Type="varchar" MaxLength="50" />
+          <Property Name="chequeNumber" Type="varchar" MaxLength="50" />
+          <Property Name="creditCardNumber" Type="varchar" MaxLength="50" />
+          <Property Name="insertedDateTime" Type="datetime" />
+          <Property Name="remarks" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="eventType">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+          <Property Name="isActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'eventscalender.dbo.masterEmails' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="masterEmails">
+          <Property Name="id" Type="int" />
+          <Property Name="email" Type="varchar" MaxLength="50" />
+          <Property Name="isActive" Type="bit" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'eventscalender.dbo.slot' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="slot">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="slottime" Type="varchar" MaxLength="50" />
+          <Property Name="isActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="username" Type="nvarchar" MaxLength="255" />
+          <Property Name="password" Type="nvarchar" MaxLength="255" />
+          <Property Name="insertedDateTime" Type="datetime" />
+          <Property Name="isActive" Type="bit" />
+          <Property Name="isAdmin" Type="bit" />
+        </EntityType>
+        <EntityType Name="userScreenChildPermission">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="screen_id" Type="int" />
+          <Property Name="add" Type="bit" />
+          <Property Name="edit" Type="bit" />
+          <Property Name="delete" Type="bit" />
+        </EntityType>
+        <EntityType Name="userScreenPermission">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_id" Type="int" />
+          <Property Name="calendar" Type="bit" Nullable="false" />
+          <Property Name="eventSetup" Type="bit" Nullable="false" />
+          <Property Name="eventTransaction" Type="bit" Nullable="false" />
+          <Property Name="reports" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="venue">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="255" />
+          <Property Name="isActive" Type="bit" />
+        </EntityType>
+        <EntityContainer Name="cmsModelStoreContainer">
+          <EntitySet Name="booking" EntityType="Self.booking" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="delete_log" EntityType="Self.delete_log" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="eventSetup" EntityType="Self.eventSetup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="eventSetupsMap" EntityType="Self.eventSetupsMap" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="eventTransaction" EntityType="Self.eventTransaction" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="eventType" EntityType="Self.eventType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="user" EntityType="Self.user" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="userScreenChildPermission" EntityType="Self.userScreenChildPermission" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="userScreenPermission" EntityType="Self.userScreenPermission" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="venue" EntityType="Self.venue" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="slot" EntityType="Self.slot" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [slot].[id] AS [id], 
+    [slot].[slottime] AS [slottime], 
+    [slot].[isActive] AS [isActive]
+    FROM [dbo].[slot] AS [slot]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="cmsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="delete_log">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="event_id" Type="Int32" Nullable="false" />
+          <Property Name="deleted_timedate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="eventSetup">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="isActive" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="eventSetupsMap">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="booking_id" Type="Int32" />
+          <Property Name="setup_id" Type="Int32" />
+          <Property Name="price" Type="Int32" />
+          <Property Name="quantity" Type="Int32" />
+          <Property Name="remarks" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="eventType">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="isActive" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="password" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="insertedDateTime" Type="DateTime" Precision="3" />
+          <Property Name="isActive" Type="Boolean" />
+          <Property Name="isAdmin" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="userScreenChildPermission">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="screen_id" Type="Int32" />
+          <Property Name="add" Type="Boolean" />
+          <Property Name="edit" Type="Boolean" />
+          <Property Name="delete" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="userScreenPermission">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_id" Type="Int32" />
+          <Property Name="calendar" Type="Boolean" Nullable="false" />
+          <Property Name="eventSetup" Type="Boolean" Nullable="false" />
+          <Property Name="eventTransaction" Type="Boolean" Nullable="false" />
+          <Property Name="reports" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="venue">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="isActive" Type="Boolean" />
+        </EntityType>
+        <EntityContainer Name="cmsEntities4" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="delete_log" EntityType="Self.delete_log" />
+          <EntitySet Name="eventSetups" EntityType="Self.eventSetup" />
+          <EntitySet Name="eventSetupsMaps" EntityType="Self.eventSetupsMap" />
+          <EntitySet Name="eventTypes" EntityType="Self.eventType" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="users" EntityType="Self.user" />
+          <EntitySet Name="userScreenChildPermissions" EntityType="Self.userScreenChildPermission" />
+          <EntitySet Name="userScreenPermissions" EntityType="Self.userScreenPermission" />
+          <EntitySet Name="venues" EntityType="Self.venue" />
+          <EntitySet Name="slots" EntityType="cmsModel.slot" />
+          <EntitySet Name="eventTransactions" EntityType="cmsModel.eventTransaction" />
+          <EntitySet Name="bookings" EntityType="cmsModel.booking" />
+        </EntityContainer>
+        <EntityType Name="slot">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="slottime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="isActive" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="eventTransaction">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="booking_id" Type="Int32" />
+          <Property Name="paymentType" Type="Int32" />
+          <Property Name="amount" Type="Int32" />
+          <Property Name="bankName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="chequeNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="creditCardNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="insertedDateTime" Type="DateTime" Precision="3" />
+          <Property Name="remarks" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="booking">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="customerName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="bookingDate" Type="DateTime" Precision="0" />
+          <Property Name="phonenumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="address" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="time" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="venue_id" Type="Int32" />
+          <Property Name="slot_id" Type="Int32" />
+          <Property Name="eventName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="numberOfPersons" Type="Int32" />
+          <Property Name="extraArrangement" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="reciptNumber" Type="Int32" />
+          <Property Name="isActive" Type="Boolean" />
+          <Property Name="inserteddatetime" Type="DateTime" Precision="3" />
+          <Property Name="isBooked" Type="Boolean" />
+          <Property Name="booked_by" Type="Int32" />
+          <Property Name="numberOfKids" Type="Int32" />
+          <Property Name="birthdayGirlBoy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="meal" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="theme" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="addOnShows" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="tip" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="startTime" Type="DateTime" Precision="3" />
+          <Property Name="endTime" Type="DateTime" Precision="3" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="cmsModelStoreContainer" CdmEntityContainer="cmsEntities4">
+          <EntitySetMapping Name="delete_log">
+            <EntityTypeMapping TypeName="cmsModel.delete_log">
+              <MappingFragment StoreEntitySet="delete_log">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="event_id" ColumnName="event_id" />
+                <ScalarProperty Name="deleted_timedate" ColumnName="deleted_timedate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="eventSetups">
+            <EntityTypeMapping TypeName="cmsModel.eventSetup">
+              <MappingFragment StoreEntitySet="eventSetup">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="eventSetupsMaps">
+            <EntityTypeMapping TypeName="cmsModel.eventSetupsMap">
+              <MappingFragment StoreEntitySet="eventSetupsMap">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="booking_id" ColumnName="booking_id" />
+                <ScalarProperty Name="setup_id" ColumnName="setup_id" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+                <ScalarProperty Name="remarks" ColumnName="remarks" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="eventTypes">
+            <EntityTypeMapping TypeName="cmsModel.eventType">
+              <MappingFragment StoreEntitySet="eventType">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="cmsModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="users">
+            <EntityTypeMapping TypeName="cmsModel.user">
+              <MappingFragment StoreEntitySet="user">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="insertedDateTime" ColumnName="insertedDateTime" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="isAdmin" ColumnName="isAdmin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="userScreenChildPermissions">
+            <EntityTypeMapping TypeName="cmsModel.userScreenChildPermission">
+              <MappingFragment StoreEntitySet="userScreenChildPermission">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="screen_id" ColumnName="screen_id" />
+                <ScalarProperty Name="add" ColumnName="add" />
+                <ScalarProperty Name="edit" ColumnName="edit" />
+                <ScalarProperty Name="delete" ColumnName="delete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="userScreenPermissions">
+            <EntityTypeMapping TypeName="cmsModel.userScreenPermission">
+              <MappingFragment StoreEntitySet="userScreenPermission">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="calendar" ColumnName="calendar" />
+                <ScalarProperty Name="eventSetup" ColumnName="eventSetup" />
+                <ScalarProperty Name="eventTransaction" ColumnName="eventTransaction" />
+                <ScalarProperty Name="reports" ColumnName="reports" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="venues">
+            <EntityTypeMapping TypeName="cmsModel.venue">
+              <MappingFragment StoreEntitySet="venue">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="slots">
+            <EntityTypeMapping TypeName="cmsModel.slot">
+              <MappingFragment StoreEntitySet="slot">
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="slottime" ColumnName="slottime" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="eventTransactions">
+            <EntityTypeMapping TypeName="cmsModel.eventTransaction">
+              <MappingFragment StoreEntitySet="eventTransaction">
+                <ScalarProperty Name="remarks" ColumnName="remarks" />
+                <ScalarProperty Name="insertedDateTime" ColumnName="insertedDateTime" />
+                <ScalarProperty Name="creditCardNumber" ColumnName="creditCardNumber" />
+                <ScalarProperty Name="chequeNumber" ColumnName="chequeNumber" />
+                <ScalarProperty Name="bankName" ColumnName="bankName" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="paymentType" ColumnName="paymentType" />
+                <ScalarProperty Name="booking_id" ColumnName="booking_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="bookings">
+            <EntityTypeMapping TypeName="cmsModel.booking">
+              <MappingFragment StoreEntitySet="booking">
+                <ScalarProperty Name="endTime" ColumnName="endTime" />
+                <ScalarProperty Name="startTime" ColumnName="startTime" />
+                <ScalarProperty Name="tip" ColumnName="tip" />
+                <ScalarProperty Name="addOnShows" ColumnName="addOnShows" />
+                <ScalarProperty Name="theme" ColumnName="theme" />
+                <ScalarProperty Name="meal" ColumnName="meal" />
+                <ScalarProperty Name="birthdayGirlBoy" ColumnName="birthdayGirlBoy" />
+                <ScalarProperty Name="numberOfKids" ColumnName="numberOfKids" />
+                <ScalarProperty Name="booked_by" ColumnName="booked_by" />
+                <ScalarProperty Name="isBooked" ColumnName="isBooked" />
+                <ScalarProperty Name="inserteddatetime" ColumnName="inserteddatetime" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="reciptNumber" ColumnName="reciptNumber" />
+                <ScalarProperty Name="extraArrangement" ColumnName="extraArrangement" />
+                <ScalarProperty Name="numberOfPersons" ColumnName="numberOfPersons" />
+                <ScalarProperty Name="eventName" ColumnName="eventName" />
+                <ScalarProperty Name="slot_id" ColumnName="slot_id" />
+                <ScalarProperty Name="venue_id" ColumnName="venue_id" />
+                <ScalarProperty Name="time" ColumnName="time" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="phonenumber" ColumnName="phonenumber" />
+                <ScalarProperty Name="bookingDate" ColumnName="bookingDate" />
+                <ScalarProperty Name="customerName" ColumnName="customerName" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

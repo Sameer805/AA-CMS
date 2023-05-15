@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="cmsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="delete_log">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="event_id" Type="Int32" Nullable="false" />
+    <Property Name="deleted_timedate" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="eventType">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="isActive" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="user">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="username" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="password" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="insertedDateTime" Type="DateTime" Precision="3" />
+    <Property Name="isActive" Type="Boolean" />
+    <Property Name="isAdmin" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="userScreenChildPermission">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="screen_id" Type="Int32" />
+    <Property Name="add" Type="Boolean" />
+    <Property Name="edit" Type="Boolean" />
+    <Property Name="delete" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="userScreenPermission">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="user_id" Type="Int32" />
+    <Property Name="calendar" Type="Boolean" Nullable="false" />
+    <Property Name="eventSetup" Type="Boolean" Nullable="false" />
+    <Property Name="eventTransaction" Type="Boolean" Nullable="false" />
+    <Property Name="reports" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="venue">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="isActive" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="eventCalculation">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="eventPlanID" Type="Int32" />
+    <Property Name="quantity" Type="Int32" />
+    <Property Name="price" Type="Int32" />
+    <Property Name="remarks" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="isActive" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="eventPlan">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="eventPlanName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="isActive" Type="Boolean" />
+  </EntityType>
+  <EntityContainer Name="cmsEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="delete_log" EntityType="Self.delete_log" />
+    <EntitySet Name="eventTypes" EntityType="Self.eventType" />
+    <EntitySet Name="users" EntityType="Self.user" />
+    <EntitySet Name="userScreenChildPermissions" EntityType="Self.userScreenChildPermission" />
+    <EntitySet Name="userScreenPermissions" EntityType="Self.userScreenPermission" />
+    <EntitySet Name="venues" EntityType="Self.venue" />
+    <EntitySet Name="eventCalculations" EntityType="Self.eventCalculation" />
+    <EntitySet Name="eventPlans" EntityType="Self.eventPlan" />
+    <EntitySet Name="bookings" EntityType="cmsModel.booking" />
+    <EntitySet Name="eventSetups" EntityType="cmsModel.eventSetup" />
+  </EntityContainer>
+  <EntityType Name="booking">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="customerName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="bookingDate" Type="DateTime" Precision="3" />
+    <Property Name="phonenumber" Type="Int64" />
+    <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="address" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="time" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="venue_id" Type="Int32" />
+    <Property Name="event_type_id" Type="Int32" />
+    <Property Name="numberOfPersons" Type="Int32" />
+    <Property Name="eventName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="advanceAmount" Type="Int32" />
+    <Property Name="totalPlanAmount" Type="Int32" />
+    <Property Name="extraArrangement" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="reciptNumber" Type="Int32" />
+    <Property Name="isActive" Type="Boolean" />
+    <Property Name="inserteddatetime" Type="DateTime" Precision="3" />
+    <Property Name="isBooked" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="eventSetup">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="isActive" Type="Boolean" />
+  </EntityType>
+</Schema>

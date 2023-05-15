@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="cmsModelStoreContainer" CdmEntityContainer="cmsEntities">
+    <EntitySetMapping Name="Events">
+      <EntityTypeMapping TypeName="cmsModel.Event">
+        <MappingFragment StoreEntitySet="Events">
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="delete_log">
+      <EntityTypeMapping TypeName="cmsModel.delete_log">
+        <MappingFragment StoreEntitySet="delete_log">
+          <ScalarProperty Name="deleted_timedate" ColumnName="deleted_timedate" />
+          <ScalarProperty Name="event_id" ColumnName="event_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

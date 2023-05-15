@@ -1,0 +1,618 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
+    <link rel="icon" type="image/png" href="assets/img/favicon.png">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>
+        Material Dashboard by Creative Tim
+    </title>
+    <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
+    <!--     Fonts and icons     -->
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+    <!-- CSS Files -->
+    <link href="~/Content/assets/css/material-dashboard.css" rel="stylesheet" />
+    <!-- CSS Just for demo purpose, don't include it in your project -->
+    <link href="~/Content/assets/demo/demo.css" rel="stylesheet" />
+</head>
+
+<body class="">
+    <div class="wrapper ">
+        <div class="sidebar" data-color="purple" data-background-color="white" data-image="~/Content/assets/img/sidebar-1.jpg">
+            <!--
+                Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
+
+                Tip 2: you can also add an image using data-image tag
+            -->
+            <div class="logo">
+                <a class="simple-text logo-normal">
+                    DE CREATIVE <br /> CALENDAR
+                </a>
+            </div>
+            <div class="sidebar-wrapper">
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Index", "Dashboard")">
+                            <i class="material-icons">dashboard</i>
+                            <p> Dashboard </p>
+                        </a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="@Url.Action("Users", "Dashboard")">
+                            <i class="material-icons">person</i>
+                            <p>Users</p>
+                        </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="@Url.Action("Venue", "Dashboard")">
+                            <i class="material-icons">room</i>
+                            <p>Venues</p>
+                        </a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="@Url.Action("EventType", "Dashboard")">
+                            <i class="material-icons">library_books</i>
+                            <p>Event Type</p>
+                        </a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="@Url.Action("RD", "Dashboard")">
+                            <i class="material-icons">money</i>
+                            <p>Refund / Discount</p>
+                        </a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="@Url.Action("Reports", "Dashboard")">
+                            <i class="material-icons">library_books</i>
+                            <p>Reports</p>
+                        </a>
+                    </li>
+
+                    <li class="nav-item ">
+                        <a class="nav-link" href="@Url.Action("Logout", "Home")">
+                            <i class="material-icons">exit_to_app</i>
+                            <p>Log Out</p>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+        <div class="main-panel">
+            <!-- Navbar -->
+            <!-- End Navbar -->
+            <div class="content">
+                <div class="container-fluid">
+                    <div class="col-lg-12   col-md-12">
+                        <div class="card">
+                            <div class="card-header text-white" style="background-color:#9c27b0">
+                                <div class="row pr-3">
+
+                                    <h4 class="m-3 card-title text-white">Venues</h4>
+                                    <button class="btn btn-success ml-auto p-2 pr-3" onclick="addVenueModal()"><i class="material-icons">add</i> &nbsp; Add New Venue</button>
+                                </div>
+
+                            </div>
+                            <div class="card-body table-responsive">
+                                <table class="table table-hover">
+                                    <thead class="text-muted">
+                                    <th>
+                                        <center>Venue</center>
+                                    </th>
+                                    <th>
+                                        <center>Action</center>
+                                    </th>
+
+                                    </thead>
+                                    <tbody id="tbody_venue">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    </div>
+    <!-- Add user -->
+    <div class="modal fade" id="addUserModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Add User</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                </div>
+                <div class="modal-body">
+                    <form action="" method="POST" onsubmit="return validate()">
+                        <input type="text" placeholder="Enter Venue Name" class="form-control" id="venue" required pattern="[A-Za-z]{0,30}" oninvalid="this.setCustomValidity('Enter User Name Here. Only use Aplhabets')" oninput="this.setCustomValidity('')" />
+
+
+
+                </div>
+                <div class="modal-footer">
+                    <input type="submit" class="btn btn-success" style="float:left" value="Done"></input>
+
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+
+                </form>
+            </div>
+
+        </div>
+    </div>
+    <div class="modal fade" id="editModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Add User</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                </div>
+                <div class="modal-body">
+                    <form action="" method="POST" onsubmit="return validate()">
+
+                        <input type="text" placeholder="Enter Username" class="form-control" id="name" required pattern="[A-Za-z]{0,30}" oninvalid="this.setCustomValidity('Enter User Name Here. Only use Aplhabets')" oninput="this.setCustomValidity('')" />
+                        <br />
+                        <input type="password" placeholder="Enter Password" class="form-control" id="password" required oninvalid="this.setCustomValidity('Enter Password Here.')" oninput="this.setCustomValidity('')" />
+                        <br />
+                        <input type="password" placeholder="Confirm Password" class="form-control" id="confirm_password" required oninvalid="this.setCustomValidity('Confirm Password Here.')" oninput="this.setCustomValidity('')" />
+                        <br />
+                        <h5>Permissions:</h5>
+                        <h6>Calendar:</h6>
+                        <input type="checkbox" id="addcalendar" /> &nbsp;Add<br />
+                        <input type="checkbox" id="editcalendar" /> &nbsp;Edit<br />
+                        <input type="checkbox" id="deletecalendar" /> &nbsp;Delete<br />
+                        <h6>Event Transaction:</h6>
+                        <input type="checkbox" id="addeventT" /> &nbsp;Add<br />
+                        <input type="checkbox" id="editeventT" /> &nbsp;Edit<br />
+                        <input type="checkbox" id="deleteeventT" /> &nbsp;Delete<br />
+                        <h6>Event Setup:</h6>
+                        <input type="checkbox" id="addeventS" /> &nbsp;Add<br />
+                        <input type="checkbox" id="editeventS" /> &nbsp;Edit<br />
+                        <input type="checkbox" id="deleteeventS" /> &nbsp;Delete<br />
+                        <h6>Reports:</h6>
+                        <input type="checkbox" id="viewreports" /> &nbsp;View<br />
+
+
+
+                </div>
+                <div class="modal-footer">
+                    <input type="submit" class="btn btn-success" style="float:left" value="Done"></input>
+
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+
+                </form>
+            </div>
+
+        </div>
+    </div>
+    <div class="modal fade" id="userUpdate" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Edit User</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                </div>
+                <div class="modal-body">
+                    <form action="" method="POST" onsubmit="return Edit()">
+                        <input type="text" id="IDEdit" style="display:none;" />
+                        <input type="text" placeholder="Enter Username" class="form-control" id="nameEdit" required pattern="[A-Za-z]{0,30}" oninvalid="this.setCustomValidity('Enter User Name Here. Only use Aplhabets')" oninput="this.setCustomValidity('')" />
+                        <br />
+                        <input type="password" placeholder="Enter Password" class="form-control" id="passwordEdit" required oninvalid="this.setCustomValidity('Enter Password Here.')" oninput="this.setCustomValidity('')" />
+                        <br />
+                        <input type="password" placeholder="Confirm Password" class="form-control" id="confirm_passwordEdit" required oninvalid="this.setCustomValidity('Confirm Password Here.')" oninput="this.setCustomValidity('')" />
+                        <br />
+                </div>
+                <div class="modal-footer">
+                    <input type="submit" class="btn btn-success" style="float:left" value="Done"></input>
+
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+
+                </form>
+            </div>
+
+        </div>
+    </div>
+    <div class="modal fade" id="venueEdit" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Edit User</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                </div>
+                <div class="modal-body">
+
+                    Name:
+                    <input type="text" id="venuename" class="form-control" />
+                    <input type="text" id="IDEdit" style="display:none;" />
+                    <div class="modal-footer">
+                        <input type="submit" class="btn btn-success" style="float:left" value="Done" onclick="editName()"></input>
+
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+
+                    </form>
+                </div>
+
+            </div>
+        </div>
+        <!--   Core JS Files   -->
+        <script src="~/Content/assets/js/core/jquery.min.js"></script>
+        <script src="~/Content/assets/js/core/popper.min.js"></script>
+        <script src="~/Content/assets/js/core/bootstrap-material-design.min.js"></script>
+        <script src="~/Content/assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+        <!-- Plugin for the momentJs  -->
+        <script src="~/Content/assets/js/plugins/moment.min.js"></script>
+        <!--  Plugin for Sweet Alert -->
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <!-- Forms Validations Plugin -->
+        <script src="~/Content/assets/js/plugins/jquery.validate.min.js"></script>
+        <!-- Plugin for the Wizard, full documentation here: https://github.com/VinceG/twitter-bootstrap-wizard -->
+        <script src="~/Content/assets/js/plugins/jquery.bootstrap-wizard.js"></script>
+        <!--	Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
+        <script src="~/Content/assets/js/plugins/bootstrap-selectpicker.js"></script>
+        <!--  Plugin for the DateTimePicker, full documentation here: https://eonasdan.github.io/bootstrap-datetimepicker/ -->
+        <script src="~/Content/assets/js/plugins/bootstrap-datetimepicker.min.js"></script>
+        <!--  DataTables.net Plugin, full documentation here: https://datatables.net/  -->
+        <script src="~/Content/assets/js/plugins/jquery.dataTables.min.js"></script>
+        <!--	Plugin for Tags, full documentation here: https://github.com/bootstrap-tagsinput/bootstrap-tagsinputs  -->
+        <script src="~/Content/assets/js/plugins/bootstrap-tagsinput.js"></script>
+        <!-- Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
+        <script src="~/Content/assets/js/plugins/jasny-bootstrap.min.js"></script>
+        <!--  Full Calendar Plugin, full documentation here: https://github.com/fullcalendar/fullcalendar    -->
+        <script src="~/Content/assets/js/plugins/fullcalendar.min.js"></script>
+        <!-- Vector Map plugin, full documentation here: http://jvectormap.com/documentation/ -->
+        <script src="~/Content/assets/js/plugins/jquery-jvectormap.js"></script>
+        <!--  Plugin ~/Content/for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
+        <script src="~/Content/assets/js/plugins/nouislider.min.js"></script>
+        <!-- Include a polyfill for ES6 Promises (optional) for IE11, UC Browser and Android browser support SweetAlert -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
+        <!-- Library for adding dinamically elements -->
+        <script src="~/Content/assets/js/plugins/arrive.min.js"></script>
+        <!--  Google Maps Plugin    -->
+        <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+        <!-- Chartist JS -->
+        <script src="~/Content/assets/js/plugins/chartist.min.js"></script>
+        <!--  Notifications Plugin    -->
+        <script src="~/Content/assets/js/plugins/bootstrap-notify.js"></script>
+        <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
+        <script src="~/Content/assets/js/material-dashboard.js?v=2.1.2" type="text/javascript"></script>
+        <!-- Material Dashboard DEMO methods, don't include it in your project! -->
+        <script src="~/Content/assets/demo/demo.js"></script>
+        <script src="~/Content/custom.js"></script>
+        <script>
+
+            $(document).ready(function () {
+                getUsers();
+            });
+            function addVenueModal() {
+                $("#addUserModal").modal();
+            }
+            function editName() {
+
+                $.ajax({
+                    type: "GET",
+                    url: "EditVenue",
+                    data: { "id":  $("#IDEdit").val(),"name":  $("#venuename").val() },
+                    contentType: 'application/json; charset=utf-8',
+
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        console.log(XMLHttpRequest);
+                    },
+                    success: function (result) {
+
+                        swal("Venue Edited!", result, "success").then(function () {
+                            $("#venueEdit").modal('hide');
+                            getUsers();
+
+                        });
+
+                    }
+                });
+
+            }
+            function validate() {
+
+                var username = $("#venue").val();
+
+                $.ajax({
+                    type: "GET",
+                    url: "AddVenue",
+                    data: { "name": username },
+                    contentType: 'application/json; charset=utf-8',
+
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        console.log(XMLHttpRequest);
+                    },
+                    success: function (result) {
+
+                        swal("Venue Added!", result, "success").then(function () {
+                            $("#addUserModal").modal('hide');
+                            getUsers();
+
+                        });
+
+                    }
+                });
+
+            }
+            function getUsers() {
+                $("#tbody_venue").empty();
+                $.ajax({
+                    type: "GET",
+                    url: "FetchVenues",
+                    contentType: 'application/json; charset=utf-8',
+                    dataType: 'json',
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        console.log("Request: " + XMLHttpRequest.toString() + "\n\nStatus: " + textStatus + "\n\nError: " + errorThrown);
+                    },
+                    success: function (result) {
+                        result.forEach(function (element, index) {
+
+
+                            console.log(element.u);
+                            var row = "<tr><td><center>" + element.u.name + "</center></td><td><center><button class='btn btn-sm btn-success edit'  id='" + element.u.id + "'><i class='fa fa-pencil'/> Edit</button><button class='btn btn-sm btn-danger' id='" + element.u.id + "'><i class='fa fa-trash'/> Delete</button></center></td></tr>";
+
+                            $("#tbody_venue").append(row);
+                        })
+                    }
+                });
+
+            }
+
+            $(document).on('click', '.btn-danger', function () {
+                swal({
+                    title: "Are you sure?",
+                    text: "Do you want to delete this venue?",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                    .then((willDelete) => {
+                        if (willDelete) {
+                            $.ajax({
+                                type: "GET",
+                                url: "DeleteVenue",
+                                contentType: 'application/json; charset=utf-8',
+                                data: { id: this.id },
+                                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                                    console.log("Request: " + XMLHttpRequest.toString() + "\n\nStatus: " + textStatus + "\n\nError: " + errorThrown);
+                                },
+                                success: function (result) {
+                                    swal("Venue Deleted!", "", "success").then(function () {
+                                        getUsers();
+                                    });
+                                }
+                            });
+
+
+                        }
+                    });
+
+            });
+            $(document).on('click', '.edit', function () {
+                //Name:
+                //<input type="text" id="venuename" />
+
+                $("#venueEdit").modal("show");
+                     $.ajax({
+                    type: "GET",
+                    url: "FetchVenue",
+                    dataType: 'json',
+                    data: {id: this.id},
+                    contentType: 'application/json; charset=utf-8',
+
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        console.log(XMLHttpRequest);
+                    },
+                         success: function (result) {
+                             $("#IDEdit").val(result[0].id);
+                        $("#venuename").val(result[0].name);
+
+                    }
+                });
+            });
+
+
+            $(document).ready(function () {
+                $().ready(function () {
+                    $sidebar = $('.sidebar');
+
+                    $sidebar_img_container = $sidebar.find('.sidebar-background');
+
+                    $full_page = $('.full-page');
+
+                    $sidebar_responsive = $('body > .navbar-collapse');
+
+                    window_width = $(window).width();
+
+                    fixed_plugin_open = $('.sidebar .sidebar-wrapper .nav li.active a p').html();
+
+                    if (window_width > 767 && fixed_plugin_open == 'Dashboard') {
+                        if ($('.fixed-plugin .dropdown').hasClass('show-dropdown')) {
+                            $('.fixed-plugin .dropdown').addClass('open');
+                        }
+
+                    }
+
+                    $('.fixed-plugin a').click(function (event) {
+                        // Alex if we click on switch, stop propagation of the event, so the dropdown will not be hide, otherwise we set the  section active
+                        if ($(this).hasClass('switch-trigger')) {
+                            if (event.stopPropagation) {
+                                event.stopPropagation();
+                            } else if (window.event) {
+                                window.event.cancelBubble = true;
+                            }
+                        }
+                    });
+
+                    $('.fixed-plugin .active-color span').click(function () {
+                        $full_page_background = $('.full-page-background');
+
+                        $(this).siblings().removeClass('active');
+                        $(this).addClass('active');
+
+                        var new_color = $(this).data('color');
+
+                        if ($sidebar.length != 0) {
+                            $sidebar.attr('data-color', new_color);
+                        }
+
+                        if ($full_page.length != 0) {
+                            $full_page.attr('filter-color', new_color);
+                        }
+
+                        if ($sidebar_responsive.length != 0) {
+                            $sidebar_responsive.attr('data-color', new_color);
+                        }
+                    });
+
+                    $('.fixed-plugin .background-color .badge').click(function () {
+                        $(this).siblings().removeClass('active');
+                        $(this).addClass('active');
+
+                        var new_color = $(this).data('background-color');
+
+                        if ($sidebar.length != 0) {
+                            $sidebar.attr('data-background-color', new_color);
+                        }
+                    });
+
+                    $('.fixed-plugin .img-holder').click(function () {
+                        $full_page_background = $('.full-page-background');
+
+                        $(this).parent('li').siblings().removeClass('active');
+                        $(this).parent('li').addClass('active');
+
+
+                        var new_image = $(this).find("img").attr('src');
+
+                        if ($sidebar_img_container.length != 0 && $('.switch-sidebar-image input:checked').length != 0) {
+                            $sidebar_img_container.fadeOut('fast', function () {
+                                $sidebar_img_container.css('background-image', 'url("' + new_image + '")');
+                                $sidebar_img_container.fadeIn('fast');
+                            });
+                        }
+
+                        if ($full_page_background.length != 0 && $('.switch-sidebar-image input:checked').length != 0) {
+                            var new_image_full_page = $('.fixed-plugin li.active .img-holder').find('img').data('src');
+
+                            $full_page_background.fadeOut('fast', function () {
+                                $full_page_background.css('background-image', 'url("' + new_image_full_page + '")');
+                                $full_page_background.fadeIn('fast');
+                            });
+                        }
+
+                        if ($('.switch-sidebar-image input:checked').length == 0) {
+                            var new_image = $('.fixed-plugin li.active .img-holder').find("img").attr('src');
+                            var new_image_full_page = $('.fixed-plugin li.active .img-holder').find('img').data('src');
+
+                            $sidebar_img_container.css('background-image', 'url("' + new_image + '")');
+                            $full_page_background.css('background-image', 'url("' + new_image_full_page + '")');
+                        }
+
+                        if ($sidebar_responsive.length != 0) {
+                            $sidebar_responsive.css('background-image', 'url("' + new_image + '")');
+                        }
+                    });
+
+                    $('.switch-sidebar-image input').change(function () {
+                        $full_page_background = $('.full-page-background');
+
+                        $input = $(this);
+
+                        if ($input.is(':checked')) {
+                            if ($sidebar_img_container.length != 0) {
+                                $sidebar_img_container.fadeIn('fast');
+                                $sidebar.attr('data-image', '#');
+                            }
+
+                            if ($full_page_background.length != 0) {
+                                $full_page_background.fadeIn('fast');
+                                $full_page.attr('data-image', '#');
+                            }
+
+                            background_image = true;
+                        } else {
+                            if ($sidebar_img_container.length != 0) {
+                                $sidebar.removeAttr('data-image');
+                                $sidebar_img_container.fadeOut('fast');
+                            }
+
+                            if ($full_page_background.length != 0) {
+                                $full_page.removeAttr('data-image', '#');
+                                $full_page_background.fadeOut('fast');
+                            }
+
+                            background_image = false;
+                        }
+                    });
+
+                    $('.switch-sidebar-mini input').change(function () {
+                        $body = $('body');
+
+                        $input = $(this);
+
+                        if (md.misc.sidebar_mini_active == true) {
+                            $('body').removeClass('sidebar-mini');
+                            md.misc.sidebar_mini_active = false;
+
+                            $('.sidebar .sidebar-wrapper, .main-panel').perfectScrollbar();
+
+                        } else {
+
+                            $('.sidebar .sidebar-wrapper, .main-panel').perfectScrollbar('destroy');
+
+                            setTimeout(function () {
+                                $('body').addClass('sidebar-mini');
+
+                                md.misc.sidebar_mini_active = true;
+                            }, 300);
+                        }
+
+                        // we simulate the window Resize so the charts will get updated in realtime.
+                        var simulateWindowResize = setInterval(function () {
+                            window.dispatchEvent(new Event('resize'));
+                        }, 180);
+
+                        // we stop the simulation of Window Resize after the animations are completed
+                        setTimeout(function () {
+                            clearInterval(simulateWindowResize);
+                        }, 1000);
+
+                    });
+                });
+            });
+        </script>
+        <script>
+            $(document).ready(function () {
+                // Javascript method's body can be found in assets/js/demos.js
+                md.initDashboardPageCharts();
+
+            });</script>
+</body>
+
+</html>

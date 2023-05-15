@@ -1,0 +1,1258 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>PEEKABEAR CALENDAR</title>
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <script src="~/Content/calendar/sweetalert.min.js"></script>
+    <script src="~/Content/calendar/jquery-3.5.1.min.js"></script>
+
+    <script src="~/Content/calendar/bootstrap.min.js"></script>
+    <script src="~/Content/calendar/main.min.js"></script>
+    <link href="~/Content/calendar/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="~/Content/calendar/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/calendar/css2.css" rel="stylesheet" />
+    <link href="~/Content/calendar/main.min.css" rel="stylesheet" />
+    <script src="~/Content/calendar/spin.min.js"></script>
+</head>
+<body>
+
+    <div id="loader"></div>
+    <span style='font-size:20px;cursor:pointer;margin-left:10px;margin-right:10px;margin-top:10px;' class='btn btn-default ml-2' onclick='openNav()'>&#9776;</span>
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <br /><br /><br />
+        <a href="/Home/Index">Calendar</a>
+        @Html.ActionLink("Events", "Events", "Home", null, new { id = "active" })
+        @Html.ActionLink("Events Setup", "EventSetup", "Home", null, new { id = "" })
+        <a id="dash" href="@Url.Action("Index", "Dashboard")">Dashboard</a>
+        <div id="et">
+
+        </div>
+        <script>
+            if (!(localStorage.getItem("admin") == "true")) {
+
+                $("#dash").css("display", "none");
+            }
+        </script>
+        @Html.ActionLink("Logout", "Logout", "Home", null, new { id = "" })
+
+    </div>
+
+    <div class="container">
+        <h4>Search Event:</h4>
+        <hr />
+        <div class="col-lg-6">
+            <label>Search By Booking ID: </label><br />
+            <div class="col-lg-6">
+                <input type="number" id="id_booking" class="form-control" />
+            </div>
+            <div class="col-lg-6">
+
+                <button class="btn btn-md btn-warning" id="search_bookingID">Search</button>
+            </div>
+
+
+        </div>
+        <div class="col-lg-6">
+            <label>Search By Contact Number: </label><br />
+            <div class="col-lg-6">
+                <input type="number" id="phonenumber_booking" class="form-control" />
+            </div>
+            <div class="col-lg-6">
+
+                <button class="btn btn-md btn-warning" id="search_contact">Search</button>
+            </div>
+
+
+            <br /><br />
+            <br />
+        </div>
+        <hr />
+        <p></p>
+        <!--Readonly Fields-->
+        <h4>Booking Details:</h4>
+        <div class="row">
+            <div class="col-lg-6">
+                <label>Booking ID:</label>
+                <input type="text" readonly id="bookingID" class="form-control" />
+                <label>Customer Name:</label>
+                <input type="text" readonly id="customername" class="form-control" />
+
+                <label>Customer Address:</label>
+                <input type="text" readonly id="address" class="form-control" />
+                <label>Event Name:</label>
+                <input type="text" readonly id="eventname" class="form-control" />
+                <label>Event Time:</label>
+                <select readonly id="slot-e" class="form-control" disabled="true">
+                    <option selected></option>
+                    </select>
+                <label>Event Date:</label>
+                <input type="text" readonly id="eventdate" class="form-control" />
+
+            </div>
+            <div class="col-lg-6">
+                <label>Customer Phone Number:</label>
+                <input type="text" readonly id="phonenumber" class="form-control" />
+                <label>Customer Email:</label>
+                <input type="text" readonly id="email" class="form-control" />
+                <label>Number Of Persons:</label>
+                <input type="text" readonly id="numberofpersons" class="form-control" />
+                <label>Extra Arrangement:</label>
+                <input type="text" readonly id="extraarangement" class="form-control" />
+                <label>Event Venue:</label>
+                <input type="text" readonly id="venue" class="form-control" />
+                <label>Recipt Number:</label>
+                <input type="text" readonly id="reciptnumber" class="form-control" />
+            </div>
+
+        </div>
+        <hr />
+        <h4>Event Setups:</h4>
+
+        <div class="col-lg-6">
+            <label>Setup:</label>
+            <select class="form-control" id="eventssetup" disabled>
+                <option selected disabled value="0">Select Event Setup</option>
+            </select>
+        </div>
+        <div class="col-lg-6">
+            <label>Quantity</label>
+            <input type="number" class="form-control" id="quan-setup" min="1" oninput="validity.valid||(value='');" />
+        </div>
+        <div class="col-lg-6">
+            <label>Price</label>
+            <input type="number" class="form-control" min="1" oninput="validity.valid||(value='');" id="price-setup" />
+        </div>
+        <div class="col-lg-6">
+            <label>Remarks</label>
+            <input type="text" class="form-control" id="remarks-setup" />
+        </div>
+
+        <div class="col-lg-12">
+            <br />
+            <center>
+                <button class="btn btn-success btn-md" onclick="addSetup()" id="addsetupbutton">Add</button>
+            </center>
+        </div>
+        <div class="col-lg-12">
+            <br />
+        </div>
+        <div class="col-lg-12">
+            <table class="table table-dark">
+                <tr>
+                    <td>Setup</td>
+                    <td>Price</td>
+                    <td>Quantity</td>
+                    <td>Total Amount</td>
+                    <td>Remarks</td>
+                    <td>Action</td>
+                </tr>
+                <tbody id="setups">
+                </tbody>
+                <h4 id="total">Total: Rs:<span>0</span>/=</h4>
+            </table>
+
+        </div>
+        <hr />
+        <center>
+            <button class="btn btn-warning btn-lg" onclick="addSetups()">Submit</button>
+        </center>
+        <br />
+        <div class="col-lg-12">
+            <h4>Event Amount Details:   </h4>
+            <div class="col-lg-6">
+                <label>Total Plan Amount</label>
+                <input type="number" class="form-control" id="totalPlanAmount" readonly />
+            </div>
+            <div class="col-lg-6">
+                <label>Advance Amount</label>
+                <input type="number" class="form-control" min="1" id="advanceAmount" readonly />
+            </div>
+            <div class="col-lg-6">
+                <label>Total Amount Recieved</label>
+                <input type="number" class="form-control" id="totalamountrecieved" readonly />
+            </div>
+            <div class="col-lg-6">
+                <label>Remaining Amount</label>
+                <input type="number" class="form-control" min="1" readonly id="remainingAmount" />
+            </div>
+            <div class="col-lg-12">
+                <hr />
+            </div>
+            <div class="col-lg-12">
+                <h4>Add Event Pending Transactions: </h4>
+            </div>
+            <div class="col-lg-6">
+                <label>Payment Type</label>
+                <select id="paymentoption" class="form-control" disabled>
+                    <option selected disabled value="0">Select Payment Type</option>
+                    <option value="1">Cash</option>
+                    <option value="2">Cheque</option>
+                    <option value="3">Credit Card</option>
+                </select>
+            </div>
+            <div class="col-lg-6">
+
+                <label>Bank Name</label>
+                <input type="text" class="form-control" id="bankname" />
+            </div>
+            <div class="col-lg-6">
+                <label>Credit Card Number:</label>
+                <input type="number" class="form-control" id="creditcard" min=0 oninput="validity.valid||(value='');" />
+            </div>
+            <div class="col-lg-6">
+                <label>Cheque Number:</label>
+                <input type="number" class="form-control" id="chequenumber" min=0 oninput="validity.valid||(value='');" />
+            </div>
+            <div class="col-lg-12">
+                <label>Amount:</label>
+                <input type="number" class="form-control" id="amount" min=0 value=0 oninput="validity.valid||(value='');" />
+            </div>
+            <br />
+            <br />
+            <p>&nbsp;</p>
+            <center>
+                <button class="btn btn-warning btn-lg" onclick="addTransaction()">Submit</button>
+                <a href="../Dashboard/pdfEvent" id="reportRedirectionLink" target="_blank">
+                    <button class="btn btn-success btn-lg" id="reportRedirectionLinkButton" disabled="disabled">Generate PDF</button>
+                </a>
+            </center>
+            <div class="col-lg-12">
+                <h4 id="totalTransaction">Total Transaction: Rs:<span>0</span>/=</h4>
+                <table class="table table-dark">
+                    <tr>
+                        <td>Payment Index</td>
+                        <td>Date - Time</td>
+                        <td>Amount</td>
+                        <td>Payment Type</td>
+                        <td>Bank Name</td>
+                        <td>Credit Card Number</td>
+                        <td>Cheque Number</td>
+
+                    </tr>
+                    <tbody id="transactions">
+                    </tbody>
+
+                </table>
+
+            </div>
+        </div>
+
+    </div>
+    <br /><br /><br />
+    <div class="modal fade" id="mulitpleEvents" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Select Specific Event</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                </div>
+                <div class="modal-body">
+                    <table class="table table-bordered">
+                        <tr>
+                            <td>Booking ID</td>
+                            <td>Booking Date</td>
+                            <td>Event Name</td>
+                            <td>Action</td>
+                        </tr>
+                        <tbody id="rows">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <style>
+        .tentative {
+            background-color: #4fa84f !important;
+        }
+
+        .Booked {
+            background-color: #cc3e3a !important;
+        }
+    </style>
+
+    <script>
+
+        var opts = {
+            lines: 19, // The number of lines to draw
+            length: 20, // The length of each line
+            width: 2, // The line thickness
+            radius: 38, // The radius of the inner circle
+            scale: 1.05, // Scales overall size of the spinner
+            corners: 0.3, // Corner roundness (0..1)
+            speed: 1.3, // Rounds per second
+            rotate: 45, // The rotation offset
+            animation: 'spinner-line-fade-more', // The CSS animation name for the lines
+            direction: -1, // 1: clockwise, -1: counterclockwise
+            color: '#8f8f8f', // CSS color or array of colors
+            fadeColor: 'transparent', // CSS color or array of colors
+            top: '49%', // Top position relative to parent
+            left: '50%', // Left position relative to parent
+            shadow: '0 0 0px transparent', // Box-shadow for the lines
+            zIndex: 2000000000, // The z-index (defaults to 2e9)
+            className: 'spinner', // The CSS class to assign to the spinner
+            position: 'absolute', // Element positioning
+        };
+        $("#loader").hide();
+        var spinner = new Spinner(opts);
+        $(document).ajaxStart(function () {
+            spinner.spin();
+            $("#loader").show();
+            var target = document.getElementById('loader');
+            target.appendChild(spinner.el);
+
+
+        });
+        $(document).ajaxStop(function () {
+            spinner.stop();
+            $("#loader").hide();
+        });
+
+        function addSetups() {
+            var rows = $("#setups tr:not(.inactive)");
+            rows.each(function (index, element) {
+                var id = $("#bookingID").val();
+                var setupID = $(element).children("td").eq(0).attr("id");
+                var price = $(element).children("td").eq(1).text();
+                var quantity = $(element).children("td").eq(2).text();
+                var netamount = $(element).children("td").eq(3).text();
+                var remarks = $(element).children("td").eq(4).text();
+                $.ajax({
+                    type: "GET",
+                    url: "AddBookingSetup",
+                    contentType: 'application/json; charset=utf-8',
+
+                    data: { id: id, setupId: setupID, price: price, quantity: quantity, remarks: remarks },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        console.log(XMLHttpRequest);
+                    },
+                    success: function (result) {
+                        swal("Setups Added", "", "success").then(function () {
+                            MainEvent(id);
+                        });
+                        $("#price-setup").attr("disabled", "disabled");
+            $("#quan-setup").attr("disabled", "disabled");
+                        $("#remarks-setup").attr("disabled", "disabled");
+                        $("#price-setup").val("");
+            $("#quan-setup").val("");
+                        $("#remarks-setup").val("");
+                        $("#eventssetup").val(0)
+
+                    }
+
+                });
+            });
+        }
+        var setups = 0;
+        var deletedSetups = [];
+        function addTransaction() {
+            var error = false;
+            $("#amount").css("border", "1px solid #ccc");
+            $("#bankname").css("border", "1px solid #ccc");
+            $("#creditcard").css("border", "1px solid #ccc");
+            $("#chequenumber").css("border", "1px solid #ccc");
+            var type = $("#paymentoption").val();
+            var amount = $("#amount").val();
+            var creditcardnumber;
+            var bankname;
+            var chequenumber;
+            if (type == null) {
+                $("#paymentoption").css("border", "1px solid red");
+                return;
+                error = true;
+            }
+
+            if (type == "1") {
+
+            } else if (type == "2") {
+                bankname = $("#bankname").val();
+                chequenumber = $("#chequenumber").val();
+                if (bankname == "") {
+                    $("#bankname").css("border", "1px solid red");
+                }
+                if (chequenumber == "") {
+                    $("#chequenumber").css("border", "1px solid red");
+                    error = true;
+                }
+            }
+            else if (type == "3") {
+                bankname = $("#bankname").val();
+                creditcardnumber = $("#creditcard").val();
+                if (bankname == "") {
+                    $("#bankname").css("border", "1px solid red");
+                }
+                if (creditcardnumber == "") {
+                    $("#creditcard").css("border", "1px solid red");
+                    error = true;
+                }
+            }
+            if (amount == 0) {
+                $("#amount").css("border", "1px solid red");
+                error = true;
+            }
+            if (error) {
+                return;
+            }
+            var bid = $("#bookingID").val();
+            $.ajax({
+                type: "GET",
+                url: "AddTransaction",
+                contentType: 'application/json; charset=utf-8',
+
+                data: { bid: bid, amount: amount, bankname: bankname, creditcardnumber: creditcardnumber, chequenumber: chequenumber, type: type,remarks:" "},
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    console.log(XMLHttpRequest);
+                },
+                success: function (result) {
+
+                    $.ajax({
+                        type: "GET",
+                        url: "getEventFromId",
+                        contentType: 'application/json; charset=utf-8',
+
+
+                        dataType: 'json',
+                        data: { id: bid },
+                        error: function (XMLHttpRequest, textStatus, errorThrown) {
+                            console.log(XMLHttpRequest);
+                        },
+                        success: function (result) {
+                           
+                             $.ajax({
+                type: "GET",
+                url: "FetchTransactionsByBookingID",
+                data: { id: bid },
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+
+                },
+                success: function (_result) {
+                    $("#transactions").empty();
+                    var subject = "New Transaction: " + result.result[0].b.eventName + "    Venue: " + $("#venue").val() + "    Event Date: " + new Date(result.result[0].b.bookingDate).toDateString();
+                    var from = "PEEKABEAR aajasmat@gmail.com";
+                    var body = "PEEKABEAR. <br><table style='border: 1px solid black;width:600px'><thead>    <tr style='border: 1px solid black;'>      <th style='border: 1px solid black;padding:5px;'>&nbsp;</th>      <th style='border: 1px solid black;padding:5px;'>Details</th>    </tr>  </thead>  <tbody><tr style='border: 1px solid black;'>      <th style='border: 1px solid black;'><center>Booking ID</center></th>      <td style='border: 1px solid black;'><center>" + result.result[0].b.id  + "</center></td>    </tr><tr style='border: 1px solid black;'>      <th style='border: 1px solid black;'><center>Event Name</center></th>      <td style='border: 1px solid black;'><center>" + result.result[0].b.eventName + "</center></td>    </tr>     <tr style='border: 1px solid black;'>      <th style='border: 1px solid black;'><center>Customer Name</center></th>      <td style='border: 1px solid black;'><center>" + result.result[0].b.customerName + "</center></td>      </tr>       <tr style='border: 1px solid black;'>      <th style='border: 1px solid black;'><center>Event Date</center></th>      <td style='border: 1px solid black;'><center>" + new Date(result.result[0].b.bookingDate).toDateString() + "</center></td>      </tr>       <tr style='border: 1px solid black;'>      <th style='border: 1px solid black;'><center>Venue</center></th>      <td style='border: 1px solid black;'><center>" + $("#venue").val() + "</center></td>      </tr>       <tr style='border: 1px solid black;'>      <th style='border: 1px solid black;'><center>Event Time</center></th>      <td style='border: 1px solid black;'><center>" + $("#slot-e option[value="+result.result[0].b.slot_id+"]").text() + "</center></td>      </tr>             <tr style='border: 1px solid black;'>      <th style='border: 1px solid black;'><center>No of Guests</center></th>      <td style='border: 1px solid black;'><center>" + result.result[0].b.numberOfPersons + "</center></td>      </tr>       <tr style='border: 1px solid black;'>      <th style='border: 1px solid black;'><center>Advance Received</center></th>      <td style='border: 1px solid black;'><center>Rs:" + $("#advanceAmount").val() + "/=</center></td>      </tr>       <tr style='border: 1px solid black;'>      <th style='border: 1px solid black;'><center>Status</center></th>      <td style='border: 1px solid black;'><center> " + (result.result[0].b.isBooked == true ? "Booked" : "Tentative") + " </center></td>      </tr>  <tr style='border: 1px solid black;'>      <th style='border: 1px solid black;'><center>Booked By</center></th>      <td style='border: 1px solid black;'><center>" +localStorage.getItem("name") + "</center></td>      </tr>     </tbody></table> <br>Paid Transactions: <table style='border: 1px solid black;width:600px'><thead><tr style='border: 1px solid black;'><td style='border: 1px solid black;'>Transaction Index</td><td style='border: 1px solid black;'>Date - Time</td><td style='border: 1px solid black;'>Amount</td><td style='border: 1px solid black;'>Payment Type</td><td style='border: 1px solid black;'>Bank Name</td><td style='border: 1px solid black;'>Credit Card Number</td><td style='border: 1px solid black;'>Cheque Number</td></tr></thead><tbody>";
+                    var index = 0;
+                    _result.forEach(function (element) {
+                        
+                       var parameter = "";
+                                  if (index == 0) {
+                            $("#advanceAmount").val(element.amount);
+                        }
+                        var type = "";
+                        
+                        if (element.paymentType == 1) {
+                            type = "Cash";
+                        }
+                        else if (element.paymentType == 2) {
+                            type = "Cheque";
+                        }
+                        else {
+                            type = "Credit Card";
+                        }
+                        var indexType = "";
+                        if (parseInt(element.amount) < 0) {
+                            parameter = "color:red";
+                            indexType = "Refund";
+                            
+                        } else {
+                            if (index == 0) {
+                            indexType = "Advance Payment";
+                        } else if (index == 1) {
+                            indexType = "Second Payment";
+                        }
+                        else if (index == 2) {
+                            indexType = "Third Payment";
+                        }
+                        else if (index == 3) {
+                            indexType = "Fourth Payment";
+                        }
+                        else if (index == 4) {
+                            indexType = "Fifth Payment";
+                        }
+                        else if (index == 5) {
+                            indexType = "Sixth Payment";
+                        }
+                        else if (index == 6) {
+                            indexType = "Seventh Payment";
+                        }
+                        else if (index == 7) {
+                            indexType = "Eighth Payment";
+                        }
+                        else if (index == 8) {
+                            indexType = "Ninth Payment";
+                        }
+                        else if (index == 9) {
+                            indexType = "Tenth Payment";
+                        }
+                        else if (index == 10) {
+                            indexType = "Eleventh Payment";
+                        }
+                        else if (index == 11) {
+                            indexType = "Twelfth Payment";
+                        }
+                        else if (index == 12) {
+                            indexType = "Thirteenth Payment";
+                        }
+                        else if (index == 13) {
+                            indexType = "Fourteenth Payment";
+                        }
+                        else if (index == 14) {
+                            indexType = "Fifteenth Payment";
+                            }
+                            index++;
+                        }
+                        
+                       
+
+                        body += "<tr style='border: 1px solid black;" + parameter + "'><td style='border: 1px solid black;'>" + indexType + "</td><td style='border: 1px solid black;'>" + new Date(element.insertedDateTime).toDateString() + "</td><td style='border: 1px solid black;'>" + element.amount + "</td><td style='border: 1px solid black;'>" + type + "</td><td style='border: 1px solid black;'>" + (element.bankName == '0' ? '-' : element.bankName) + "</td><td style='border: 1px solid black;'>" + (element.creditCardNumber == '0' ? '-' : element.creditCardNumber) + "</td><td style='border: 1px solid black;'>" + (element.chequeNumber == '0' ? '-' : element.chequeNumber) + "</td></tr>";
+                        if (indexType == "Refund") {
+                                            body += "<tr style='border: 1px solid black;color:red'><td colspan='7' style='border:1px solid black'>Remarks: " + element.remarks + "</td></tr>";
+                                        }
+                       
+                    });
+                    body += "</tbody></table>";
+                      $.ajax({
+                                url: "SendEmailNewEvent",    //the page containing php script
+                                type: "post",    //request type,
+                                data: { from: from, to: result.result[0].b.email, body: body, subject: subject, BCC: ["aajasmat@gmail.com"] },
+                                success: function (result) {
+                                   
+                                    swal("Transaction Added", "", "success").then(function () {
+                                        MainEvent(bid);
+                                    });
+
+                                }
+                            });
+
+
+                }
+
+
+            });
+                            
+                          
+
+
+
+                        }
+                    });
+
+
+                }
+
+            });
+
+
+        }
+        $(document).ready(function () {
+                  $.ajax({
+                type: "GET",
+                url: "FetchSlots",
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+
+                },
+                success: function (result) {
+                    result.forEach(function (element, index) {
+                        var option = "<option value='" + element.u.id + "'>" + element.u.slottime + "</option>";
+                        $("#slot-e").append(option);
+
+                    });
+
+                    // calendar.setDataSource(myData);
+
+                }
+
+
+            });
+            //Disabling quan and price input fields
+            $("#price-setup").attr("disabled", "disabled");
+            $("#quan-setup").attr("disabled", "disabled");
+            $("#remarks-setup").attr("disabled", "disabled");
+            $("#bankname").attr("disabled", "disabled");
+
+            $("#creditcard").attr("disabled", "disabled");
+            $("#chequenumber").attr("disabled", "disabled");
+            $("#amount").attr("disabled", "disabled");
+
+
+        });
+        $("#paymentoption").change(function () {
+            $("#amount").css("border", "1px solid #ccc");
+            $("#bankname").css("border", "1px solid #ccc");
+            $("#creditcard").css("border", "1px solid #ccc");
+            $("#chequenumber").css("border", "1px solid #ccc");
+            $("#amount").removeAttr("disabled");
+            $("#bankname").removeAttr("disabled");
+            $("#chequenumber").removeAttr("disabled");
+            $("#creditcard").removeAttr("disabled");
+
+            var id = $(this).val();
+            if (id == "1") {
+                $("#bankname").attr("disabled", "disabled");
+                $("#chequenumber").attr("disabled", "disabled");
+                $("#creditcard").attr("disabled", "disabled");
+            } else if (id == "2") {
+                $("#creditcard").attr("disabled", "disabled");
+            } else {
+                $("#chequenumber").attr("disabled", "disabled");
+            }
+        })
+        //enabling quan and price input fields on select select
+        $(document).on("change", "#eventssetup", function () {
+            //alert($(this).val());
+            $("#price-setup").removeAttr("disabled");
+            $("#quan-setup").removeAttr("disabled");
+            $("#remarks-setup").removeAttr("disabled");
+            $("#price-setup").val("1");
+            $("#quan-setup").val("1");
+        })
+        //Setup row delete
+        $(document).on("click", ".delete", function () {
+            var setupRowIndex = $(this).attr("id");
+            $("tr[data-index=" + setupRowIndex + "]").remove();
+            caluclateTotalSetupAmount();
+
+        });
+        function caluclateTotalSetupAmount() {
+            var rows = $("#setups").find("tr");
+            var total = 0;
+            rows.each(function (index, element) {
+                total += parseInt($(element).find(".netamounts").text());
+            });
+            $("#total").find("span").text(total);
+
+
+        }
+        function caluclateTransactionAmount() {
+            var rows = $(".transactionamount");
+            var total = 0;
+            rows.each(function (index, element) {
+                total += parseInt($(element).text());
+            });
+            $("#totalTransaction").find("span").text(total);
+
+
+            $("#totalamountrecieved").val(total);
+            setTimeout(function () {
+                $("#remainingAmount").val(parseInt($("#totalPlanAmount").val()) - parseInt($("#totalamountrecieved").val()));
+            }, 1500);
+            
+
+
+        }
+        //function for add setup
+        function addSetup() {
+            var attr = $("#addsetupbutton").attr('data-id');
+
+// For some browsers, `attr` is undefined; for others,
+// `attr` is false.  Check for both.
+if (typeof attr !== typeof undefined && attr !== false) {
+    return;
+}
+
+
+            var price = $("#price-setup").val();
+            var quan = $("#quan-setup").val();
+            var netamount = price * quan;
+            var setupID = $("#eventssetup").val();
+
+            var setupText = $("#eventssetup option:selected").text();
+            $("#setups tr").each(function (index, element) {
+                if ($(element).find("td:first").text() == setupText) {
+                    swal("Event Setup Already Exists!", "Try to edit previous one", "warning");
+                    setupID = null;
+                } else {
+
+                }
+
+            });
+            var remarks = $("#remarks-setup").val();
+            $("#price-setup").val("");
+            $("#quan-setup").val("");
+            $("#eventssetup").val(0);
+            $("#remarks-setup").val("");
+            $("#price-setup").attr("disabled", "disabled");
+            $("#quan-setup").attr("disabled", "disabled");
+            $("#remarks-setup").attr("disabled", "disabled");
+
+            if (setupID == null) {
+                return;
+            }
+
+            var row = "<tr data-index='" + setups + "'><td id='" + setupID + "'>" + setupText + "</td><td>" + price + "</td><td>" + quan + "</td><td class='netamounts'>" + netamount + "</td><td>" + remarks + "</td><td><button class='btn btn-danger delete' id='" + setups + "'>Delete</button></td>";
+            $("#setups").append(row);
+            caluclateTotalSetupAmount();
+            setups++;
+        }
+        //Nav Opening
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+        }
+        //Nav Closing
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+        }
+        //Search By Booking ID
+        $("#search_bookingID").click(function () {
+            var id = $("#id_booking").val();
+            if (id == "") {
+                $("#id_booking").css("border", "1px solid red");
+                return;
+            }
+
+            $("#phonenumber_booking").val("");
+            MainEvent(id);
+        });
+        $("#id_booking").bind('keydown', function (e) {
+            if (e.which == 13) {
+                $("#search_bookingID").trigger("click");
+            }
+        });
+        $("#phonenumber_booking").bind('keydown', function (e) {
+            if (e.which == 13) {
+                $("#search_contact").trigger("click");
+            }
+        });
+        //Search By Phone number
+        $("#search_contact").click(function () {
+
+            var phonenumber = $("#phonenumber_booking").val();
+            if (phonenumber.length != 11) {
+                swal("Please Enter Valid Phone Number", "", "error");
+                return;
+            }
+            $.ajax({
+                type: "GET",
+                url: "FetchEventDetail",
+                data: { bookingid: 0, phonenumber: phonenumber },
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    console.log("Request: " + XMLHttpRequest.toString() + "\n\nStatus: " + textStatus + "\n\nError: " + errorThrown);
+                },
+                success: function (result) {
+                
+                    //Checking if two rows returned
+                    if (result.length > 1) {
+                        $("#rows").empty();
+                        result.forEach(function (element, index) {
+                        
+                        
+                            var row = "<tr><td>" + element.id + "</td><td>" + new Date(element.bookingDate).toDateString() + "</td><td>" + element.eventName + "</td><td><button class='btn btn-success select' id='" + element.id + "'>Select</button></td>";
+                            $("#rows").append(row);
+                        });
+
+                        $("#id_booking").val("");
+                        $("#mulitpleEvents").modal();
+                    } else {
+
+                        $("#id_booking").val("");
+                        $.ajax({
+                            type: "GET",
+                            url: "ReturnIDByPhonenumber",
+                            data: { phonenumber: phonenumber },
+                            contentType: 'application/json; charset=utf-8',
+                            dataType: 'json',
+                            error: function (XMLHttpRequest, textStatus, errorThrown) {
+
+                            },
+                            success: function (result) {
+                                if (result.length == 0 || result == []) {
+                                    swal("No record found", "", "error").then(function () {
+                                        window.location.reload();
+                                    });
+                                    return;
+                                }
+                                MainEvent(result[0]);
+                                    
+                            }
+
+
+                        });
+
+                    }
+                }
+            });
+        });
+        //Select button click after multiple events popup
+        $(document).on("click", ".select", function () {
+            var id = $(this).attr("id");
+            //Calling main fetching function
+            $("#id_booking").val();
+            MainEvent(id);
+        })
+        //Main event for fetching event details
+        function MainEvent(id) {
+
+
+            $("#reportRedirectionLinkButton").removeAttr("disabled");
+
+            var link = $("#reportRedirectionLink").attr("href");
+            
+            link = "../Dashboard/pdfEvent?id=" + id;
+
+
+            $("#reportRedirectionLink").removeAttr("href");
+            $("#reportRedirectionLink").attr("href",link);
+
+
+
+
+            $("#creditcard").attr("disabled", "disabled");
+            $("#chequenumber").attr("disabled", "disabled");
+            $("#amount").attr("disabled", "disabled");
+            $("#bankname").attr("disabled", "disabled");
+            $("#creditcard").val("");
+            $("#chequenumber").val("");
+            $("#amount").val("");
+            $("#bankname").val("");
+            $("#paymentoption").val(0);
+            $("#paymentoption").removeAttr("disabled");
+            $("#eventssetup").removeAttr("disabled");
+
+
+
+
+
+            //Basic Data
+            $.ajax({
+                type: "GET",
+                url: "getEventFromId",
+                data: { id: id },
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    console.log("Request: " + XMLHttpRequest.toString() + "\n\nStatus: " + textStatus + "\n\nError: " + errorThrown);
+                },
+                success: function (result) {
+                   
+                    $("#mulitpleEvents").modal('hide');
+
+                    
+
+                    if (result.result == [] || result.result == "" || result.result == null) {
+                        swal("No record found!", "", "error").then(function () { location.reload() });
+
+                        $("#id_booking").val("");
+                        $("#phonenumber_booking").val("");
+                        return;
+                    }
+                     if (result.result[0].b.booked_by.toString() != window.localStorage.getItem("id")) {
+                        swal("Event Booked By Another User", "You don't have any permission to view this Event detail", "error").then(function () { location.reload() });
+
+                        $("#id_booking").val("");
+                        $("#phonenumber_booking").val("");
+                        return;
+                    }
+                    if (result.result[0].b.isBooked == false) {
+                        swal("This event is Tentative!", "", "warning").then(function () { location.reload() });
+
+                        $("#id_booking").val("");
+                        $("#phonenumber_booking").val("");
+                        return;
+                    }
+                    $("#bookingID").val(result.result[0].b.id);
+                    $("#customername").val(result.result[0].b.customerName);
+                    $("#eventname").val(result.result[0].b.eventName);
+                    $("#eventtime").val(result.result[0].b.time);
+                    $("#address").val(result.result[0].b.address);
+                    $("#eventdate").val(new Date(result.result[0].b.bookingDate).toDateString());
+                    $("#reciptnumber").val(result.result[0].b.reciptNumber);
+                    $("#phonenumber").val(result.result[0].b.phonenumber);
+                    $("#email").val(result.result[0].b.email);
+                    $("#numberofpersons").val(result.result[0].b.numberOfPersons);
+                    $("#extraarangement").val(result.result[0].b.extraArrangement);
+                    $("#venue").val(result.result[0].name);
+                    
+                    $("#slot-e").val(result.result[0].b.slot_id);
+
+
+                    //Checking if two rows returned
+
+                }
+            });
+            //Fetch old setups
+            $.ajax({
+                type: "GET",
+                url: "FetchSetupsByBookingId",
+                data: { id: id },
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+
+                },
+                success: function (result) {
+
+                    $("#setups").empty();
+                    result.forEach(function (element, index) {
+                    
+                        var row = "<tr class='inactive'><td>" + element.name + "</td><td>" + element.price + "</td><td>" + element.quantity + "</td><td class='netamounts'>" + element.amount + "</td><td>" + element.remarks + "</td><td><button class='btn btn-warning setupedit' id='"+element.id+"'>Edit</button></td>";
+                        $("#setups").append(row);
+                    });
+                    caluclateTotalSetupAmount();
+                    // calendar.setDataSource(myData);
+
+                }
+
+
+            });
+            $(document).on("click", ".setupedit", function () {
+                swal("Write something here:", {
+                  content: {
+    element: "input",
+    attributes: {
+      placeholder: "Type your password",
+      type: "password",
+    },
+  },
+                   
+})
+.then((value) => {
+    if (value != "pk474") {
+        swal("Incorrect Password", "", "error").then(function () { cancel()});
+        return;
+    }
+    else {
+        
+                editSetup(this);
+    }
+});
+            });
+            function editSetup(elem) {
+                $("#cancel").remove();
+                
+                $("#addsetupbutton").removeAttr();
+                var element = $(elem);
+                var id = element.attr("id");
+
+                var setup = element.parent().prev().prev().prev().prev().prev().text();
+                
+                $("#addsetupbutton").html("Edit");
+                $("#eventssetup").attr("disabled", "disabled");
+                $("#eventssetup option:contains(" + setup + ")").attr('selected', 'selected');
+
+                var quantity = element.parent().prev().prev().prev().text();
+                var price = element.parent().prev().prev().prev().prev().text();
+                var remarks = element.parent().prev().text();
+                
+                $("#remarks-setup").val(remarks);
+                $("#quan-setup").val(quantity);
+                $("#price-setup").val(price);
+
+                $("#remarks-setup").removeAttr("disabled");
+                $("#quan-setup").removeAttr("disabled");
+                $("#price-setup").removeAttr("disabled");
+
+                $("#addsetupbutton").attr("data-id", id);
+
+
+                $("#addsetupbutton").parent().append("<button class='btn btn-danger' id='cancel' >Cancel</button>");
+            }
+            $(document).on("click", "button[data-id]", function () {
+                var id = $(this).attr("data-id");
+                var remarks = $("#remarks-setup").val();
+                var quan = $("#quan-setup").val();
+                var price = $("#price-setup").val();
+
+                $.ajax({
+                    type: "GET",
+                    url: "EditEventSetup",
+                    data: { id: id, quan: quan, price: price, remarks: remarks },
+                    contentType: 'application/json; charset=utf-8',
+
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        console.log("Request: " + XMLHttpRequest.toString() + "\n\nStatus: " + textStatus + "\n\nError: " + errorThrown);
+                    },
+                    success: function (result) {
+                        swal("Event Setup Edited", "", "success").then(function () {
+                            cancel();
+                                
+                        });
+
+                }
+
+
+            });
+            });
+            $(document).on("click", "#cancel", function () {
+                cancel();
+            })
+            function cancel() {
+                $("#remarks-setup").val("");
+                $("#quan-setup").val("");
+                $("#price-setup").val("");
+
+                $("#remarks-setup").attr("disabled","disabled");
+                $("#quan-setup").attr("disabled","disabled");
+                $("#price-setup").attr("disabled", "disabled");
+
+                $("#addsetupbutton").html("Add");
+
+                $("#eventssetup").val(0);
+                $("#cancel").remove();
+                $("#addsetupbutton").removeAttr("data-id");
+
+            MainEvent( $("#id_booking").val());
+            }
+            //Total Plan Amount Field
+            $.ajax({
+                type: "GET",
+                url: "TotalPlanAmountByBookingID",
+                data: { id: id },
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+
+                },
+                success: function (result) {
+                   
+                    $("#totalPlanAmount").val(result);
+
+                }
+
+
+            });
+            //Fetch old Transactions
+            $.ajax({
+                type: "GET",
+                url: "FetchTransactionsByBookingID",
+                data: { id: id },
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+
+                },
+                success: function (result) {
+                    $("#transactions").empty();
+                    var index = 0;
+                    result.forEach(function (element) {
+                        var parameter = "";
+                                  if (index == 0) {
+                            $("#advanceAmount").val(element.amount);
+                        }
+                        var type = "";
+                        
+                        if (element.paymentType == 1) {
+                            type = "Cash";
+                        }
+                        else if (element.paymentType == 2) {
+                            type = "Cheque";
+                        }
+                        else {
+                            type = "Credit Card";
+                        }
+                        var indexType = "";
+                     
+                        if (parseInt(element.amount) < 0) {
+                            parameter = " style='color:red'";
+                            indexType = "Refund";
+                        } else {
+                            if (index == 0) {
+                            indexType = "Advance Payment";
+                        } else if (index == 1) {
+                            indexType = "Second Payment";
+                        }
+                        else if (index == 2) {
+                            indexType = "Third Payment";
+                        }
+                        else if (index == 3) {
+                            indexType = "Fourth Payment";
+                        }
+                        else if (index == 4) {
+                            indexType = "Fifth Payment";
+                        }
+                        else if (index == 5) {
+                            indexType = "Sixth Payment";
+                        }
+                        else if (index == 6) {
+                            indexType = "Seventh Payment";
+                        }
+                        else if (index == 7) {
+                            indexType = "Eighth Payment";
+                        }
+                        else if (index == 8) {
+                            indexType = "Ninth Payment";
+                        }
+                        else if (index == 9) {
+                            indexType = "Tenth Payment";
+                        }
+                        else if (index == 10) {
+                            indexType = "Eleventh Payment";
+                        }
+                        else if (index == 11) {
+                            indexType = "Twelfth Payment";
+                        }
+                        else if (index == 12) {
+                            indexType = "Thirteenth Payment";
+                        }
+                        else if (index == 13) {
+                            indexType = "Fourteenth Payment";
+                        }
+                        else if (index == 14) {
+                            indexType = "Fifteenth Payment";
+                            }
+                            index++;
+                        }
+                        
+                       
+
+
+                        var row = "<tr class='inactive' " + parameter + "><td>" + indexType + "</td><td>" + element.insertedDateTime + "</td><td class='transactionamount'>" + element.amount + "</td><td>" + type + "</td><td>" + (element.bankName == '0' ? '-' : element.bankName) + "</td><td>" + (element.creditCardNumber == '0' ? '-' : element.creditCardNumber) + "</td><td>" + (element.chequeNumber == '0' ? '-' : element.chequeNumber) + "</td>";
+                        
+                        $("#transactions").append(row);
+                        if (indexType == "Refund") {
+                            var body = "<tr class='inactive' style='color:red'><td colspan='7'>Remarks: " + element.remarks + "</td></tr>";
+                            $("#transactions").append(body);
+                        }
+                    });
+                    caluclateTransactionAmount();
+
+                }
+
+
+            });
+        }
+        //Fetching event setups in select
+        $.ajax({
+            type: "GET",
+            url: "FetchSetups",
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+
+            },
+            success: function (result) {
+                result.forEach(function (element, index) {
+                    var option = "<option value='" + element.u.id + "'>" + element.u.name + "</option>";
+                    $("#eventssetup").append(option);
+
+                });
+
+                // calendar.setDataSource(myData);
+
+            }
+
+
+        });
+    </script>
+    <style>
+
+        #disc {
+            font-family: 'Roboto', sans-serif;
+            font-size: 20px;
+            color: #0c5460;
+            background-color: #d1ecf1;
+            /* border-color: #bee5eb; */
+            padding: 6px;
+            border: 2px solid;
+            border-color: #bee5eb;
+        }
+
+        #event_name {
+            font-family: 'Roboto', sans-serif;
+            font-size: 25px;
+        }
+
+        .date {
+            font-family: 'Roboto', sans-serif;
+            font-size: 18px;
+        }
+
+        * {
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .fc-event-title {
+            font-family: 'Nunito', sans-serif !important;
+        }
+
+        .fc-event:hover {
+            background-color: #79b3ec;
+        }
+
+        .sidenav {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 100;
+            top: 0;
+            left: 0;
+            background-color: white;
+            box-shadow: -11px -9px 20px 4px black;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+
+            .sidenav a {
+                padding: 10px;
+                text-decoration: none;
+                font-size: 25px;
+                color: dimgrey;
+                display: block;
+                transition: 0.3s;
+            }
+
+                .sidenav a:hover {
+                    color: black;
+                }
+
+            .sidenav .closebtn {
+                position: absolute;
+                v top: 0;
+                right: 25px;
+                font-size: 36px;
+                margin-left: 50px;
+            }
+
+        .form-control {
+            border-radius: 0px;
+            padding: 5px;
+        }
+
+        #active {
+            background-color: #1e2b37;
+            color: white;
+            box-shadow: -4px 4px 10px 0px #737373;
+        }
+
+        hr {
+            border: 0;
+            clear: both;
+            display: block;
+            width: 96%;
+            background-color: #ccc;
+            height: 2px;
+        }
+
+        .inactive {
+            background-color: #ececec;
+            color: #6d6d6d;
+        }
+        
+        #loader {
+            width: 100%;
+            height: 100%;
+            background-color: white;
+            position: fixed;
+            z-index: 100;
+
+        }
+    </style>
+</body>
+</html>

@@ -1,0 +1,18 @@
+     $.ajax({
+            type: "GET",
+            url: "getEvents",                           
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                alert("Request: " + XMLHttpRequest.toString() + "\n\nStatus: " + textStatus + "\n\nError: " + errorThrown);
+            },
+            success: function (result) {
+                for (var i = 0; i < result.length; i++) {
+                    var event = { id: result[i].id, name: result[i].name, discription: result[i].description, startDate: new Date(), endDate: new Date() };
+                    datasource.push(event);
+                }
+
+        }
+        });
+        console.log(datasource);
+        calendar.setDataSource(datasource);

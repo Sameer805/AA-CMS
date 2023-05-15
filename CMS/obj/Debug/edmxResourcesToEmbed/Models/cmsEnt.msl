@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="cmsModelStoreContainer" CdmEntityContainer="cmsEnt">
+    <EntitySetMapping Name="delete_log">
+      <EntityTypeMapping TypeName="cmsModel.delete_log">
+        <MappingFragment StoreEntitySet="delete_log">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="event_id" ColumnName="event_id" />
+          <ScalarProperty Name="deleted_timedate" ColumnName="deleted_timedate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="userScreenChildPermissions">
+      <EntityTypeMapping TypeName="cmsModel.userScreenChildPermission">
+        <MappingFragment StoreEntitySet="userScreenChildPermission">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="screen_id" ColumnName="screen_id" />
+          <ScalarProperty Name="add" ColumnName="add" />
+          <ScalarProperty Name="edit" ColumnName="edit" />
+          <ScalarProperty Name="delete" ColumnName="delete" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="userScreenPermissions">
+      <EntityTypeMapping TypeName="cmsModel.userScreenPermission">
+        <MappingFragment StoreEntitySet="userScreenPermission">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="calendar" ColumnName="calendar" />
+          <ScalarProperty Name="eventSetup" ColumnName="eventSetup" />
+          <ScalarProperty Name="eventTransaction" ColumnName="eventTransaction" />
+          <ScalarProperty Name="reports" ColumnName="reports" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="venues">
+      <EntityTypeMapping TypeName="cmsModel.venue">
+        <MappingFragment StoreEntitySet="venue">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="users">
+      <EntityTypeMapping TypeName="cmsModel.user">
+        <MappingFragment StoreEntitySet="user">
+          <ScalarProperty Name="isAdmin" ColumnName="isAdmin" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+          <ScalarProperty Name="insertedDateTime" ColumnName="insertedDateTime" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bookings">
+      <EntityTypeMapping TypeName="cmsModel.booking">
+        <MappingFragment StoreEntitySet="booking">
+          <ScalarProperty Name="isBooked" ColumnName="isBooked" />
+          <ScalarProperty Name="inserteddatetime" ColumnName="inserteddatetime" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+          <ScalarProperty Name="reciptNumber" ColumnName="reciptNumber" />
+          <ScalarProperty Name="extraArrangement" ColumnName="extraArrangement" />
+          <ScalarProperty Name="totalPlanAmount" ColumnName="totalPlanAmount" />
+          <ScalarProperty Name="advanceAmount" ColumnName="advanceAmount" />
+          <ScalarProperty Name="eventName" ColumnName="eventName" />
+          <ScalarProperty Name="venue_id" ColumnName="venue_id" />
+          <ScalarProperty Name="time" ColumnName="time" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="phonenumber" ColumnName="phonenumber" />
+          <ScalarProperty Name="bookingDate" ColumnName="bookingDate" />
+          <ScalarProperty Name="customerName" ColumnName="customerName" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="eventCalculations">
+      <EntityTypeMapping TypeName="cmsModel.eventCalculation">
+        <MappingFragment StoreEntitySet="eventCalculation">
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+          <ScalarProperty Name="remarks" ColumnName="remarks" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="eventPlanID" ColumnName="eventPlanID" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="eventPlans">
+      <EntityTypeMapping TypeName="cmsModel.eventPlan">
+        <MappingFragment StoreEntitySet="eventPlan">
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+          <ScalarProperty Name="eventPlanName" ColumnName="eventPlanName" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="eventTypes">
+      <EntityTypeMapping TypeName="cmsModel.eventType">
+        <MappingFragment StoreEntitySet="eventType">
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

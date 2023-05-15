@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="cmsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="booking">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="customerName" Type="nvarchar" MaxLength="255" />
+    <Property Name="bookingDate" Type="datetime" />
+    <Property Name="phonenumber" Type="bigint" />
+    <Property Name="email" Type="nvarchar" MaxLength="255" />
+    <Property Name="address" Type="nvarchar" MaxLength="255" />
+    <Property Name="venue_id" Type="int" />
+    <Property Name="eventName" Type="varchar" MaxLength="1" />
+    <Property Name="advanceAmount" Type="int" />
+    <Property Name="totalPlanAmount" Type="int" />
+    <Property Name="extraArrangement" Type="nvarchar" MaxLength="255" />
+    <Property Name="reciptNumber" Type="int" />
+    <Property Name="isActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="delete_log">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="event_id" Type="int" Nullable="false" />
+    <Property Name="deleted_timedate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Events">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="80" Nullable="false" />
+    <Property Name="description" Type="varchar" MaxLength="300" Nullable="false" />
+    <Property Name="date" Type="date" />
+    <Property Name="isActive" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="user">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="username" Type="nvarchar" MaxLength="255" />
+    <Property Name="password" Type="nvarchar" MaxLength="255" />
+    <Property Name="insertedDateTime" Type="datetime" />
+    <Property Name="isActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="userScreenChildPermission">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="screen_id" Type="int" />
+    <Property Name="add" Type="bit" />
+    <Property Name="edit" Type="bit" />
+    <Property Name="delete" Type="bit" />
+  </EntityType>
+  <EntityType Name="userScreenPermission">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="user_id" Type="int" />
+    <Property Name="calendar" Type="bit" Nullable="false" />
+    <Property Name="eventSetup" Type="bit" Nullable="false" />
+    <Property Name="eventTransaction" Type="bit" Nullable="false" />
+    <Property Name="reports" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="venue">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="255" />
+    <Property Name="isActive" Type="bit" />
+  </EntityType>
+  <EntityContainer Name="cmsModelStoreContainer">
+    <EntitySet Name="booking" EntityType="Self.booking" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="delete_log" EntityType="Self.delete_log" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Events" EntityType="Self.Events" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="user" EntityType="Self.user" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="userScreenChildPermission" EntityType="Self.userScreenChildPermission" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="userScreenPermission" EntityType="Self.userScreenPermission" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="venue" EntityType="Self.venue" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>
